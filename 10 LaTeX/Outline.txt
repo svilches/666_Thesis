@@ -1,0 +1,125 @@
+						   
+						    Thesis Outline
+
+Introduction --------------------------------------------------------
+	
+	Motivation 
+		Why is optical biopsy important? -> OCT
+		Thesis = component of miniaturized multimodal probe (list modes)
+		No CFB
+		Different NAs
+		Size matters
+		Multimodal: split or coaxial paths
+		Aim in 2 lines: simultaneous full field white light microscopy and 3D OCT.
+
+	State of the Art 
+		Marc, Simon: HYAZINT [static OCT, picture + schematic, explained in caption]
+		Seibel: High freq scanner
+		OCT Scanners (needle in tip)
+	
+	Approach of this thesis (What, not How!)
+		Text description of scanner and advantages (sales pitch) with achievements
+		[Photo of probe]
+		[OCT sample]
+	
+
+Theory --------------------------------------------------------------
+	
+	Optics
+		Point Scanned Imaging (General)
+			Confocal 
+			OCT (-> Sklarenko)
+
+	Mechanics - Piezo tube fiber scanners
+		Resonant Beam
+		Piezoelectric Tube Actuator (-> Meinert)
+			Driving
+			[cross section]
+
+
+
+Design & Simulation  ------------------------------------------------
+	
+	Design Requirements (Bullet List)
+		Scanner for bimodal bench -> Sets size constraints -> piezo fiber scanner
+		No parallax: Coaxial with beamsplitter
+		Desired resolution and DOF (Standard in field)
+
+	Design Overview: Resonant fiber scanner. 
+		[First cross section of probe]
+		Why constraints lead to fiber scanner
+			- Small diameter
+			- FOV > scanning diameter
+		But: tradeoffs need to be made: analysis and simulation
+
+	Optical Design
+		Fourier plane scanner
+		Selection of components
+			High, Low NA
+		Minimization of backreflections
+		ZEMAX simulation
+
+	Mechanical Design
+		Analytical calculations (res freq, bending line, max radius)
+		COMSOL simulation (Prove radiant point source)
+		Spiral scanning
+
+	Overview of design
+		[CAD with notes]
+	
+Fabrication and Assembly --------------------------------------------
+	
+	Polyimide Electrodes (Why?)
+		Process overview
+		Rolling process
+		Bonding (xsection)
+
+	Fiber-GRIN Bonding
+		Mask design
+		Process overview
+		Gluing
+
+	Housing
+		Alignment features
+		3D Printing (Dealing with tolerances)
+
+	Assembly
+		Exploded view
+		Steps
+
+
+Measurements (?) ----------------------------------------------------
+	
+	Electronics
+		PZT Driver (Floating source emulation)
+
+	Fiber scanner characterization
+		Res freq, angular displacement
+		Freq response, coupling of eigendirections
+
+	Spiral Scanning
+		Signal generation (Modulation etc)
+		Semi-resonant operation (ellipse etc)
+		[Spiral Pattern], [Measurement setup]
+
+	Confocal Imaging
+		[Measurement setup]
+		LUT calibration
+		Npx, resolution, quantization
+		Samples
+
+	OCT
+		[Measurement setup]
+		Backreflections 
+		Samples
+		Biological samples
+		Overlay OCT / confocal
+
+
+Conclusion & Outlook ------------------------------------------------
+	
+	Conclusion
+
+	Outlook
+		Multimode endoscope
+		Feedback

@@ -1,0 +1,89 @@
+% -*- encoding: UTF8 -*-
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                                                             		                                      %%
+%%      Bachelor / Master Thesis XX YY, Month  20XX 										%%
+%%                                                                                                                                                       %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Read the basic settings
+%\input{document_parts/default_settings}
+\input{parts/DefaultSettings}
+
+\renewcommand{\rmdefault}{phv} % Arial
+\renewcommand{\sfdefault}{phv} % Arial
+\renewcommand\refname{{\fontfamily{phv}\selectfont Publications}} 
+
+
+%% List for splitting words
+\hyphenation{Donau-dampf-schiff-ka-pi-tän}
+
+% Load other packages
+\input{parts/PersonalSettings}                
+
+\begin{document} 
+
+
+
+%% First Part: Title, Professor,...
+\input{parts/FirstPages}     
+
+% Short English and German Abstracts
+\input{parts/Abstracts}  
+
+% Includes contents into bookmarks
+\cleardoublepage\phantomsection\pdfbookmark{\contentsname}{toc}
+
+% Print table of contents
+\tableofcontents
+
+% Load Term Declaration
+\input{parts/Nomenclature} 
+
+
+% *** Set a spreadsheet- and figure-list
+          %\listoffigures
+          %\listoftables       % the option liststotoc includes the spreadsheet- and figure-list in the TOC
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                 Main document	                      																				
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Start of the main part
+\mainmatter   
+
+%% Load separate chapters (for faster compiling just uncomment chapters)
+
+\input{chapters/Introduction}
+
+\input{chapters/Theory}
+
+\input{chapters/DesignTechnology}
+
+\input{chapters/Simulations}
+
+\input{chapters/Measurements}
+
+\input{chapters/Conclusion}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                 Appendix	                      																				
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% *** Load Appendix
+\appendix
+%\input{parts/Appendix}
+
+%% Include Bibliography
+%\cleardoublepage\phantomsection\pdfbookmark{\bibname}{bib}
+
+
+\bibliography{ieeetr} 
+
+% Thanksgiving
+\input{parts/NoteOfThanks}
+
+\end{document}
+
+%%% You're done! %%%%%%%%%%%

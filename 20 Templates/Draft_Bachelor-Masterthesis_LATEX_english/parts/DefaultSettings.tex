@@ -1,0 +1,96 @@
+% encoding:  UTF8
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                                                             		                                      %%
+%%                                                Default settings																				%%
+%%                                                                                                                                                       %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\NeedsTeXFormat{LaTeX2e}[2005/12/01]
+
+%% Moegliche Optionen: diejenigen der Klasse scrbook ausser titlepage
+
+%% deutsche DA:
+%\documentclass[%a4paper, 
+%                          master,                                     %% Typ der Arbeit: diplom, bachelor oder master
+%                          12pt,                                                      %% Schriftgroesse
+%                          twoside,                                                  %% zweiseitiges Layout
+%                          BCOR10mm,                                           %% Bindekorrektur 10 mm
+%                          %liststotoc,nomtotoc,                   %% Aufnahme der div. Verzeichnisse ins Inhaltsverzeichnis
+%													bibtotoc, 
+%                          %pointlessnumbers,                                   %% Ueberschriftnummer. ohne angehaengtem Punkt
+%                          english,ngerman,                                      %% Alternativspr. Englisch, Dokumentspr. Deutsch
+%                          final,                                                        %% Endversion; draft fuer schnelles Kompilieren
+%                          ]{IMTEKda}
+
+% ***  Englisch mit dt. Vorspann:   
+    \documentclass[master,12pt,twoside,BCOR10mm,pointlessnumbers,ngerman,english,englishpreamble]{IMTEKda}
+
+% *** Labels anzeigen zur Korrektur
+    %\usepackage{showkeys} %% Labels verschwinden mit der Klassenoption final
+
+\usepackage{babel}                  %% Sprachen-Unterstuetzung
+\usepackage{calc}                    %% ermoeglicht Rechnen mit Laengen und Zaehlern
+
+
+\usepackage[T1]{fontenc} 
+\usepackage[utf8]{inputenc}            %% UTF8-Codierung !!!
+  
+% *** For citation in Chicago Style
+
+\usepackage{chicago} %\usepackage{chicagoa}
+%\nocite{*} 	% If this command is used the whole bibliography will be printed, 
+				% if not, only the cited references
+\renewcommand{\cite}{\shortcite}
+\bibliographystyle{chicago}
+
+
+
+\usepackage{amsmath,amssymb}   %% zusaetzliche Mathe-Symbole
+
+\usepackage{lmodern}                     %% type1-taugliche CM-Schrift als Variante zur "normalen" EC-Schrift
+
+%% Paket fuer bibtex-Datenbanken
+%\usepackage[comma,numbers,sort&compress]{natbib}
+
+\usepackage{babelbib}         %% korrekte Sprache in Bibliographieeintraegen
+%\bibliographystyle{plainnat}   %% Formatierung Bibliographie ohne babelbib
+%\bibliographystyle{babplain}  %% Formatierung Bibliographie mit babelbib
+
+%\bibliographystyle{babunsrt}     %% erzeugt eine Bibliographie mit unsortierten Einträgen, d.h. in Reihenfolge der Zitate 
+                                               %% - für korrekte Reihenfolge sind mehrere Latex-Durchläufe nötig ! 
+												%% Außerdem ermöglicht babunsrt im Vergleich zu unsrtnat die Formatierung von Einträgen in weiteren Sprachen als nur Englisch.
+
+\newcommand{\tabheadfont}[1]{\textbf{#1}}        %% Tabellenkopf in Fett
+\usepackage{booktabs}                                            %% Befehle fuer besseres Tabellenlayout
+\usepackage{longtable}                                            %% umbrechbare Tabellen
+%\usepackage{array}                                               %% zusaetzliche Spaltenoptionen
+
+%% umfangreiche Pakete fuer Symbole wie \micro, \ohm, \degree, \celsius etc.
+\usepackage{textcomp,gensymb}
+
+%\usepackage{SIunits}            %% Korrektes Setzen von Einheiten
+\usepackage{units}                  %% Variante fuer Einheiten
+
+%% Hyperlinks im Dokument; muss als eines der letzten Pakete geladen werden
+\usepackage[pdfstartview=FitH,                     % Oeffnen mit fit width
+                   breaklinks=true,                         % Umbrueche in Links, nur bei pdflatex default
+                   bookmarksopen=true,                % aufgeklappte Bookmarks
+                   bookmarksnumbered=true,        % Kapitelnummerierung in bookmarks
+                   pdfprintscaling=None,                % Default-Einstellung zum Drucken: nicht skaliert
+                   pdfduplex=DuplexFlipLongEdge, % Default-Druck-Einstellung: Duplex
+                   ]{hyperref}
+
+%% Bei Anklicken der im pdf-Dokument erzeugten Links springt der PDF-Viewer hiermit auf das
+%% Bild / die Tabelle selbst
+\usepackage[all]{hypcap}
+ 
+% *** Um keine SANSSERIF Schriften fuer Ueberschriften zu verwenden:  ***
+      %\setkomafont{sectioning}{\normalfont\normalcolor\bfseries}
+
+%  *** Fuer kleinere Bild- und Tabellenunterschriften:
+      %\addtokomafont{caption}{\footnotesize}
+
+% *** Um abgekuerzte Abbildungs- und Tabellenbezeichnung mit \autoref zu erhalten:
+      %\addto{\extrasngerman}{\renewcommand*{\figureautorefname}{Abb.}}
+      %\addto{\extrasngerman}{\renewcommand*{\tableautorefname}{Tab.}}

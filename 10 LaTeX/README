@@ -1,0 +1,85 @@
+IMTEK thesis class
+
+LaTeX Class for typesetting diploma, bachelor's and master's theses
+for the Institute of Microsystem Technology (IMTEK)
+at the University of Freiburg (Germany).
+It is based on the KOMA-Script class scrbook.
+Included in the documentation is a large collection of useful tips
+for typesetting theses and a list of recommended packages.
+The documentation is in german.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Copyright (C) 2005-10 by Simon Dreher
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either
+% version 1.3 of this license or (at your option) any later
+% version. The latest version of this license is in:
+%
+%    http://www.latex-project.org/lppl.txt
+%
+% and version 1.3 or later is part of all distributions of
+% LaTeX version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% The Current Maintainer of this work is Simon Dreher
+% This work consists of all files listed in the following list:
+
+File List:
+
+IMTEKda.ins
+IMTEKda.dtx
+IMTEKda.pdf
+figures/bild.eps
+figures/bild.pdf
+README
+
+and the derived files
+
+diplarb.bib
+diplarb.tex
+IMTEKda.cls
+
+% The following files are _not_ covered by the license
+% and must be obtained from http://intern.imtek.de -> Service -> Download
+% separately (only available from the IMTEK subnet):
+
+figures/IMTEK_Logo_Farbe.eps
+figures/IMTEK_Logo_Farbe.pdf
+figures/Uni_Siegel.eps
+figures/Uni_Siegel.pdf
+Uni_Logo_E2_A4_CMYK.eps
+Uni_Logo_E2_A4_CMYK.pdf
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Installation:
+
+0.) Ggf. Downloaden der Logos von http://intern.imtek.de
+    -> Service -> Download und Speichern im Unterordner figures/
+
+1.) Ausfuehren von
+      latex IMTEKda.ins
+    Unter Windows geht das mit:
+      Ausfuehren (Windowstaste + R) -> cmd -> Laufwerk auswaehlen (z.B. mit D:)
+      -> Verzeichnis auswaehlen mit cd Pfadname -> latex IMTEKda.ins
+
+Optional zusaetzlich, um die Klasse im ganzen System verfuegbar zu machen:
+2.) Verschieben von IMTEKda.cls und dem Ordner figures/ in den lokalen TeX-Baum,
+    typischerweise in
+      C:/LOCALTEXMF/tex/latex/IMTEKda/
+    oder
+      C:/Dokumente und Einstellungen/All Users/Anwendungsdaten/MiKTeX/2.7/tex/latex/IMTEKda/
+    oder
+      /usr/local/share/texmf/tex/latex/IMTEKda/
+3.) Kopieren dieser Datei README, der Dokumentation IMTEKda.pdf sowie der Templates
+    diplarb.tex und diplarb.bib zu den TeX-Dokumentationen, typischerweise nach
+      C:/LOCALTEXMF/doc/latex/IMTEKda/
+    oder
+      C:/Dokumente und Einstellungen/All Users/Anwendungsdaten/MiKTeX/2.7/doc/latex/IMTEKda/
+    oder
+      /usr/local/share/texmf/doc/latex/IMTEKda/
+4.) Aktualisieren der Paketdatenbank, z.B. mit
+      texhash
+    oder im MikTeX Options Dialog ueber den Button "Refresh FNDB"
