@@ -7,7 +7,7 @@
 \chapter{Design \& Simulation}
 \label{Ch:DesignSimulation}	
 
-The aim of this work is to design and test a miniaturized OCT microscope as a component of a multi-modal probe. As described in Chapter \ref{Ch:Introduction}, this probe consist of two spectrally-separated optical paths that run partially in parallel through a micro-optical bench system. This approach allows independent tuning of the optical parameters of the two imaging modalities -- such as the NA or depth of field -- while still providing a geometrical overlap of the two acquired images. As OCT is a scanned-point imaging technique, a 2D scanning mechanism is integrated into the probe to reconstruct 3D volumes of the sample tissue.
+The aim of this work is to design and test a miniaturized OCT microscope as a component of a multi-modal endoscope. As described in Chapter \ref{Ch:Introduction}, this probe consist of two spectrally-separated optical paths that run partially in parallel through a micro-optical bench system. This approach allows independent tuning of the optical parameters of the two imaging modalities -- such as the NA or depth of field -- while still providing a geometrical overlap of the two acquired images. As OCT is a scanned-point imaging technique, a 2D scanning mechanism is integrated into the probe to reconstruct 3D volumes of the sample tissue.
 
 %%*****************************************************************************
 \section{Design Requirements}
@@ -38,7 +38,6 @@ The OCT microscope should fulfill the following requirements:
   
 
 %%*****************************************************************************
-\newpage
 \section{Design overview}
 %%*****************************************************************************
 
@@ -55,12 +54,14 @@ To overcome these problems, and taking into account the above-mentioned requirem
       \label{fig:bimodalSketch}
 \end{figure}
 
-The implementation uses a piezo tube actuator which drives a bending beam into a resonant oscillation. This bending beam is composed of an optical fiber with a GRIN lens glued to its tip which, due to the oscillation of the fiber, radially scans a collimated laser beam. An objective lens then transforms this angular displacement into translation, as explained in Chapter \ref{Ch:Theory}. In order to merge the OCT field with the white light image, both fields are combined using a dichroic beam splitter.
+This implementation uses a piezo tube actuator which drives a bending beam into a resonant oscillation. This bending beam is composed of an optical fiber with a GRIN lens glued to its tip which, due to the oscillation of the fiber, radially scans a collimated laser beam. An objective lens then transforms this angular displacement into translation, as explained in Chapter \ref{Ch:Theory}. In order to merge the OCT field with the white light image, both fields are combined using a dichroic beam splitter.
 
-There are many reasons why this design is preferred over other scanning topologies. First, the narrow dimensions of the piezo tube allow a compact implementation. Also, the field of view that can be achieved with this scanner is not limited to the amplitude of the vibration --- instead, to the maximum angular deflection. As we need a telecentric system, a \textit{4f} microscope could have been implemented instead of a Fourier plane scanner, but at the cost of duplicating the length of the optical system. Finally, by gluing the GRIN lens to the tip of the fiber, its resonance frequency is greatly reduced, allowing a denser sampling.
+There are many reasons why this design is preferred over other scanning topologies. First, the narrow dimensions of the piezo tube allow a compact implementation. Also, the field of view that can be achieved with this scanner is not limited to the space available for the GRIN lens to vibrate --- instead, to its maximum angular deflection. As we need a telecentric system, a \textit{4f} microscope could have been implemented instead of a Fourier plane scanner, but at the cost of duplicating the length of the optical system (Chapter \ref{Ch:Theory}). Finally, by gluing the GRIN lens to the tip of the fiber, its resonance frequency is greatly reduced, allowing a denser sampling.
 
 
-The rest of this chapter shows the design and development of the OCT imaging path for the multimodal probe. However, in order to independently test the behavior of the OCT scanner and optics, a single modality probe was fabricated as a demonstrator. Therefore, for completeness, both multi-mode and single-mode optical systems are described.
+The rest of this chapter shows the design and development of the OCT imaging path for the multi-modal probe. However, in order to independently test the behavior of the OCT scanner and optics, a single modality probe was fabricated as a demonstrator. Both systems are mechanically and optically equivalent -- the only difference is the presence of the beam splitter. 
+
+For completeness, both multi-mode and single-mode optical systems are described.
 
 
 %%*****************************************************************************

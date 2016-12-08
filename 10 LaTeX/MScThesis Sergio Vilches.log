@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2016.7.22)  8 DEC 2016 11:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2016.7.22)  8 DEC 2016 13:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1612,13 +1612,13 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.38 \clearpage
+l.26 \clearpage
                 [1
 
 
 
 ] <figures/foo.png, id=103, 800.9925pt x 465.23813pt>
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 42.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 30.
 
 (c:/texlive/2016/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1626,7 +1626,7 @@ File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.48 \clearpage
+l.36 \clearpage
                 [2
 
 ]) (./chapters/30_DesignSimulation.texpdfTeX warning (ext4): destination with t
@@ -1651,11 +1651,14 @@ t>
 File: figures/10_Introduction/bimodalSketch/out.pdf Graphic file (type pdf)
  <use figures/10_Introduction/bimodalSketch/out.pdf>
 Package pdftex.def Info: figures/10_Introduction/bimodalSketch/out.pdf used on 
-input line 53.
+input line 52.
 (pdftex.def)             Requested size: 410.66432pt x 112.25581pt.
 
 
-LaTeX Warning: Reference `Ch:Theory' on page 6 undefined on input line 58.
+LaTeX Warning: Reference `Ch:Theory' on page 6 undefined on input line 57.
+
+
+LaTeX Warning: Reference `Ch:Theory' on page 6 undefined on input line 59.
 
 [6 <./figures/10_Introduction/bimodalSketch/out.pdf>] [7]
 
@@ -1712,7 +1715,7 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 85.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 85.
 Package rerunfilecheck Info: File `"MScThesis Sergio Vilches".out' has not chan
 ged.
-(rerunfilecheck)             Checksum: 467F2947834675E18D28C31D57B06D81;735.
+(rerunfilecheck)             Checksum: B66C137A2CFF21557A062E218152D0CA;736.
 
 
 LaTeX Warning: There were undefined references.
@@ -1739,7 +1742,7 @@ pe1/public/lm/lmri12.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/lm/lmro
 12.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb><c:/texli
 ve/2016/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/texlive/2016/texmf-dist
 /fonts/type1/public/lm/lmtt12.pfb>
-Output written on "MScThesis Sergio Vilches.pdf" (19 pages, 241554 bytes).
+Output written on "MScThesis Sergio Vilches.pdf" (19 pages, 241753 bytes).
 PDF statistics:
  281 PDF objects out of 1000 (max. 8388607)
  230 compressed objects within 3 object streams
