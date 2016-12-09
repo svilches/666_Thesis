@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2016.7.22)  9 DEC 2016 16:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2016.7.22)  9 DEC 2016 18:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1661,30 +1661,32 @@ LaTeX Warning: Reference `Ch:Theory' on page 6 undefined on input line 59.
 LaTeX Warning: Reference `Ch:Theory' on page 6 undefined on input line 61.
 
 [6 <./figures/10_Introduction/bimodalSketch/out.pdf>] [7]
+<figures/30_DesignSimulation/fps2.pdf, id=177, 376.80934pt x 142.667pt>
+File: figures/30_DesignSimulation/fps2.pdf Graphic file (type pdf)
+
+<use figures/30_DesignSimulation/fps2.pdf>
+Package pdftex.def Info: figures/30_DesignSimulation/fps2.pdf used on input lin
+e 79.
+(pdftex.def)             Requested size: 376.80841pt x 142.66664pt.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[8]
+[8 <./figures/30_DesignSimulation/fps2.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [9]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[10]) (./MScThesis Sergio Vilches.bbl [11] [12
-
-]
+[10] [11]) (./MScThesis Sergio Vilches.bbl [12]
 
 LaTeX Warning: Empty `thebibliography' environment or \BreakBibliography
                before end of `thebibliography' environment on input line 3.
 
-) (./parts/NoteOfThanks.tex [13] [14
+) (./parts/NoteOfThanks.tex [13
+
+] [14
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 3--4
@@ -1723,29 +1725,30 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 85.
  ) 
 Here is how much of TeX's memory you used:
- 22858 strings out of 493013
- 424221 string characters out of 6136993
- 559875 words of memory out of 5000000
- 25994 multiletter control sequences out of 15000+600000
- 68027 words of font info for 61 fonts, out of 8000000 for 9000
+ 22875 strings out of 493013
+ 424549 string characters out of 6136993
+ 559926 words of memory out of 5000000
+ 26003 multiletter control sequences out of 15000+600000
+ 80687 words of font info for 64 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  53i,10n,68p,10409b,905s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2016/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{c:/texlive/2016/tex
-mf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{c:/texlive/2016/texmf-dist/fonts/enc/
-dvips/lm/lm-ts1.enc}{c:/texlive/2016/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{c
-:/texlive/2016/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}<c:/texlive/2016/tex
+{c:/texlive/2016/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{c:/texlive/2016/tex
+mf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{c:/texlive/2016/texmf-dist/fonts/enc/
+dvips/lm/lm-ec.enc}{c:/texlive/2016/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc
+}{c:/texlive/2016/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}<c:/texlive/2016/tex
 mf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/texlive/2016/texmf-dist/fonts/type
-1/public/lm/lmmi12.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/lm/lmr12.
-pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/lm/lmr6.pfb><c:/texlive/2016
-/texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/texlive/2016/texmf-dist/fonts/ty
-pe1/public/lm/lmri12.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/lm/lmro
-12.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb><c:/texli
-ve/2016/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/texlive/2016/texmf-dist
-/fonts/type1/public/lm/lmtt12.pfb>
-Output written on "MScThesis Sergio Vilches.pdf" (19 pages, 241755 bytes).
+1/public/lm/lmmi12.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/lm/lmmi8.
+pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/texlive/201
+6/texmf-dist/fonts/type1/public/lm/lmr6.pfb><c:/texlive/2016/texmf-dist/fonts/t
+ype1/public/lm/lmr8.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/lm/lmri1
+2.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/lm/lmri8.pfb><c:/texlive/2
+016/texmf-dist/fonts/type1/public/lm/lmro12.pfb><c:/texlive/2016/texmf-dist/fon
+ts/type1/public/lm/lmssbx10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/
+lm/lmsy10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/lm/lmtt12.pfb>
+Output written on "MScThesis Sergio Vilches.pdf" (19 pages, 318087 bytes).
 PDF statistics:
- 281 PDF objects out of 1000 (max. 8388607)
- 230 compressed objects within 3 object streams
- 58 named destinations out of 1000 (max. 500000)
- 107 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 476 PDF objects out of 1000 (max. 8388607)
+ 349 compressed objects within 4 object streams
+ 63 named destinations out of 1000 (max. 500000)
+ 112 words of extra memory for PDF output out of 10000 (max. 10000000)
 

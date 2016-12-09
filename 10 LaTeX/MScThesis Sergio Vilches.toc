@@ -10,10 +10,10 @@
 \contentsline {paragraph}{\nonumberline Optical Requirements}{5}{section*.11}
 \contentsline {section}{\numberline {2.2}Design overview}{6}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}Optical Design}{8}{subsection.2.2.1}
-\contentsline {subsubsection}{\nonumberline Selection of Components}{8}{section*.13}
-\contentsline {subsubsection}{\nonumberline ZEMAX Simulation}{8}{section*.15}
-\contentsline {subsubsection}{\nonumberline Minimization of backreflections}{8}{section*.18}
-\contentsline {subsection}{\numberline {2.2.2}Mechanical Design}{10}{subsection.2.2.2}
-\contentsline {subsubsection}{\nonumberline Design of the spiral scanning resonant beam}{10}{section*.20}
-\contentsline {subsubsection}{\nonumberline COMSOL simulation}{10}{section*.22}
-\contentsline {subsection}{\numberline {2.2.3}Desired Design}{11}{subsection.2.2.3}
+\contentsline {subsubsection}{\nonumberline Selection of Components}{8}{section*.15}
+\contentsline {subsubsection}{\nonumberline ZEMAX Simulation}{8}{section*.17}
+\contentsline {subsubsection}{\nonumberline Minimization of backreflections}{10}{section*.20}
+\contentsline {subsection}{\numberline {2.2.2}Mechanical Design}{11}{subsection.2.2.2}
+\contentsline {subsubsection}{\nonumberline Design of the spiral scanning resonant beam}{11}{section*.22}
+\contentsline {subsubsection}{\nonumberline COMSOL simulation}{11}{section*.24}
+\contentsline {subsection}{\numberline {2.2.3}Desired Design}{12}{subsection.2.2.3}

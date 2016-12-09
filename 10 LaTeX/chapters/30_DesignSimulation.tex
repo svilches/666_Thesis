@@ -66,10 +66,28 @@ The rest of this chapter shows the design and development of the OCT imaging pat
 For completeness, both multi-mode and single-mode optical systems are described.
 
 
+
 %%*****************************************************************************
 \newpage
 \subsection{Optical Design}
 %%*****************************************************************************
+
+\subsubsection*{Fourier Plane Scanner}
+
+
+
+\begin{figure}[h!]\centering \includegraphics{figures/30_DesignSimulation/fps2.pdf}
+      \caption{Fourier Plane Scanner}
+      %\label{}
+\end{figure}
+
+\begin{align}
+h_{max} &= f_{obj}\cdot \tan  \theta_{max} \\
+d_{beam} &= 2 \cdot f_{obj}\cdot \mathit{NA_{obj}} \\
+f_{GRIN} \cdot \mathit{NA_{fiber}} &= f_{obj} \cdot \mathit{NA_{OCT}}
+\label{eq:fpsNA}
+\end{align}
+
 
 \subsubsection{Selection of Components}
 \begin{figure}[h!]\centering \includegraphics[width=10cm,draft]{figures/foo.png}
