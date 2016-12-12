@@ -7,9 +7,9 @@
 \chapter{Design \& Simulation}
 \label{Ch:DesignSimulation}	
 
-The aim of this work is to design and test a miniaturized OCT microscope as a component of a multi-modal endoscope. As described in Chapter \ref{Ch:Introduction}, this probe consist of two spectrally-separated optical paths that run partially in parallel through a micro-optical bench system. This approach allows independent tuning of the optical parameters of the two imaging modalities -- such as the NA or depth of field -- while still providing a geometrical overlap of the two acquired images. 
+The aim of this work is to design and test a miniaturized OCT microscope as a component of a multi-modal endoscope. As described in Chapter \ref{Ch:Introduction}, this probe consist of two spectrally-separated optical paths that run partially in parallel through a micro-optical bench system. This approach allows independent tuning of the optical parameters of the two imaging modalities -- such as the NA or depth of field -- while still providing a geometrical overlap of the two acquired images. As OCT is a scanned-point imaging technique, a 2D scanning mechanism is integrated into the probe to reconstruct 3D volumes of the sample tissue.
 
-As OCT is a scanned-point imaging technique, a 2D scanning mechanism is integrated into the probe to reconstruct 3D volumes of the sample tissue.
+The following section describes the conception and design of the endoscope, starting from the medical and geometrical requirements, through analytical modeling and towards the optimization of each component.
 
 %%*****************************************************************************
 \section{Design Requirements}
@@ -32,8 +32,8 @@ The OCT microscope should fulfill the following requirements:
 
 \begin{itemize}
 \item The microscopy and OCT imaging fields should be coaxial to avoid parallax errors. 
-\item The OCT field should be telecentric to maximize the collection of backscattered light upon normal incidence to the tissue.
-\item The lateral resolution and depth of field should be adequate for OCT.
+\item The OCT field should be image-side telecentric to avoid field curvature distortions and to maximize the collection of backscattered light upon normal incidence to the tissue.
+\item The lateral resolution and depth of field should be adequate for OCT (NA $0.02 \sim 0.05$).
 \item The backreflections inside the probe should be minimized.
 \end{itemize}
 
@@ -44,11 +44,11 @@ The OCT microscope should fulfill the following requirements:
 %%*****************************************************************************
 
 The main challenge of this work is to design a scanning mechanism compact enough to be placed in a thin, buried channel of a multimodal probe. 
-Although it is theoretically possible to keep a scanner at the proximal end of the endoscope and use a coherent fiber bundle (CFB) as a relay, there are inherent drawbacks of this method, such as low light throughput, cross-talk and mechanical rigidity. 
+Although it is theoretically possible to keep a scanner at the proximal end of the endoscope and use a coherent fiber bundle (CFB) as a relay, there are inherent drawbacks of this method, such as low light throughput, cross-talk and mechanical rigidity \cite{Ford2009}. 
 
 Another challenging requirement is the superposition of the images acquired by the different modalities. If the optical axes are not coaxial, the fields will be shifted and tilted due to parallax error --- which gains importance at the small working distances common in endoscopy.
 
-To overcome these problems, and taking into account the above-mentioned requirements, we propose a design comprising a resonant fiber scanner followed by a beam splitter, as illustrated in Figure \ref{fig:bimodalSketch}.
+To overcome these problems, and taking into account the above-mentioned requirements, we propose a design comprising a resonant fiber scanner followed by a beam splitter, as illustrated in Figure \ref{fig:bimodalSketch}, as an evolution of the HYAZINT multimodal probe \cite{Kretschmer}.
 
 \begin{figure}[h!]\centering
       \includegraphics{figures/10_Introduction/bimodalSketch/out.pdf}
@@ -76,7 +76,7 @@ For completeness, both multi-mode and single-mode optical systems are described.
 
 
 
-\begin{figure}[h!]\centering \includegraphics{figures/30_DesignSimulation/fps2.pdf}
+\begin{figure}[h!]\centering \includegraphics{figures/30_DesignSimulation/fps.pdf}
       \caption{Fourier Plane Scanner}
       %\label{}
 \end{figure}

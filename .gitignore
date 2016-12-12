@@ -1,1 +1,10 @@
 40 Other Theses/
+*.out
+*.bbl
+*.blg
+*.dvi
+*.log
+*.out
+*.toc
+*.aux
+*.synctex.gz

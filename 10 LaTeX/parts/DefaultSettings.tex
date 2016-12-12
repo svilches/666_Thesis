@@ -38,13 +38,19 @@
   
 % *** For citation in Chicago Style
 
-\usepackage{chicago} %\usepackage{chicagoa}
-%\nocite{*} 	% If this command is used the whole bibliography will be printed, 
-				% if not, only the cited references
-\renewcommand{\cite}{\shortcite}
-\bibliographystyle{chicago}
+%\usepackage{chicago} %\usepackage{chicagoa}
+%%\nocite{*} 	% If this command is used the whole bibliography will be printed, 
+%				% if not, only the cited references
+%\renewcommand{\cite}{\shortcite}
+%\bibliographystyle{chicago}
 
-
+%%Simons Bib Settings
+\usepackage[sort, compress]{cite}   
+% for improved handling of numeric citations: provides compressed, sorted lists of citations, e.g. [2-5, 7,9-11] instead of [2, 3, 4, 5, 7,9,10,11]
+%% Formatting of the bibliography with babelbib
+%\usepackage{babelbib}  			% allows you to use other languages than English in citations
+%\bibliographystyle{babunsrt}     %% erzeugt eine Bibliographie mit unsortierten Einträgen, d.h. in Reihenfolge der Zitate 
+		% several compilations are necessary to obtain the correct order of the citations !
 
 \usepackage{amsmath,amssymb}   %% zusaetzliche Mathe-Symbole
 
@@ -53,7 +59,7 @@
 %% Paket fuer bibtex-Datenbanken
 %\usepackage[comma,numbers,sort&compress]{natbib}
 
-\usepackage{babelbib}         %% korrekte Sprache in Bibliographieeintraegen
+%\usepackage{babelbib}         %% korrekte Sprache in Bibliographieeintraegen
 %\bibliographystyle{plainnat}   %% Formatierung Bibliographie ohne babelbib
 %\bibliographystyle{babplain}  %% Formatierung Bibliographie mit babelbib
 
