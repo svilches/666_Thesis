@@ -101,6 +101,7 @@ Measurements (?) ----------------------------------------------------
 		Signal generation (Modulation etc)
 		Semi-resonant operation (ellipse etc)
 		[Spiral Pattern], [Measurement setup]
+		Limitations: Aliasing of fmod into resonance!
 
 	Confocal Imaging
 		[Measurement setup]
