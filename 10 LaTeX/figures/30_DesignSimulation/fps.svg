@@ -15,7 +15,7 @@
    id="svg6063"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="fps2.svg">
+   sodipodi:docname="fps.svg">
   <defs
      id="defs6065">
     <marker
@@ -807,15 +807,15 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="189.40423"
-     inkscape:cy="111.81438"
+     inkscape:zoom="7.919596"
+     inkscape:cx="337.61482"
+     inkscape:cy="87.944402"
      inkscape:document-units="px"
      inkscape:current-layer="g4402"
      showgrid="false"
-     inkscape:window-width="1858"
+     inkscape:window-width="1920"
      inkscape:window-height="1058"
-     inkscape:window-x="54"
+     inkscape:window-x="1912"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      showguides="true"
@@ -838,7 +838,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -1595,7 +1595,7 @@
            x="570.42139"
            sodipodi:role="line">NA<tspan
    id="tspan6108-2"
-   style="font-size:64.99999762%;baseline-shift:sub">obj</tspan></tspan></text>
+   style="font-size:64.99999762%;baseline-shift:sub">OCT</tspan></tspan></text>
       <path
          sodipodi:open="true"
          transform="matrix(0.94914264,-0.31484638,-0.31484638,-0.94914264,0,0)"
