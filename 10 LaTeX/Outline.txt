@@ -55,7 +55,6 @@ Design & Simulation  ------------------------------------------------
 	Optical Design
 		Fourier plane scanner
 		Selection of components
-			High, Low NA
 		Minimization of backreflections
 		ZEMAX simulation
 
