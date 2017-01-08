@@ -48,7 +48,7 @@ Although it is theoretically possible to keep a scanner at the proximal end of t
 
 Another challenging requirement is the superposition of the images acquired by the different modalities. If the optical axes are not coaxial, the fields will be shifted and tilted due to parallax error --- which gains importance at the small working distances common in endoscopy.
 
-To overcome these problems, and taking into account the above-mentioned requirements, we propose a design comprising a resonant fiber scanner followed by a beam splitter, as illustrated in Figure \ref{fig:bimodalSketch}, as an evolution of the HYAZINT multimodal probe \cite{Kretschmer}.
+To overcome these problems, and taking into account the above-mentioned requirements, we propose a design comprising a resonant fiber scanner followed by a beam splitter (BS), illustrated in Figure \ref{fig:bimodalSketch}, as an evolution of the HYAZINT multimodal probe \cite{Kretschmer}.
 
 \begin{figure}[h!]\centering
       \includegraphics{figures/10_Introduction/bimodalSketch/out.pdf}
@@ -66,23 +66,33 @@ For completeness, both multi-mode and single-mode optical systems are described.
 
 
 %%*****************************************************************************
-\newpage
-\subsection{Optical Design}
+\clearpage
+\section{Optical Design}
 %%*****************************************************************************
 
-\subsubsection*{Fourier Plane Scanner}
+\subsection*{Fourier Plane Scanner}
 The OCT beam path is designed as an object-sided telecentric system to avoid distortions in the 3D OCT measurement. To achieve this, the fiber scanner is driven with small angles and is positioned such that the lateral and angular movement of the scanner imitates the beam angles that can be observed in the collimated region of a classical telecentric lens system. Figure \ref{fig:fps} illustrates this approach. The whole scanner will be buried in a channel with a inner diameter of \SI{1}{\milli\meter} limiting the movement of the scanner to a maximum angle $\theta$ of \SI{5}{\degree} that allows a maximum FOV of \SI{1}{\milli\meter} of the OCT beam path.
 
 
 
 \begin{figure}[h!]\centering \includegraphics[width=\columnwidth]{figures/30_DesignSimulation/fps.pdf}
-      \caption{\textbf{a)} Illustration of a classical telecentric system. The height of the object is translated into an angle $\theta$ in the collimated region between the two lenses. This angle is again translated into a corresponding image height by the second lens. \textbf{b)} Illustration of the OCT beam path using a fiber scanner in first resonance mode without micro prism and BS. The movement of the GRIN lens due to the fiber scanner and the distance between the GRIN lens and the focusing lens creating the same optical behavior as it can be observed in a classical object sided telecentric system. \textbf{c)} Close-up showing the design variables.}
+      \caption{\textbf{a)} Illustration of a classical telecentric system. The height of the object is translated into an angle $\theta$ in the collimated region between the two lenses. This angle is again translated into a corresponding image height by the second lens. \textbf{b)} Illustration of the OCT beam path using a fiber scanner in first resonance mode without micro prism and BS. The movement of the GRIN lens due to the fiber scanner and the distance between the GRIN lens and the focusing lens creating the same optical behavior as it can be observed in a classical object sided telecentric system. \textbf{c)} Nomenclature used in this work.}
       \label{fig:fps}
 \end{figure}
 
-\subsubsection*{Component Selection}
+For the scanner to work as a Fourier plane scanner, at any amplitude of oscillation the output beam from the GRIN lens should point to a fixed virtual radiant source. This is fulfilled if the bending shape of the scanner is linear with the amplitude and thus, the following ratio of the GRIN lens angle to its vertical displacement is kept constant (refer to Figure \ref{fig:radiant}).
 
-In a Fourier plane scanner, the numerical apertures (NAs) and focal lengths of the scanning (GRIN) and objective lens are interdependent by the diameter of the beam in the intermediate region. Thus, following the schematic of Figure \ref{fig:fps}c, we can obtain the following relationships by geometrical optics\footnote{For small NAs: $\tan[	\sin^{-1}(\mathit{NA})] \simeq \mathit{NA} $. For example, if NA = 0.2, the error of this simplification is 2\%. }
+$$ y = d \cdot \tan \theta \simeq d \cdot \theta \Rightarrow \frac{\theta}{y} = const $$
+
+\begin{figure}[h!]\centering
+      \includegraphics{figures/30_DesignSimulation/Mechanical/radiant.pdf}
+      \caption{Virtual radiant source}
+      \label{fig:radiant}
+\end{figure}
+
+\subsection*{Component Selection}
+
+In a Fourier plane scanner, the numerical apertures (NAs) and focal lengths of the scanning (GRIN) and objective lens are related by the diameter of the beam in the intermediate region. Thus, following the schematic of Figure \ref{fig:fps}c, we can obtain the following relationships by geometrical optics\footnote{For small NAs: $\tan[	\sin^{-1}(\mathit{NA})] \simeq \mathit{NA} $. For example, if NA = 0.2, the error of this simplification is 2\%. }
 \begin{align}
 d_{beam} &\simeq 2\cdot \mathit{f_{GRIN}}\cdot \mathit{NA_{fiber}} \\
 d_{beam} &\simeq 2 \cdot f_{obj}\cdot \mathit{NA_{OCT}}
@@ -94,9 +104,11 @@ By combining them together we arrive to the main design equation for the scanner
 \mathit{f_{GRIN}} \cdot \mathit{NA_{fiber}} = f_{obj} \cdot \mathit{NA_{OCT}}
 \end{equation}
 
-The design of the optical path for OCT is constrained by the commercially available components. In this case, the only single mode fiber working in our wavelength range and with thinned cladding diameter (\SI{80}{\micro\meter}) is \textit{Thorlabs SM980G80}, with $\mathit{NA_{fiber}} = 0.18$ at \SI{1.330}{\micro\meter}. In order to collimate the output from the fiber without power loss we need a GRIN lens with an $\mathit{NA_{GRIN}}$ higher than $\mathit{NA_{fiber}}$. The thinnest available from GRINTECH catalog is \textit{GT-LFRL-035-024-20-CC (1550)}, with an $\mathit{NA_{GRIN}} = 0.20$ and $\mathit{f_{GRIN}} = \SI{0.91}{\milli\meter}$. 
+The design of the optical path for OCT is constrained by the commercial availability of the components. In this case, the only single mode fiber working in our wavelength range and with thinned cladding diameter (refer to Section \ref{sec:mechDesign}) is \textit{Thorlabs SM980G80}, with a diameter of \SI{80}{\micro\meter} and with $\mathit{NA_{fiber}} = 0.18$ at \SI{1.330}{\micro\meter}. 
 
-Now, by using the relation in Equation \ref{eq:fpsNA} we can design $f_{objective}$ by choosing an adequate $\mathit{NA_{OCT}}$. In order to preserve a high depth of field (DOF), allow enough space for the beams plitter and a long working distance, a narrow $\mathit{NA_{OCT}}$ is is preferred -- in the range of 0.020 - 0.025. By choosing an intermediate $\mathit{NA_{OCT}}$ of 0.022:
+In order to collimate the output from the fiber without clipping the gaussian beam we need a GRIN lens with an $\mathit{NA_{GRIN}}$ higher than $\mathit{NA_{fiber}}$. The thinnest available from GRINTECH catalog is \textit{GT-LFRL-035-024-20-CC (1550)}, with an $\mathit{NA_{GRIN}} = 0.20$ and $\mathit{f_{GRIN}} = \SI{0.91}{\milli\meter}$. 
+
+Now, by using the relation in Equation \ref{eq:fpsNA} we can design $f_{objective}$ by choosing an adequate $\mathit{NA_{OCT}}$. To preserve a high depth of field (DOF), allow enough space for the beams plitter and a long working distance, a narrow $\mathit{NA_{OCT}}$ is is preferred -- in the range of 0.020 - 0.025. By choosing an intermediate $\mathit{NA_{OCT}}$ of 0.022:
 
 \begin{equation}
 \mathit{f_{obj}} = f_{GRIN} \frac{\mathit{NA_{fiber}}}{\mathit{NA_{OCT}} } = \SI{0.91}{\milli\meter} \cdot \frac{0.18}{0.022} = \SI{7.5}{\milli\meter}
@@ -112,39 +124,72 @@ equivalent to a FOV of \SI{1.2}{\milli\meter}.
 
 
 
-\subsubsection{ZEMAX Simulation}
+\subsection*{ZEMAX Simulation}
 
-In order to validate the theoretical analysis of the optical design, we proceeded to a raytracing simulation using ZEMAX. By modeling the fiber facet as an gaussian-apodized point source, using the GRIN lens model provided by the manufacturer and a geometrical modeling of the prism, beamsplitter and spherical lens, we obtain the schematic shown in Figure \ref{fig:BS}. 
-
-\begin{figure}[h!]\centering
-      \includegraphics[width=10cm]{figures/30_DesignSimulation/Optical/beamsplitter.pdf}
-      \caption{ZEMAX schematic of the OCT beampath for the center (red) and marginal (purple) rays.}
-      \label{fig:BS}
-\end{figure}
+In order to validate the theoretical analysis of the optical design, we proceeded to a raytracing simulation using ZEMAX. By modeling the fiber facet as the waist of a gaussian beam, using the GRIN lens model provided by the manufacturer and a geometrical model of the prism, beamsplitter and spherical lens, we obtain the schematic shown in Figure \ref{fig:BS}a. 
 
 \begin{figure}[h!]\centering
-      \includegraphics[width=10cm]{figures/30_DesignSimulation/Optical/beamsplitter3D.png}
-      \caption{ZEMAX schematic of the OCT beampath for the center (red) and marginal (purple) rays.}
+      \includegraphics[width=\columnwidth]{figures/30_DesignSimulation/Optical/beamsplitterAll.pdf}
+      \caption{\textbf{a)} ZEMAX schematic of the OCT beampath for the center (red) and maximum (purple) position of the GRIN lens.
+      \textbf{b)} 3D representation.
+      \textbf{c)} Spot diagram through focus for center (red) and marginal (purple) rays, showing the Airy circle. Dimensions in \SI{}{\micro\meter}.}
+      \textbf{d)} MTF of the system for Tangential and Sagital directions.
       \label{fig:BS}
 \end{figure}
 
 The three overlapping rectangles on the left simulate the rest position (red) and maximum deflection (purple) of the GRIN lens. The gap between GRIN lens and prism is numerically optimized for telecentricity and maximum FOV.
 
-	The low distal-side NA together with the optical quality of the GRIN and spherical lenses enable diffraction limited imaging, as seen in the spot diagrams through focus (Figure \ref{fig:BSspot}) and the MTF curve (Figure \ref{fig:BSMTF}).
-	
-\begin{figure}[h!]\centering
-      \includegraphics{figures/30_DesignSimulation/Optical/beamsplitterSpot.png}
-      \caption{Spot diagram through focus for center (red) and marginal (purple) rays. Dimensions in \SI{}{\micro\meter}.}
-      \label{fig:BSspot}
-\end{figure}
+	Due to the low $\mathit{NA_{OCT}}$ and the good optical quality of the GRIN and spherical lenses, we achieve diffraction-limited imaging, as seen in the spot diagrams through focus (Figure \ref{fig:BS}c) and the MTF curve (Figure \ref{fig:BS}d).
+
+
+\subsection*{Minimization of backreflections}
+In Fourier Domain OCT, any backreflection coming from the probe increases the background intensity and therefore reduces the penetration depth and contrast of the resultant image. Thus any source of backreflections in the design should be carefully considered and minimized:
+
+\begin{itemize}
+
+\item \textbf{Fiber-GRIN Interface:}
+Starting from the proximal side, the fiber-GRIN interface consists of two parallel glass surfaces separated by a small gap. Although the beam is not collimated in this region, a small portion of light can be coupled back to the fiber. In order to minimize any backreflections, fiber and GRIN are glued together using a refractive-index-matched optical adhesive (\textit{NOA 76}, from \textit{Norland Products}). This way there is no glass to air interface and the maximum refractive index step is reduced to \SI{0.05}{}.
+%Fiber 1.45670,NOA 1.51,GRIN 1.515 -> 275 ppm
+
+\item \textbf{GRIN-Air Interface:}
+The next interface is the distal facet of the GRIN lens. This is the most critical interface -- regardless of the scanning angle, it exhibits normal, collimated light incidence. To avoid this problem without resorting to delicate and expensive antireflection coatings (ARC), the GRIN lens is manufactured with a \SI{1}{\degree} tilted exit facet. According to geometrical optics, this tilt induces a vertical shift in the position of the backreflected focal point given by equation \ref{eq:tilt}:
+
+\begin{equation}
+\Delta y = f \tan(2\alpha) = \SI{0.91}{\milli\meter} \cdot \tan (\SI{2}{\degree}) = \SI{31}{\micro\meter}
+\label{eq:tilt}
+\end{equation}
+
+The result is visible in the simulation from Figure \ref{fig:tilt}: the backreflected light is focused back with a \SI{31}{\micro\meter} offset, therefore missing the core of the fiber -- which has a diameter inferior to \SI{5}{\micro\meter}.
 
 \begin{figure}[h!]\centering
-      \includegraphics[width=10cm]{figures/30_DesignSimulation/Optical/beamsplitterMTF.png}
-      \caption{MTF}
-      \label{fig:BSMTF}
+      \includegraphics[width=10cm]{figures/30_DesignSimulation/Optical/backreflection.pdf}
+      \caption{Simulation of backreflected light upon the distal end of a GRIN lens with a \SI{1}{\degree} tilted facet.}
+      \label{fig:tilt}
 \end{figure}
 
-\begin{table}\centering
+\item \textbf{Air-Prism Interface:} Due to collimated incidence, this interface exhibits can produce backreflections, but only in a single position of the GRIN lens -- where both facets are parallel. An ARC would be nevertheless beneficial. 
+
+\item \textbf{Objective Lens - Air Interface:} After the prism, the beamsplitter and objective lens are cemented together, making any backreflections negligible. The objective lens has an interface with air, but due to the curved surface, the light won't be coupled back in a significantly. Nevertheless, the distal surface of the lens are ARC.
+
+\end{itemize}
+
+\subsection*{Single Modality Probe}
+As stated in the Design Overview, in order to independently test the behavior of the OCT scanner and optics, a single modality probe was fabricated as a demonstrator. Both systems are mechanically and optically equivalent -- the only difference is the presence of the beam splitter. Figure \ref{fig:single} shows the ZEMAX simulation of this configuration, where the parallelism with the multimodal probe can be seen.
+
+\begin{figure}[h!]\centering
+      \includegraphics{figures/30_DesignSimulation/Optical/singleAll.pdf}
+      \caption{\textbf{a)} ZEMAX schematic of the single modality probe for the center (red) and maximum (purple) position of the GRIN lens.
+      \textbf{b)} 3D representation.
+      \textbf{c)} Spot diagram through focus for center (red) and marginal (purple) rays, showing the Airy circle. Dimensions in \SI{}{\micro\meter}.}
+      \label{fig:single}
+\end{figure}
+
+
+\subsection*{Optical Performance}
+
+Table \ref{tab:simRes} summarizes the theoretical and simulated optical performance of the OCT microscope in both single modality of multimodality configurations.
+
+\begin{table}[h!]\centering
 	\begin{tabular}{rl}\\
 		\hline
 		\textbf{Distal Side NA} & 0.022 \\ 
@@ -159,65 +204,49 @@ The three overlapping rectangles on the left simulate the rest position (red) an
 \end{table}
 
 
-\subsubsection{Minimization of backreflections}
-In Fourier Domain OCT, any backreflection coming from the probe increases the background intensity and therefore reduces the penetration depth and contrast of the resultant image. Thus every source of backreflection in the design is carefully considered and reduced:
 
-\paragraph{Fiber-GRIN Interface}
-Starting from the proximal side, the fiber-GRIN interface consists of two parallel glass surfaces separated by a small gap. Although the beam is not collimated in this region, a small portion of light can be coupled back to the fiber. In order to minimize any backreflections, they are glued using a refractive-index-matched optical adhesive (\textit{NOA 76}, from \textit{Norland Products}). Thus, the maximum refractive index step is reduced to \SI{0.05}{}.
-%Fiber 1.45670,NOA 1.51,GRIN 1.515 -> 275 ppm
 
-\paragraph{GRIN-Air Interface} The next interface is the distal facet of the GRIN lens. This is the most critical interface: Regardless of the scanning angle, it exhibits normal, collimated light incidence. To avoid this problem without resorting to delicate and expensive antireflection coatings (ARC), the GRIN lenses are manufactured with a \SI{1}{\degree} tilted exit facet. According to geometrical optics, this tilt induces a vertical shift in the position of the backreflected focal point, according to equation \ref{eq:tilt}:
-
-\begin{equation}
-\Delta y = f \tan(2\alpha) = \SI{0.91}{\milli\meter} \cdot \tan (\SI{2}{\degree}) = \SI{31}{\micro\meter}
-\label{eq:tilt}
-\end{equation}
-
-The result is visible in the simulation from Figure \ref{fig:tilt}: the backreflected light is focused back with a \SI{31}{\micro\meter} offset, therefore missing the core of the fiber -- which has a diameter inferior to \SI{5}{\micro\meter}.
-
-\begin{figure}[h!]\centering
-      \includegraphics[width=10cm]{figures/30_DesignSimulation/Optical/backreflection.png}
-      \caption{Simulation of backreflected light upon the distal end of a GRIN lens with a \SI{1}{\degree} tilted facet.}
-      \label{fig:tilt}
-\end{figure}
-
-\paragraph{Air-Prism Interface} Due to collimated incidence, this interface exhibits can produce backreflections, but only in a single position of the GRIN lens -- where both facets are parallel. An ARC would be nevertheless beneficial. 
-
-\paragraph{Objective Lens - Air Interface} After the prism, the beamsplitter and objective lens are cemented together, making any backreflections negligible. The objective lens has an interface with air, but due to the curved surface, the light won't be coupled back in a significantly. Nevertheless, the distal surface of the lens are ARC.
 
 %%*****************************************************************************
-\newpage
-\subsection{Mechanical Design}
+\clearpage
+\section{Mechanical Design}
+\label{sec:mechDesign}
 %%*****************************************************************************
 
-The fiber scanner uses resonance to amplify the tiny movement of the piezo tube into an angular deflection of the GRIN lens. Therefore, its geometrical and mechanical characteristics fully define the operating frequency range, and with it, the optical sampling.
+The fiber scanner uses resonance to amplify the subtle movement of the piezotube (in the order of $\pm \SI{3}{\micro\meter}$) into a big displacement and angular deflection of the GRIN lens (in the order of $\pm \SI{350}{\micro\meter}$ and  $\pm \SI{5}{\degree}$). Therefore, its geometrical and mechanical characteristics fully define the operating frequency range, and with it, constrain the way we can sample and acquire the final image.
 
 \begin{figure}[h!]\centering
       \includegraphics[width=10cm]{figures/30_DesignSimulation/Mechanical/spiralScanning.pdf}
-      \caption{Movement of the laser spot through time (red) and acquired points (black)}
+      \caption{Movement of the laser spot through time (red) and acquired points (black) during spiral scanning.}
       \label{fig:spiralScanning}
 \end{figure}
 
-The number of sample points $N_{ring}$ that can be acquired in ring depend on the resonant frequency of the scanner and the sampling frequency of the OCT system:
+As a resonant system, the movement of the scanning fiber is constrained to harmonic oscillations with a frequency close to $f_{resonance}$. Thus, the number of sample points $N_{T}$ that can be acquired in period $T$ depend on the resonant frequency of the scanner and the sampling frequency of the OCT system:
 
 \begin{equation}
-N_{ring} = \frac{f_{sampling}}{f_{resonance}}
-\label{eq:nring}
+N_{T} = \frac{f_{sampling}}{f_{resonance}}
+\label{eq:nT}
 \end{equation}
 
-As OCT systems have a relatively small sampling frequency (\SI{100}{\kilo\hertz}), we need to decrease the resonant frequency below \SI{1}{kHz} to achieve more than 100 points per ring. The following paragraphs describe how to reduce this frequency:
+As OCT systems have a relatively small sampling frequency ($\pm$\SI{100}{\kilo\hertz}), we need to decrease the resonant frequency below \SI{1}{kHz} to achieve more than 100 points per sampling period. The following paragraphs describe how to calculate and reduce this frequency.
 
-\subsubsection{Resonant frequency calculation}
-Following Euler Bernoulli theory, the spring constant for a fixed-free, point loaded cantilever is given by Equation \ref{eq:EB}: 
+\subsection*{Resonant frequency calculation}
+Following Euler Bernoulli theory, the spring constant for a fixed-free, point loaded cantilever is given by Equation \ref{eq:EB}, considering that the moment of inertia of the cylindrical fiber is given by $I_{fiber} = \frac{\pi}{4} r^4$.
+
 
 \begin{equation}
-K_{cantilever} = \frac{3 E I}{L^3} = \frac{3 \pi}{4} \frac{E r^4}{L^3}
+K_{cantilever} = \frac{3 E I}{L^3} = \frac{3 \pi}{4} \frac{E_{fiber} r_{fiber}^4}{L^3}
 \label{eq:EB}
 \end{equation}
-\noindent
-considering that the moment of inertia of the cylindrical fiber is given by $I_{fiber} = \frac{\pi}{4} r^4$.
 
-Approximating the fiber - GRIN assembly as a weightless, flexible, fixed-free cantilever and concentrating the weight of the GRIN lens in its center of gravity, we can estimate its resonant frequency by applying the ideal mass-spring harmonic resonator equation for the first resonant mode (Eq. \ref{eq:fres}) \footnote{In order to assess the error of this approximation, we repeated the calculation of the resonant frequency using the method described in \cite{Huo2010}. In the plotted range, the error was smaller than 2\%.}. 
+\begin{figure}[h!]\centering
+      \includegraphics{figures/30_DesignSimulation/Mechanical/EB.pdf}
+      \caption{\textbf{a)} Drawing of the piezoscanner: piezotube, fiber and GRIN lens. 
+      \textbf{b)} Simplified mechanical diagram, }
+      \label{fig:EB}
+\end{figure}
+
+Approximating the fiber - GRIN assembly as a weightless, flexible, fixed-free cantilever and concentrating the weight of the GRIN lens in its center of gravity (Figure \ref{fig:EB}), we can estimate the resonant frequency of the scanner by applying the ideal mass-spring harmonic resonator equation for the first resonant mode (Eq. \ref{eq:fres}) \footnote{In order to assess the error of this approximation, we repeated the calculation of the resonant frequency using the method described in \cite{Huo2010}. In the plotted range, the error was smaller than 2\%.}. 
 
 \begin{equation}
 f_{res} = \frac{1}{2 \pi} \sqrt{\frac{K_{cantilever}}{m_{\mathit{GRIN}}}} 
@@ -226,7 +255,7 @@ f_{res} = \frac{1}{2 \pi} \sqrt{\frac{K_{cantilever}}{m_{\mathit{GRIN}}}}
 
 As we can observe from equation \ref{eq:EB} and \ref{eq:fres}, the resonance frequency increases quadratically with the diameter of the fiber. Therefore, by choosing a fiber with \SI{80}{\micro\meter} instead of the standard \SI{125}{\micro\meter}, the resonance frequency can be lowered from \SI{1900}{\hertz} to \SI{770}{\hertz} for a \SI{4.5}{\milli\meter} scanner.
 
-The resonant frequency of a cantilever formed by a \SI{80}{\micro\meter} fused silica with the chosen GRIN lens is computed in Figure \ref{fig:freq}.
+The resonant frequency of a cantilever formed by a \SI{80}{\micro\meter} fused silica fiber with the chosen GRIN lens is computed in Figure \ref{fig:freq}.
 
 \begin{figure}[h!]\centering
       \includegraphics[width=10cm]{figures/30_DesignSimulation/Mechanical/fres.pdf}
@@ -234,25 +263,34 @@ The resonant frequency of a cantilever formed by a \SI{80}{\micro\meter} fused s
       \label{fig:freq}
 \end{figure}
 
-\subsubsection{COMSOL simulation}
-In order to validate the theoretical analysis of the previous section, we performed a multiphysics FEM analysis using COMSOL. For that matter, the piezoactuator was modeled as a radially polarized linear piezoelectric material and the rest of the structure as elastic material. The input voltage is added as an harmoniacally excitated symmetrical potential between the top and bottom electrodes of the tube and then an AC simulation was performed. 
+As the scanner is buried in a \SI{1}{\milli\meter} channel, the maximum displacement of the GRIN lens is limited to $\pm\SI{325}{\micro\meter}$. Within that small displacement we want to achieve the maximum angular deflection of the GRIN lens to maximize the FOV, what can be achieved by using shorter fiber lengths. This shows a trade-off with the density of sampling $N_{T}$ -- which is increased with longer fiber lengths. To balance those terms, we chose a a total scanner length of \SI{4.5}{\milli\meter}, with characteristics summarized in Table \ref{tab:mech}.
 
-As the system undergoes small deflections, it is simulated assuming linear behavior \cite{Fertis2006}.
+\begin{table}[h!]\centering
+	\begin{tabular}{rl}\\
+		\hline
+		\textbf{Total scanner length} & \SI{4.5}{\milli\meter} \\ 
+		\textbf{Resonant Frequency} & \SI{770}{\hertz} \\ 
+		\textbf{Max. angular deflection} & \SI{5}{\degree} \\ 
+		\hline
+	\end{tabular} 
+    \caption{Mechanical charactaristics.}
+    \label{tab:mech}
+\end{table}
 
-Note that, as the system is working at its resonance, it is very difficult to simulate the oscillation amplitude, as it depends on its damping factor, which should be obtained experimentally. Figure \ref{fig:defle} shows the AC simulation of the scanner.
+\subsection*{COMSOL simulation}
+In order to validate the theoretical analysis of the previous section, we performed a multiphysics FEM analysis using COMSOL. For that matter, the piezoactuator was modeled as a radially polarized piezoelectric material (\textit{PIC 151}) and the rest of the structure as elastic material. The excitation voltage is a sinusoidal symmetrical potential between the top and bottom electrodes of the tube. As the system undergoes small deflections, it is simulated assuming linear behavior \cite{Fertis2006}.
+
+The first step is to simulate the resonant frequency of the system. Performing an \textit{Eigenfrequency} study, we obtain a first mode resonance at \SI{762}{\hertz}, which closely matches our analytical estimation (\SI{770}{\hertz}. The mode shape is shown in Figure \ref{fig:defle}.
 
 \begin{figure}[h!]\centering
       \includegraphics[width=10 cm]{figures/30_DesignSimulation/Mechanical/deflection.pdf}
-      \caption{COMSOL simulation of the total deflection in \SI{}{\micro\meter}  at resonance (\SI{762}{\hertz}).}
+      \caption{COMSOL simulation of the total deflection in at resonance (\SI{762}{\hertz}).}
       \label{fig:defle}
 \end{figure}
 
-\begin{figure}[h!]\centering
-      \includegraphics[width=10 cm]{figures/30_DesignSimulation/Mechanical/vsweep.png}
-      \caption{Bending line of the resonant tip (fiber + GRIN) VS voltage}
-      \label{fig:vsweep}
-\end{figure}
+Note that, as the system is working at its resonance, it is very difficult to simulate the oscillation amplitude, as it depends on its damping factor which should be obtained experimentally. Thus, for the simulation, this value was chosen to fit the expected deflection. 
 
+Thanks to the multiphysics simulation, we can also check the electric field distribution inside the piezotube. As can be seen in Figure \ref{fig:field}, for a symmetrical actuation in the left and right electrodes with a voltage of $\pm \SI{75}{\volt}$, most of the volume under those electrodes experiences a field magnitude close to the expected theoretical value $E=U/d = \SI{75}{\volt}/\SI{150}{\micro\meter} = \SI{500}{\volt/\meter}$, which is under the safe operating field of \textit{PIC 151}: $ +\SI{1000}{\volt/\meter}$ to $ -\SI{700}{\volt/\meter}$. Only some fringe areas exceed these values, which could become depolarized with time.
 \begin{figure}[h!]\centering
       \includegraphics[width=10 cm]{figures/30_DesignSimulation/Mechanical/field.png}
       \caption{Magnitude of the electrical field [\SI{}{\kilo \volt / \meter}] inside a cross-section of the piezotube with an excitation voltage of $\pm \SI{75}{\volt}$}.
@@ -260,14 +298,6 @@ Note that, as the system is working at its resonance, it is very difficult to si
 \end{figure}
 
 
-%%*****************************************************************************
-\newpage
-\subsection{Overview of the implemented Design}
-%%*****************************************************************************
-\begin{figure}[h!]\centering 
-\includegraphics[width=10cm]{figures/30_DesignSimulation/Overview/BimodalBenchDoubleLens.pdf}
-      \caption{Bimodal Probe CAD render with annotations}
-      %\label{}
-\end{figure}
+
 
 
