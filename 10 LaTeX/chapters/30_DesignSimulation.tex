@@ -7,7 +7,7 @@
 \chapter{Design \& Simulation}
 \label{Ch:DesignSimulation}	
 
-The aim of this work is to design and test a miniaturized OCT microscope as a component of a multi-modal endoscope. As described in Chapter \ref{Ch:Introduction}, this probe consist of two spectrally-separated optical paths that run partially in parallel through a micro-optical bench system. This approach allows independent tuning of the optical parameters of the two imaging modalities -- such as the NA or depth of field -- while still providing a geometrical overlap of the two acquired images. An integrated tubular piezoelectric fiber scanner is used to perform en face scanning required for three dimensional OCT measurements. This scanning engine has an outer diameter of 0.9 mm and a length of 9 mm, and features custom fabricated \SI{10}{\micro\meter} thick polyimide flexible interconnect lines to address the four piezoelectric electrodes.
+The aim of this work is to design and test a miniaturized OCT microscope as a component of a multi-modal endoscope. As described in Chapter \ref{Ch:Introduction}, this probe consist of two spectrally-separated optical paths that run partially in parallel through a micro-optical bench system. This approach allows independent tuning of the optical parameters of the two imaging modalities -- such as the NA or depth of field -- while still providing a geometrical overlap of the two acquired images. An integrated tubular piezoelectric fiber scanner is used to perform en face scanning required for three dimensional OCT measurements. This scanning engine has an outer diameter of \SI{0.9}{\milli\meter} and a length of \SI{9}{\milli\meter}, and features custom fabricated \SI{10}{\micro\meter} thick polyimide flexible interconnect lines to address the four piezoelectric electrodes.
 
 The following section describes the conception and design of the endoscope, starting from the medical and geometrical requirements, through analytical modeling and towards the optimization of each component.
 
@@ -22,9 +22,9 @@ The OCT microscope should fulfill the following requirements:
 \paragraph{Mechanical Requirements} 
 \begin{itemize}
 
-\item The scanner, electrical connections and optics should fit in a $\SI{1}{\milli\meter} \times \SI{1}{\milli\meter}$ square channel. Its length should be minimized.
-\item The field of view should be maximized for a 2 mm diameter objective lens.
-\item The scanning speed should be adequate for the sampling rates characteristic of OCT ($\sim \SI{100}{\kilo\hertz} $).
+\item The scanner, electrical connections and optics should fit in a $\SI{1}{\milli\meter} \times \SI{1}{\milli\meter}$ square channel located in the lower level of the multimodal bench (total cross section $3.05 \times \SI{2}{\milli\meter^2}$). Its length should be minimized.
+\item The field of view should be maximized for a 2 mm diameter objective lens, which is shared with the endomicroscopy beampath.
+\item The scanning speed should be adequate for the sampling rates characteristic of SD-OCT ($\sim \SI{100}{\kilo\hertz} $).
 \end{itemize}
 
 
@@ -32,9 +32,9 @@ The OCT microscope should fulfill the following requirements:
 
 \begin{itemize}
 \item The microscopy and OCT imaging fields should be coaxial to avoid parallax errors. 
-\item The OCT field should be image-side telecentric to avoid field curvature distortions and to maximize the collection of backscattered light upon normal incidence to the tissue.
-\item The lateral resolution and depth of field should be adequate for OCT (Numerical aperture 0.02 to 0.05).
-\item The backreflections inside the probe should be minimized.
+\item The OCT field should be distal-side telecentric to avoid field curvature distortions and to maximize the collection of backscattered light upon normal incidence to the tissue.
+\item The lateral resolution and depth of field should be adequate for OCT, with numerical apertures ranging from 0.02 to 0.05.
+\item The backreflections inside the probe should be minimized to avoid 
 \end{itemize}
 
   
@@ -43,22 +43,22 @@ The OCT microscope should fulfill the following requirements:
 \section{Design overview}
 %%*****************************************************************************
 
-The main challenge of this work is to design a scanning mechanism compact enough to be placed in a thin, buried channel of a multimodal probe. 
-Although it is theoretically possible to keep a scanner at the proximal end of the endoscope and use a coherent fiber bundle (CFB) as a relay, there are inherent drawbacks of this method, such as low light throughput, cross-talk and mechanical rigidity \cite{Ford2009}. 
+The main challenge of this work is to design a scanning mechanism compact enough to be placed in a thin, buried channel of a multimodal probe.  Although it is theoretically possible to keep a scanner at the proximal end of the endoscope and use a coherent fiber bundle (CFB) as a relay, there are inherent drawbacks of this method, such as low light throughput, cross-talk and mechanical rigidity \cite{Ford2009}. 
 
 Another challenging requirement is the superposition of the images acquired by the different modalities. If the optical axes are not coaxial, the fields will be shifted and tilted due to parallax error --- which gains importance at the small working distances common in endoscopy.
 
-To overcome these problems, and taking into account the above-mentioned requirements, we propose a design comprising a resonant fiber scanner followed by a beam splitter (BS), illustrated in Figure \ref{fig:bimodalSketch}, as an evolution of the HYAZINT multimodal probe \cite{Kretschmer}.
+To overcome these problems, and taking into account the above-mentioned requirements, we propose a design comprising a resonant fiber scanner followed by a beam splitter (BS), illustrated in Figure \ref{fig:bimodalSketch}, as an evolution of the HYAZINT multimodal probe \cite{Kretschmer}, using a two layer microbench to combine white light microscopy and 3D OCT. 
 
 \begin{figure}[h!]\centering
-      \includegraphics{figures/10_Introduction/bimodalSketch/out.pdf}
-      \caption{Bimodal probe cross section showing main components and optical paths.}
+      \includegraphics{figures/30_DesignSimulation/Overview/Schematic_paper.pdf}
+      \caption{Schematic of the MEMS endomicroscope. Two glass lenses glued directly to the dichroic beamsplitter cube form the full field microscopy beam path. A silicon aperture is used to reduce the spherical aberrations. Buried beneath the full field optics, a single mode fiber glued to a collimating GRIN lens forms the OCT channel. The single-mode fiber is fixed in a piezoelectric tube to create a fiber scanner enabling 3D OCT. A reflecting micro-prism glued to a dichroic beamsplitter cube combines the two beampaths.}
       \label{fig:bimodalSketch}
 \end{figure}
 
-This implementation uses a piezo tube actuator which drives a bending beam into a resonant oscillation. This bending beam is composed of an optical fiber with a GRIN lens glued to its tip which, due to the oscillation of the fiber, scans radially a collimated laser beam. An objective lens then transforms this angular displacement into translation, as explained in Chapter \ref{Ch:Theory}. In order to merge the OCT field with the white light image, both fields are combined using a dichroic beam splitter.
+The base of the microbench with dimensions of 13 x 2 x 1mm3 is realized by standard silicon bulk micromachining. On the top layer, the bench accommodates the full field imaging optics that consists of a dichroic beamsplitter cube with dimensions of 2 x 2 x 2mm3 to separate the two beam paths and two plano-convex lenses with 2mm diameter, which form the full field microscope. To achieve a highly compact opto-mechanical design, the components of the OCT beam path are buried within a cavity in the base of the micro bench. On the bottom layer a gradient index lens (GRIN lens) with a diameter of 350 um is directly glued to the tip of a 80 um single mode fiber to collimate the infrared light of the OCT system with a center wavelength of lambda0 = 1.31 um and a bandwidth of deltaLambda = 90 nm. A spiral scanning of the OCT beam path
+is achieved by an angular scanner implemented using a piezoelectric tube actuator.
 
-There are many reasons why this design is preferred over other scanning topologies. First, the narrow dimensions of the piezo tube allow a compact implementation. Also, the field of view that can be achieved with this scanner is not limited to the space available for the GRIN lens to vibrate --- instead, to its maximum angular deflection. As we want a telecentric system, a \textit{4f} microscope could have been implemented instead of a Fourier plane scanner, but at the cost of duplicating the length of the optical system (Chapter \ref{Ch:Theory}). Another advantage of using a fourier plane scanner is that it requires a GRIN lens glued to the tip of the fiber in order to collimate the beam. As a side-effect, this extra weight greatly reduces the resonant frequency of the scanner, allowing a denser sampling from the data acquisition system. 
+This actuator, called resonant fiber scanner, is able to scan a collimated beam more than $\pm \SI{5}{\degree}$ by mechanically amplifying the subtle vibration of a piezoelectric actuator.  An objective lens then focuses the beam on the tissue and transforms the angular displacement into translation. By driving the scanner in two axes with two sinusoids, it is possible to sample a 2D area of the object in a spiral fashion, as explained in detail in section \ref{Ch:Optical}.
 
 The rest of this chapter shows the design and development of the OCT imaging path for the multi-modal probe. However, in order to independently test the behavior of the OCT scanner and optics, a single modality probe was fabricated as a demonstrator. Both systems are mechanically and optically equivalent -- the only difference is the presence of the beam splitter. 
 
@@ -66,11 +66,19 @@ For completeness, both multi-mode and single-mode optical systems are described.
 
 
 %%*****************************************************************************
-\clearpage
-\section{Optical Design}
+\section{Optical Design of the OCT Beampath}
+\label{ch:Optical}
 %%*****************************************************************************
+This section explains in detail the design of the OCT optics and its scanning mechanism. Starting with the concept of Fourier plane scanner, the most relevant design equations are derived, which guide the selection of the optical components to achieve the desired performance, eventually verified by optical simulation. 
 
-\subsection*{Fourier Plane Scanner}
+Furthermore, the sources of backreflections in the probe are analyzed and minimized.
+
+\subsection{Fourier Plane Scanner}
+
+
+%There are many reasons why this design is preferred over other scanning topologies. First, the narrow dimensions of the piezoelectric tube allow a compact implementation. Also, the field of view that can be achieved with this scanner is not limited to the space available for the GRIN lens to vibrate --- instead, to its maximum angular deflection. As we want a telecentric system, a \textit{4f} microscope could have been implemented instead of a Fourier plane scanner, but at the cost of duplicating the length of the optical system (Chapter \ref{Ch:Theory}). Another advantage of using a fourier plane scanner is that it requires a GRIN lens glued to the tip of the fiber in order to collimate the beam. As a side-effect, this extra weight greatly reduces the resonant frequency of the scanner, allowing a denser sampling from the data acquisition system. 
+
+
 The OCT beam path is designed as an object-sided telecentric system to avoid distortions in the 3D OCT measurement. To achieve this, the fiber scanner is driven with small angles and is positioned such that the lateral and angular movement of the scanner imitates the beam angles that can be observed in the collimated region of a classical telecentric lens system. Figure \ref{fig:fps} illustrates this approach. The whole scanner will be buried in a channel with a inner diameter of \SI{1}{\milli\meter} limiting the movement of the scanner to a maximum angle $\theta$ of \SI{5}{\degree} that allows a maximum FOV of \SI{1}{\milli\meter} of the OCT beam path.
 
 
@@ -80,48 +88,34 @@ The OCT beam path is designed as an object-sided telecentric system to avoid dis
       \label{fig:fps}
 \end{figure}
 
-For the scanner to work as a Fourier plane scanner, at any amplitude of oscillation the output beam from the GRIN lens should point to a fixed virtual radiant source. This is fulfilled if the bending shape of the scanner is linear with the amplitude and thus, the following ratio of the GRIN lens angle to its vertical displacement is kept constant (refer to Figure \ref{fig:radiant}).
-
-$$ y = d \cdot \tan \theta \simeq d \cdot \theta \Rightarrow \frac{\theta}{y} = const $$
+For the scanner to work as a Fourier plane scanner, at any point of the oscillation the output beam from the GRIN lens should point to a fixed virtual radiant source. This is fulfilled if the bending shape of the scanner is linear with the amplitude and thus, the ratio of the GRIN lens angle to its vertical displacement is kept constant $ y = d \cdot \tan \theta \simeq d \cdot \theta \Rightarrow \frac{\theta}{y} = const $ (refer to Figure \ref{fig:radiant}).
 
 \begin{figure}[h!]\centering
       \includegraphics{figures/30_DesignSimulation/Mechanical/radiant.pdf}
-      \caption{Virtual radiant source}
+      \caption{Schematic of the Fourier plane scanner at rest and at an arbitrary position with amplitude $\theta$. If the scanner behaves linearly, the output beam will appear to come from a fixed virtual radiant source regardless of the scanning amplitude.}
       \label{fig:radiant}
 \end{figure}
 
-\subsection*{Component Selection}
+\subsection{Component Selection}
+Now that the basic design equations are obtained, it is possible to 
 
-In a Fourier plane scanner, the numerical apertures (NAs) and focal lengths of the scanning (GRIN) and objective lens are related by the diameter of the beam in the intermediate region. Thus, following the schematic of Figure \ref{fig:fps}c, we can obtain the following relationships by geometrical optics\footnote{For small NAs: $\tan[	\sin^{-1}(\mathit{NA})] \simeq \mathit{NA} $. For example, if NA = 0.2, the error of this simplification is 2\%. }
-\begin{align}
-d_{beam} &\simeq 2\cdot \mathit{f_{GRIN}}\cdot \mathit{NA_{fiber}} \\
-d_{beam} &\simeq 2 \cdot f_{obj}\cdot \mathit{NA_{OCT}}
-\label{eq:fpsNA}
-\end{align}
-
-By combining them together we arrive to the main design equation for the scanner:
-\begin{equation}
-\mathit{f_{GRIN}} \cdot \mathit{NA_{fiber}} = f_{obj} \cdot \mathit{NA_{OCT}}
-\end{equation}
-
-The design of the optical path for OCT is constrained by the commercial availability of the components. In this case, the only single mode fiber working in our wavelength range and with thinned cladding diameter (refer to Section \ref{sec:mechDesign}) is \textit{Thorlabs SM980G80}, with a diameter of \SI{80}{\micro\meter} and with $\mathit{NA_{fiber}} = 0.18$ at \SI{1.330}{\micro\meter}. 
-
-In order to collimate the output from the fiber without clipping the gaussian beam we need a GRIN lens with an $\mathit{NA_{GRIN}}$ higher than $\mathit{NA_{fiber}}$. The thinnest available from GRINTECH catalog is \textit{GT-LFRL-035-024-20-CC (1550)}, with an $\mathit{NA_{GRIN}} = 0.20$ and $\mathit{f_{GRIN}} = \SI{0.91}{\milli\meter}$. 
-
-Now, by using the relation in Equation \ref{eq:fpsNA} we can design $f_{objective}$ by choosing an adequate $\mathit{NA_{OCT}}$. To preserve a high depth of field (DOF), allow enough space for the beams plitter and a long working distance, a narrow $\mathit{NA_{OCT}}$ is is preferred -- in the range of 0.020 - 0.025. By choosing an intermediate $\mathit{NA_{OCT}}$ of 0.022:
+In a Fourier plane scanner, the numerical apertures and focal lengths of the scanning and objective lens are related by the diameter of the beam in the intermediate region between both lenses. Thus, following the schematic of Figure \ref{fig:fps}c, we can obtain the following geometrical optics relations: $d_\mathrm{beam} \simeq 2\cdot f_\mathrm{GRIN}\cdot \mathit{NA}_\mathrm{fiber}$ and $d_\mathrm{beam} \simeq 2 \cdot f_\mathrm{obj}\cdot \mathit{NA}_\mathrm{OCT}$. By combining them together we arrive to the main design equation for the scanner:
 
 \begin{equation}
-\mathit{f_{obj}} = f_{GRIN} \frac{\mathit{NA_{fiber}}}{\mathit{NA_{OCT}} } = \SI{0.91}{\milli\meter} \cdot \frac{0.18}{0.022} = \SI{7.5}{\milli\meter}
+f_\mathrm{GRIN} \cdot \mathit{NA}_\mathrm{fiber} = f_\mathrm{obj} \cdot \mathit{NA}_\mathrm{OCT}
 \end{equation}
 
-The field of view (FOV) of the OCT modality can be now calculated considering the maximum angular deflection of the GRIN lens in the tip of the scanning fiber -- about $\pm \SI{5}{\degree}$: 
+Note that these equations use a small angle approximation valid for small NA: \\ $\tan[	\sin^{-1}(\mathit{NA})] \simeq \mathit{NA} $. In this case, as any NA is smaller than 0.25, the error of this simplification is smaller than 2\%.
 
-\begin{equation}
-h_{max} = f_{obj}\cdot \tan  \theta_{max} = \SI{7.5}{\milli\meter} \cdot \tan \SI{5}{\degree} = \SI{0.66}{\milli\meter}
-\end{equation}
-\noindent
-equivalent to a FOV of \SI{1.2}{\milli\meter}.
+The design of the optical path for OCT is constrained by the commercial availability of the components. In this case, the only single mode fiber working in our wavelength range and with thinned cladding diameter (refer to Section \ref{sec:mechDesign}) is \textit{Thorlabs SM980G80}, with a diameter of \SI{80}{\micro\meter} and with $\mathit{NA_\mathrm{fiber}} = 0.18$ at \SI{1.330}{\micro\meter}. 
 
+In order to collimate the output from the fiber without clipping the gaussian beam we need a GRIN lens with an $\mathit{NA_{GRIN}}$ higher than $\mathit{NA_{fiber}}$. A good fit from GRINTECH catalog is \textit{GT-LFRL-035-024-20-CC (1550)}, with an $\mathit{NA_\mathrm{GRIN}} = 0.20$ and $\mathit{f_\mathrm{GRIN}} = \SI{0.91}{\milli\meter}$. 
+
+Now, by using the relation in Equation \ref{eq:fpsNA} we can design $f_\mathrm{objective}$ by choosing an adequate $\mathit{NA_\mathrm{OCT}}$. To preserve a high depth of field (DOF), allow enough space for the beamsplitter and a long working distance, a narrow $\mathit{NA_\mathrm{OCT}}$ is is preferred -- in the range of 0.020 - 0.025. By choosing an intermediate $\mathit{NA_\mathrm{OCT}}$ of 0.022, the focal length of the objective lens $\mathit{f_\mathrm{obj}} = f_\mathrm{GRIN} \mathit{NA_\mathrm{fiber}} / \mathit{NA_\mathrm{OCT}}  = \SI{0.91}{\milli\meter} \cdot 0.18/0.022 = \SI{7.5}{\milli\meter}$ can be selected.
+
+The field of view (FOV) of the OCT modality can be now calculated considering the maximum angular deflection of the GRIN lens in the tip of the scanning fiber by 
+$h_\mathrm{max} = f_\mathrm{obj}\cdot \tan  \theta_\mathrm{max} = \SI{7.5}{\milli\meter} \cdot \tan \SI{5}{\degree} = \SI{0.66}{\milli\meter}$, 
+equivalent to a FOV of \SI{1.2}{\milli\meter} for a $\theta_\mathrm{max} $ of $ \pm \SI{5}{\degree}$ (section \ref{sec:mechDesign}).
 
 
 \subsection*{ZEMAX Simulation}
@@ -142,7 +136,7 @@ The three overlapping rectangles on the left simulate the rest position (red) an
 	Due to the low $\mathit{NA_{OCT}}$ and the good optical quality of the GRIN and planoconvex lenses, we achieve diffraction-limited imaging, as seen in the spot diagrams through focus (Figure \ref{fig:BS}c) and the MTF curve (Figure \ref{fig:BS}d).
 
 
-\subsection*{Minimization of backreflections}
+\subsection{Minimization of backreflections}
 In Fourier Domain OCT, any backreflection coming from the probe increases the background intensity and therefore reduces the penetration depth and contrast of the resultant image. Thus any source of backreflections in the design should be carefully considered and minimized:
 
 \begin{itemize}
@@ -173,7 +167,7 @@ The result is visible in the simulation from Figure \ref{fig:tilt}: the backrefl
 
 \end{itemize}
 
-\subsection*{Single Modality Probe}
+\subsection{Single Modality Probe}
 As stated in the Design Overview, in order to independently test the behavior of the OCT scanner and optics, a single modality probe was fabricated as a demonstrator. Both systems are mechanically and optically equivalent -- the only difference is the presence of the beam splitter. Figure \ref{fig:single} shows the ZEMAX simulation of this configuration, where the parallelism with the multimodal probe can be seen.
 
 \begin{figure}[h!]\centering
@@ -185,7 +179,7 @@ As stated in the Design Overview, in order to independently test the behavior of
 \end{figure}
 
 
-\subsection*{Optical Performance}
+\subsection{Optical Performance}
 
 Table \ref{tab:simRes} summarizes the theoretical and simulated optical performance of the OCT microscope in both single modality of multimodality configurations.
 
@@ -208,12 +202,12 @@ Table \ref{tab:simRes} summarizes the theoretical and simulated optical performa
 
 
 %%*****************************************************************************
-\clearpage
+
 \section{Mechanical Design}
 \label{sec:mechDesign}
 %%*****************************************************************************
 
-The fiber scanner uses resonance to amplify the subtle movement of the piezotube (in the order of $\pm \SI{3}{\micro\meter}$) into a big displacement and angular deflection of the GRIN lens (in the order of $\pm \SI{350}{\micro\meter}$ and  $\pm \SI{5}{\degree}$). Therefore, its geometrical and mechanical characteristics fully define the operating frequency range, and with it, constrain the way we can sample and acquire the final image.
+The fiber scanner uses resonance to amplify the subtle movement of the piezoelectric tube (in the order of $\pm \SI{3}{\micro\meter}$) into a big displacement and angular deflection of the GRIN lens (in the order of $\pm \SI{350}{\micro\meter}$ and  $\pm \SI{5}{\degree}$). Therefore, its geometrical and mechanical characteristics fully define the operating frequency range, and with it, constrain the way we can sample and acquire the final image.
 
 \begin{figure}[h!]\centering
       \includegraphics[width=10cm]{figures/30_DesignSimulation/Mechanical/spiralScanning.pdf}
@@ -230,7 +224,7 @@ N_{T} = \frac{f_{sampling}}{f_{resonance}}
 
 As OCT systems have a relatively small sampling frequency ($\pm$\SI{100}{\kilo\hertz}), we need to decrease the resonant frequency below \SI{1}{kHz} to achieve more than 100 points per sampling period. The following paragraphs describe how to calculate and reduce this frequency.
 
-\subsection*{Resonant frequency calculation}
+\subsection{Resonant frequency calculation}
 Following Euler Bernoulli theory, the spring constant for a fixed-free, point loaded cantilever is given by Equation \ref{eq:EB}, considering that the moment of inertia of the cylindrical fiber is given by $I_{fiber} = \frac{\pi}{4} r^4$.
 
 
@@ -241,7 +235,7 @@ K_{cantilever} = \frac{3 E I}{L^3} = \frac{3 \pi}{4} \frac{E_{fiber} r_{fiber}^4
 
 \begin{figure}[h!]\centering
       \includegraphics{figures/30_DesignSimulation/Mechanical/EB.pdf}
-      \caption{\textbf{a)} Drawing of the piezoscanner: piezotube, fiber and GRIN lens. 
+      \caption{\textbf{a)} Drawing of the piezoelectricscanner: piezoelectric tube, fiber and GRIN lens. 
       \textbf{b)} Simplified mechanical diagram, }
       \label{fig:EB}
 \end{figure}
@@ -277,8 +271,8 @@ As the scanner is buried in a \SI{1}{\milli\meter} channel, the maximum displace
     \label{tab:mech}
 \end{table}
 
-\subsection*{COMSOL simulation}
-In order to validate the theoretical analysis of the previous section, we performed a multiphysics FEM analysis using COMSOL. For that matter, the piezoactuator was modeled as a radially polarized piezoelectric material (\textit{PIC 151}) and the rest of the structure as elastic material. The excitation voltage is a sinusoidal symmetrical potential between the top and bottom electrodes of the tube. As the system undergoes small deflections, it is simulated assuming linear behavior \cite{Fertis2006}.
+\subsection{COMSOL simulation}
+In order to validate the theoretical analysis of the previous section, we performed a multiphysics FEM analysis using COMSOL. For that matter, the piezoelectricactuator was modeled as a radially polarized piezoelectric material (\textit{PIC 151}) and the rest of the structure as elastic material. The excitation voltage is a sinusoidal symmetrical potential between the top and bottom electrodes of the tube. As the system undergoes small deflections, it is simulated assuming linear behavior \cite{Fertis2006}.
 
 The first step is to simulate the resonant frequency of the system. Performing an \textit{Eigenfrequency} study, we obtain a first mode resonance at \SI{762}{\hertz}, which closely matches our analytical estimation (\SI{770}{\hertz}. The mode shape is shown in Figure \ref{fig:defle}.
 
@@ -290,10 +284,10 @@ The first step is to simulate the resonant frequency of the system. Performing a
 
 Note that, as the system is working at its resonance, it is very difficult to simulate the oscillation amplitude, as it depends on its damping factor which should be obtained experimentally. Thus, for the simulation, this value was chosen to fit the expected deflection. 
 
-Thanks to the multiphysics simulation, we can also check the electric field distribution inside the piezotube. As can be seen in Figure \ref{fig:field}, for a symmetrical actuation in the left and right electrodes with a voltage of $\pm \SI{75}{\volt}$, most of the volume under those electrodes experiences a field magnitude close to the expected theoretical value $E=U/d = \SI{75}{\volt}/\SI{150}{\micro\meter} = \SI{500}{\volt/\meter}$, which is under the safe operating field of \textit{PIC 151}: $ +\SI{1000}{\volt/\meter}$ to $ -\SI{700}{\volt/\meter}$. Only some fringe areas exceed these values, which could become depolarized with time.
+Thanks to the multiphysics simulation, we can also check the electric field distribution inside the piezoelectric tube. As can be seen in Figure \ref{fig:field}, for a symmetrical actuation in the left and right electrodes with a voltage of $\pm \SI{75}{\volt}$, most of the volume under those electrodes experiences a field magnitude close to the expected theoretical value $E=U/d = \SI{75}{\volt}/\SI{150}{\micro\meter} = \SI{500}{\volt/\meter}$, which is under the safe operating field of \textit{PIC 151}: $ +\SI{1000}{\volt/\meter}$ to $ -\SI{700}{\volt/\meter}$. Only some fringe areas exceed these values, which could become depolarized with time.
 \begin{figure}[h!]\centering
       \includegraphics[width=10 cm]{figures/30_DesignSimulation/Mechanical/field.png}
-      \caption{Magnitude of the electrical field [\SI{}{\kilo \volt / \meter}] inside a cross-section of the piezotube with an excitation voltage of $\pm \SI{75}{\volt}$}.
+      \caption{Magnitude of the electrical field [\SI{}{\kilo \volt / \meter}] inside a cross-section of the piezoelectric tube with an excitation voltage of $\pm \SI{75}{\volt}$}.
       \label{fig:field}
 \end{figure}
 
