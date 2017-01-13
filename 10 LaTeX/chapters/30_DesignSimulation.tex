@@ -75,6 +75,7 @@ Furthermore, the sources of backreflections in the probe are analyzed and minimi
 
 \subsection{Fourier Plane Scanner}
 
+\autoref{ch:Optical}
 
 %There are many reasons why this design is preferred over other scanning topologies. First, the narrow dimensions of the piezoelectric tube allow a compact implementation. Also, the field of view that can be achieved with this scanner is not limited to the space available for the GRIN lens to vibrate --- instead, to its maximum angular deflection. As we want a telecentric system, a \textit{4f} microscope could have been implemented instead of a Fourier plane scanner, but at the cost of duplicating the length of the optical system (Chapter \ref{Ch:Theory}). Another advantage of using a fourier plane scanner is that it requires a GRIN lens glued to the tip of the fiber in order to collimate the beam. As a side-effect, this extra weight greatly reduces the resonant frequency of the scanner, allowing a denser sampling from the data acquisition system. 
 
@@ -99,7 +100,7 @@ For the scanner to work as a Fourier plane scanner, at any point of the oscillat
 \subsection{Component Selection}
 Now that the basic design equations are obtained, it is possible to 
 
-In a Fourier plane scanner, the numerical apertures and focal lengths of the scanning and objective lens are related by the diameter of the beam in the intermediate region between both lenses. Thus, following the schematic of Figure \ref{fig:fps}c, we can obtain the following geometrical optics relations: $d_\mathrm{beam} \simeq 2\cdot f_\mathrm{GRIN}\cdot \mathit{NA}_\mathrm{fiber}$ and $d_\mathrm{beam} \simeq 2 \cdot f_\mathrm{obj}\cdot \mathit{NA}_\mathrm{OCT}$. By combining them together we arrive to the main design equation for the scanner:
+In a Fourier plane scanner, the numerical apertures and focal lengths of the scanning and objective lens are related by the diameter of the beam in the intermediate region between both lenses. Thus, following the schematic of Figure \ref{fig:fps}c, following geometrical optics relations are obtained: $d_\mathrm{beam} \simeq 2\cdot f_\mathrm{GRIN}\cdot \mathit{NA}_\mathrm{fiber}$ and $d_\mathrm{beam} \simeq 2 \cdot f_\mathrm{obj}\cdot \mathit{NA}_\mathrm{OCT}$. By combining them together the main design equation for the scanner appears:
 
 \begin{equation}
 f_\mathrm{GRIN} \cdot \mathit{NA}_\mathrm{fiber} = f_\mathrm{obj} \cdot \mathit{NA}_\mathrm{OCT}
@@ -107,51 +108,66 @@ f_\mathrm{GRIN} \cdot \mathit{NA}_\mathrm{fiber} = f_\mathrm{obj} \cdot \mathit{
 
 Note that these equations use a small angle approximation valid for small NA: \\ $\tan[	\sin^{-1}(\mathit{NA})] \simeq \mathit{NA} $. In this case, as any NA is smaller than 0.25, the error of this simplification is smaller than 2\%.
 
-The design of the optical path for OCT is constrained by the commercial availability of the components. In this case, the only single mode fiber working in our wavelength range and with thinned cladding diameter (refer to Section \ref{sec:mechDesign}) is \textit{Thorlabs SM980G80}, with a diameter of \SI{80}{\micro\meter} and with $\mathit{NA_\mathrm{fiber}} = 0.18$ at \SI{1.330}{\micro\meter}. 
+The design of the optical path for OCT is constrained by the commercial availability of the single mode fiber. The only one working in our wavelength range and with thinned cladding diameter (refer to Section \ref{sec:mechDesign}) is \textit{Thorlabs SM980G80}, with a diameter of \SI{80}{\micro\meter} and with $\mathit{NA_\mathrm{fiber}} = 0.18$ at \SI{1.330}{\micro\meter}. 
 
-In order to collimate the output from the fiber without clipping the gaussian beam we need a GRIN lens with an $\mathit{NA_{GRIN}}$ higher than $\mathit{NA_{fiber}}$. A good fit from GRINTECH catalog is \textit{GT-LFRL-035-024-20-CC (1550)}, with an $\mathit{NA_\mathrm{GRIN}} = 0.20$ and $\mathit{f_\mathrm{GRIN}} = \SI{0.91}{\milli\meter}$. 
+In order to collimate the output from the fiber without clipping the gaussian beam, a GRIN lens with an $\mathit{NA_{GRIN}}$ higher than $\mathit{NA_{fiber}}$ is neededf. A good fit from GRINTECH catalog is \textit{GT-LFRL-035-024-20-CC (1550)}, with an $\mathit{NA_\mathrm{GRIN}} = 0.20$ and $\mathit{f_\mathrm{GRIN}} = \SI{0.91}{\milli\meter}$. 
 
-Now, by using the relation in Equation \ref{eq:fpsNA} we can design $f_\mathrm{objective}$ by choosing an adequate $\mathit{NA_\mathrm{OCT}}$. To preserve a high depth of field (DOF), allow enough space for the beamsplitter and a long working distance, a narrow $\mathit{NA_\mathrm{OCT}}$ is is preferred -- in the range of 0.020 - 0.025. By choosing an intermediate $\mathit{NA_\mathrm{OCT}}$ of 0.022, the focal length of the objective lens $\mathit{f_\mathrm{obj}} = f_\mathrm{GRIN} \mathit{NA_\mathrm{fiber}} / \mathit{NA_\mathrm{OCT}}  = \SI{0.91}{\milli\meter} \cdot 0.18/0.022 = \SI{7.5}{\milli\meter}$ can be selected.
+Now, by using the relation in Equation \ref{eq:fpsNA} we can design $f_\mathrm{objective}$ by choosing an adequate $\mathit{NA_\mathrm{OCT}}$. To preserve a high depth of field (DOF), allow enough space for the beamsplitter and a long working distance, a narrow $\mathit{NA_\mathrm{OCT}}$ is is preferred -- in the range of 0.020 - 0.025. By choosing an intermediate $\mathit{NA_\mathrm{OCT}}$ of 0.022, the focal length of the objective lens 
+\begin{equation}
+\mathit{f_\mathrm{obj}} = f_\mathrm{GRIN} \frac{\mathit{NA_\mathrm{fiber}}}{\mathit{NA_\mathrm{OCT}}}  = \SI{0.91}{\milli\meter} \frac{0.18}{0.022} = \SI{7.5}{\milli\meter}
+\end{equation}
+can be selected.
 
 The field of view (FOV) of the OCT modality can be now calculated considering the maximum angular deflection of the GRIN lens in the tip of the scanning fiber by 
-$h_\mathrm{max} = f_\mathrm{obj}\cdot \tan  \theta_\mathrm{max} = \SI{7.5}{\milli\meter} \cdot \tan \SI{5}{\degree} = \SI{0.66}{\milli\meter}$, 
+\begin{equation}
+h_\mathrm{max} = f_\mathrm{obj}\cdot \tan  \theta_\mathrm{max} = \SI{7.5}{\milli\meter} \cdot \tan \SI{5}{\degree} = \SI{0.66}{\milli\meter} 
+\end{equation}
 equivalent to a FOV of \SI{1.2}{\milli\meter} for a $\theta_\mathrm{max} $ of $ \pm \SI{5}{\degree}$ (section \ref{sec:mechDesign}).
 
 
 \subsection*{ZEMAX Simulation}
 
-In order to validate the theoretical analysis of the optical design, we proceeded to a raytracing simulation using ZEMAX. By modeling the fiber facet as the waist of a gaussian beam, using the GRIN lens model provided by the manufacturer and a geometrical model of the prism, beamsplitter and planoconvex lens, we obtain the schematic shown in Figure \ref{fig:BS}a. 
+In order to validate the theoretical analysis of the optical design, we proceeded to a raytracing simulation using ZEMAX. By modeling the fiber facet as the waist of a gaussian beam, using the GRIN lens model provided by the manufacturer and a geometrical model of the prism, beamsplitter and planoconvex lens, the schematic shown in Figure \autoref{fig:BS}a is obtained. 
 
 \begin{figure}[h!]\centering
-      \includegraphics[width=\columnwidth]{figures/30_DesignSimulation/Optical/beamsplitterAll.pdf}
-      \caption{\textbf{a)} ZEMAX schematic of the OCT beampath for the center (red) and maximum (purple) position of the GRIN lens.
-      \textbf{b)} 3D representation.
-      \textbf{c)} Spot diagram through focus for center (red) and marginal (purple) rays, showing the Airy circle. Dimensions in \SI{}{\micro\meter}.}
-      \textbf{d)} MTF of the system for Tangential and Sagital directions.
+      \includegraphics{figures/30_DesignSimulation/Optical/beamsplitterAll.pdf}
+      \caption{\textbf{a)} 3D ZEMAX raytracing of the OCT beampath for the center (red rays) and marginal (purple rays) position of the GRIN lens.
+      \textbf{b)} Cross section of a).}
       \label{fig:BS}
 \end{figure}
 
-The three overlapping rectangles on the left simulate the rest position (red) and maximum deflection (purple) of the GRIN lens. The gap between GRIN lens and prism is numerically optimized for telecentricity and maximum FOV.
+The three overlapping rectangles on the left simulate the rest position (red) and maximum deflection (purple) of the GRIN lens. The gap between GRIN lens and prism is calculated so that the focus of the planoconvex lens coincides with the virtual radiant source of the scanner, and is numerically optimized to \SI{1}{\milli\meter}.
 
-	Due to the low $\mathit{NA_{OCT}}$ and the good optical quality of the GRIN and planoconvex lenses, we achieve diffraction-limited imaging, as seen in the spot diagrams through focus (Figure \ref{fig:BS}c) and the MTF curve (Figure \ref{fig:BS}d).
+	Due to the low $\mathit{NA_\mathrm{OCT}}$ and the good optical quality of the GRIN and planoconvex lenses, the aberrations in this design are negligible and thus has an optical performance close to the diffraction limit. \autoref{fig:BSMTF} proves this behavior by comparing the MTF (Modulation Transfer Function) of an ideal optical system with the simulated MTF of the system which is described.
 
+\begin{figure}[h!]\centering
+      \includegraphics[width=10cm]{figures/30_DesignSimulation/Optical/beamsplitterMTF.png}
+      \caption{(Change image)MTF curve of the multimode probe showing the...}
+      \label{fig:BSMTF}
+\end{figure}
 
 \subsection{Minimization of backreflections}
-In Fourier Domain OCT, any backreflection coming from the probe increases the background intensity and therefore reduces the penetration depth and contrast of the resultant image. Thus any source of backreflections in the design should be carefully considered and minimized:
+After the geometrical simulation of the optical system is done, there is still an important factor to consider: the backreflections inside the probe. In Fourier Domain OCT, any backreflection coming from the probe increases the background intensity at the spectrometer, limiting its dynamic range. The consequences are higher noise, lower penetration depth and lower contrast of the resultant image. Thus any source of backreflections in the design should be carefully considered and minimized. The more important ones are marked in \autoref{fig:backreflections} and explained in the following list:
 
-\begin{itemize}
+\begin{figure}[h!]\centering
+      \includegraphics{figures/30_DesignSimulation/Optical/Backreflections/backreflections.pdf}
+      \caption{Schematic of the multimodal probe showing the sources of backreflections (red).}
+      \label{fig:backreflections}
+\end{figure}
+
+\begin{enumerate}
 
 \item \textbf{Fiber-GRIN Interface:}
 Starting from the proximal side, the fiber-GRIN interface consists of two parallel glass surfaces separated by a small gap. Although the beam is not collimated in this region, a small portion of light can be coupled back to the fiber. In order to minimize any backreflections, fiber and GRIN are glued together using a refractive-index-matched optical adhesive (\textit{NOA 76}, from \textit{Norland Products}). This way there is no glass to air interface and the maximum refractive index step is reduced to \SI{0.05}{}.
 %Fiber 1.45670,NOA 1.51,GRIN 1.515 -> 275 ppm
 
 \item \textbf{GRIN-Air Interface:}
-The next interface is the distal facet of the GRIN lens. This is the most critical interface -- regardless of the scanning angle, it exhibits normal, collimated light incidence. To avoid this problem without resorting to delicate and expensive antireflection coatings (ARC), the GRIN lens is manufactured with a \SI{1}{\degree} tilted exit facet. According to geometrical optics, this tilt induces a vertical shift in the position of the backreflected focal point given by equation \ref{eq:tilt}:
-
+The next interface is the distal facet of the GRIN lens. This is the most critical interface -- regardless of the scanning angle, it exhibits normal, collimated light incidence. To avoid this problem without resorting to delicate and expensive antireflection coatings (ARC), the GRIN lens is manufactured with a \SI{1}{\degree} tilted exit facet. According to geometrical optics, this tilt induces a vertical shift in the position of the backreflected focal point
 \begin{equation}
-\Delta y = f \tan(2\alpha) = \SI{0.91}{\milli\meter} \cdot \tan (\SI{2}{\degree}) = \SI{31}{\micro\meter}
-\label{eq:tilt}
+\Delta y = f \tan(2\alpha)
 \end{equation}
+
+which is in this implementation equates to $\SI{0.91}{\milli\meter} \cdot \tan (\SI{2}{\degree}) = \SI{31}{\micro\meter}$.
 
 The result is visible in the simulation from Figure \ref{fig:tilt}: the backreflected light is focused back with a \SI{31}{\micro\meter} offset, therefore missing the core of the fiber -- which has a diameter inferior to \SI{5}{\micro\meter}.
 
@@ -161,31 +177,44 @@ The result is visible in the simulation from Figure \ref{fig:tilt}: the backrefl
       \label{fig:tilt}
 \end{figure}
 
-\item \textbf{Air-Prism Interface:} Due to collimated incidence, this interface exhibits can produce backreflections, but only in a single position of the GRIN lens -- where both facets are parallel. An ARC would be nevertheless beneficial. 
+\item \textbf{Air-Prism Interface:} Due to collimated incidence, this interface can produce backreflections, but only in the resting position of the GRIN lens, when the free end of the GRIN lens is pointing perpendicular to the surface of the prism. To minimize reflections in this situation it is possible to resort to anti-reflection coatings in the facet of the prism. 
 
-\item \textbf{Objective Lens - Air Interface:} After the prism, the beamsplitter and objective lens are cemented together, making any backreflections negligible. The objective lens has an interface with air, but due to the curved surface, the light won't be coupled back in a significantly. Nevertheless, the distal surface of the lens are ARC.
+\item \textbf{Objective Lens - Air Interface:} After the prism, the beamsplitter and objective lens are cemented together, making any backreflections negligible. The objective lens has an interface with air, but has an anti-reflection coating on this surface. Furthermore, due to the curved surface of this lens, the backreflected light won't be focused back in the single mode fiber significantly.
+\end{enumerate}
 
-\end{itemize}
+Taking these considerations into account, the backreflections were kept below 0.02\% in all the manufactured probes.
 
 \subsection{Single Modality Probe}
-As stated in the Design Overview, in order to independently test the behavior of the OCT scanner and optics, a single modality probe was fabricated as a demonstrator. Both systems are mechanically and optically equivalent -- the only difference is the presence of the beam splitter. Figure \ref{fig:single} shows the ZEMAX simulation of this configuration, where the parallelism with the multimodal probe can be seen.
+As stated in the Design Overview, in order to independently test the behavior of the OCT scanner and optics, a single modality probe was fabricated as a demonstrator. Its optical design, depicted in \autoref{fig:single}, emulates the multimodal design from \autoref{fig:BS} by unfolding the optical path. The main difference is the lack of the prism and beamsplitter and the orientation of the planoconvex lens, which is now with its convex surface facing the GRIN lens to reduce the backreflections.
 
 \begin{figure}[h!]\centering
       \includegraphics{figures/30_DesignSimulation/Optical/singleAll.pdf}
-      \caption{\textbf{a)} ZEMAX schematic of the single modality probe for the center (red) and maximum (purple) position of the GRIN lens.
-      \textbf{b)} 3D representation.
-      \textbf{c)} Spot diagram through focus for center (red) and marginal (purple) rays, showing the Airy circle. Dimensions in \SI{}{\micro\meter}.}
+      \caption{\textbf{a)} 3D ZEMAX raytracing of the OCT beampath for the center (red rays) and marginal (purple rays) position of the GRIN lens in the single modality demonstrator.
+      \textbf{b)} Cross section of a).}
       \label{fig:single}
 \end{figure}
 
+The equivalence of both systems is reaffirmed by the similarity of their MTF. Again, the simulated MTF from \autoref{fig:singleMTF} indicates that the single modality demonstrator is diffraction-limited.
 
-\subsection{Optical Performance}
+\begin{figure}[h!]\centering
+      \includegraphics[width=10cm]{figures/30_DesignSimulation/Optical/beamsplitterMTF.png}
+      \caption{(Change image)MTF curve of the multimode probe showing the...}
+      \label{fig:singleMTF}
+\end{figure}
 
-Table \ref{tab:simRes} summarizes the theoretical and simulated optical performance of the OCT microscope in both single modality of multimodality configurations.
+Due to these similarities, it is expected that any experimental result obtained with the demonstrator could be easily transferred to the behavior of the bimodal probe.
+
+\subsection{Simulated Optical Performance of the demonstrator}
+
+Table \ref{tab:simRes} summarizes the theoretical and simulated optical performance of the OCT microscope in both single modality and multimodality configurations.
 
 \begin{table}[h!]\centering
 	\begin{tabular}{rl}\\
 		\hline
+     	\textbf{Single mode fiber NA} & 0.18 \\ 
+		\textbf{GRIN lens NA} & 0.2 \\ 
+		\textbf{GRIN lens focal length} & \SI{0.91}{\milli\meter} \\ 
+		\textbf{Planoconvex lens focal length} & \SI{7.5}{\milli\meter} \\ 
 		\textbf{Distal Side NA} & 0.022 \\ 
 		\textbf{Working Distance} & \SI{7.3}{\milli\meter} \\ 
 		\textbf{Field of View} & \SI{1.2}{\milli\meter} \\ 
@@ -196,9 +225,6 @@ Table \ref{tab:simRes} summarizes the theoretical and simulated optical performa
     \caption{Simulated optical performance and characteristics of OCT modality. All resolution values follow the Rayleigh convention.}
     \label{tab:simRes}
 \end{table}
-
-
-
 
 
 %%*****************************************************************************
