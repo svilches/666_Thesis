@@ -7,5 +7,6 @@
 *.out
 *.toc
 *.aux
+*.tks
 *.synctex.gz
 ~*
