@@ -7,7 +7,7 @@
 \chapter{Design \& Simulation}
 \label{Ch:DesignSimulation}	
 
-The aim of this work is to design and test a miniaturized OCT microscope as a component of a multi-modal endoscope. As described in Chapter \ref{Ch:Introduction}, this probe consist of two spectrally-separated optical paths that run partially in parallel through a micro-optical bench system. This approach allows independent tuning of the optical parameters of the two imaging modalities -- such as the numerical aperture (NA) or depth of field -- while still providing a geometrical overlap of the two acquired images. An integrated tubular piezoelectric fiber scanner is used to perform en face scanning required for three dimensional OCT measurements. This scanning engine has an outer diameter of \SI{0.9}{\milli\meter} and a length of \SI{9}{\milli\meter}, and features custom fabricated \SI{10}{\micro\meter} thick polyimide flexible interconnect lines to address the four piezoelectric electrodes.
+The aim of this work is to design and test a miniaturized OCT microscope as a component of a multi-modal endoscope. As described in \autoref{sec:Optical}, this probe consist of two spectrally-separated optical paths that run partially in parallel through a micro-optical bench system. This approach allows independent tuning of the optical parameters of the two imaging modalities -- such as the numerical aperture (NA) or depth of field -- while still providing a geometrical overlap of the two acquired images. An integrated tubular piezoelectric fiber scanner is used to perform en face scanning required for three dimensional OCT measurements. This scanning engine has an outer diameter of \SI{0.9}{\milli\meter} and a length of \SI{9}{\milli\meter}, and features custom fabricated \SI{10}{\micro\meter} thick polyimide flexible interconnect lines to address the four piezoelectric electrodes.
 
 The following section describes the conception and design of the endoscope, starting from the medical and geometrical requirements, through analytical modeling and towards the optimization of each component.
 
@@ -124,7 +124,7 @@ h_\mathrm{max} = f_\mathrm{obj}\cdot \tan  \theta_\mathrm{max} = \SI{7.5}{\milli
 equivalent to a FOV of \SI{1.2}{\milli\meter} for a $\theta_\mathrm{max} $ of $ \pm \SI{5}{\degree}$ (section \ref{sec:mechDesign}).
 
 
-\subsection*{ZEMAX Simulation}
+\subsection{ZEMAX Simulation}
 
 Once the components are selected, it is possible to validate the theoretical analysis of the optical design by  performing a raytracing simulation. Using ZEMAX, the fiber facet is modeled as the waist of a gaussian beam source, the  GRIN lens is modeled using a design file from the manufacturer and the prism, beamsplitter and planoconvex lens are modeled geometrically according to the provided mechanical drawings. The result is shown in \autoref{fig:BS}.
 
@@ -137,12 +137,12 @@ Once the components are selected, it is possible to validate the theoretical ana
 
 The three overlapping rectangles on the left simulate the rest position (red) and maximum deflection (purple) of the GRIN lens. The gap between GRIN lens and prism is calculated so that the focus of the planoconvex lens coincides with the virtual radiant source of the scanner.
 
-	Due to the low $\mathit{NA_\mathrm{OCT}}$ and the good optical quality of the GRIN and planoconvex lenses, the aberrations in this design are negligible and thus has an optical performance close to the diffraction limit. \autoref{fig:BSMTF} proves this behavior by comparing the MTF (Modulation Transfer Function) of an ideal optical system with the simulated MTF of the system which is described.
+	Due to the low $\mathit{NA_\mathrm{OCT}}$ and the good optical quality of the GRIN and planoconvex lenses, the aberrations in this design are negligible and thus has an optical performance close to the diffraction limit. \autoref{fig:MTFsim} proves this behavior by comparing the MTF (Modulation Transfer Function) of an ideal optical system with the simulated MTF of the system which is described.
 
 \begin{figure}[h!]\centering
-      \includegraphics[width=10cm]{figures/30_DesignSimulation/Optical/beamsplitterMTF.png}
-      \caption{(Change image)MTF curve of the multimode probe showing the...}
-      \label{fig:BSMTF}
+      \includegraphics{figures/30_DesignSimulation/Optical/MTF/MTF_Sim.pdf}
+      \caption{Simulated MTF curve of the OCT beam path for the bimodal probe. It can be seen that the system is diffraction limited and provides a lateral resolution of 23.3 lp/mm or \SI{43}{\micro\meter}.}
+      \label{fig:MTFsim}
 \end{figure}
 
 \subsection{Minimization of backreflections}
@@ -182,25 +182,25 @@ Taking these considerations into account, the backreflections were kept below 0.
 As stated in the Design Overview, in order to independently test the behavior of the OCT scanner and optics, a single modality probe was fabricated as a demonstrator. Its optical design, depicted in \autoref{fig:single}, emulates the multimodal design from \autoref{fig:BS} by unfolding its optical path. The main difference is the lack of the prism and beamsplitter and the orientation of the planoconvex lens, which has now with its convex surface facing the GRIN lens to reduce the backreflections which would happen in the case of normal incidence in the planar side of the lens.
 
 \begin{figure}[h!]\centering
-      \includegraphics{figures/30_DesignSimulation/Optical/singleAll.pdf}
+      \includegraphics[width=12cm]{figures/30_DesignSimulation/Optical/singleAll.pdf}
       \caption{\textbf{a)} 3D ZEMAX raytracing of the OCT beam path for the center (red rays) and marginal (purple rays) position of the GRIN lens in the single modality demonstrator.
       \textbf{b)} Cross section of a).}
       \label{fig:single}
 \end{figure}
 
-The equivalence of both systems is reaffirmed by the similarity of their simulated MTF. Again, \autoref{fig:singleMTF} indicates that the single modality demonstrator is diffraction-limited.
+The equivalence of both systems is reaffirmed by the similarity of their simulated MTF. Again, \autoref{fig:MTFcomp} indicates that the single modality demonstrator is diffraction-limited.
 
 \begin{figure}[h!]\centering
-      \includegraphics[width=10cm]{figures/30_DesignSimulation/Optical/beamsplitterMTF.png}
-      \caption{(Change image)MTF curve of the multimode probe showing the...}
-      \label{fig:singleMTF}
+      \includegraphics{figures/30_DesignSimulation/Optical/MTF/MTFComparison.pdf}
+      \caption{Simulated MTF curve of the OCT beam path for the bimodal probe and the single modality demonstrator. It can be seen that both implementations are optically equivalent and diffraction limited, providing a lateral resolution of 23.3 lp/mm or \SI{43}{\micro\meter}.}
+      \label{fig:MTFcomp}
 \end{figure}
 
 Due to these similarities, it is expected that any experimental result obtained with the demonstrator can be easily transferred to the behavior of the bimodal probe.
 
 \subsection{Simulated Optical Performance}
 
-To conclude the \textbf{Design and Simulation} chapter, the most important characteristics of the OCT microscope are listed in \autoref{tab:simRes}.
+To conclude the \textit{Design and Simulation} chapter, the most important characteristics of the components of the OCT microscope are listed in \autoref{tab:simChar} and the simulated performance in \autoref{tab:simRes}.
 
 \begin{table}[h!]\centering
 	\begin{tabular}{cc}\\
@@ -213,7 +213,7 @@ To conclude the \textbf{Design and Simulation} chapter, the most important chara
 		\hline
 	\end{tabular}
 		\caption{Summary of the most relevant characteristics of the optical components used in the OCT modality.}
-\label{tab:simRes}
+\label{tab:simChar}
 \end{table}
 
 \begin{table}[h!]\centering
@@ -227,7 +227,7 @@ To conclude the \textbf{Design and Simulation} chapter, the most important chara
 		\textbf{Lateral Resolution} & \SI{43}{\micro\meter} & \SI{43}{\micro\meter}\\ 
 		\hline
 	\end{tabular} 
-    \caption{Simulated optical performance and characteristics of the OCT modality. All resolution values follow the Rayleigh convention of 26.3\% modulation \cite{Michalet2006}.}
+    \caption{Simulated optical performance and characteristics of the OCT modality. All resolution values follow the Rayleigh convention of 15.5\% modulation \cite{Kretschmer}.}
     \label{tab:simRes}
 \end{table}
 
@@ -238,59 +238,63 @@ To conclude the \textbf{Design and Simulation} chapter, the most important chara
 \label{sec:mechDesign}
 %%*****************************************************************************
 
-This section 
+In the following paragraphs the behavior of the fiber scanner is mechanically modeled, and this information used to choose the most relevant fabrication parameters.
 
-The fiber scanner uses resonance to amplify the subtle movement of the piezoelectric tube (in the order of $\pm \SI{3}{\micro\meter}$) into a big displacement and angular deflection of the GRIN lens (in the order of $\pm \SI{350}{\micro\meter}$ and  $\pm \SI{5}{\degree}$). Therefore, its geometrical and mechanical characteristics fully define the operating frequency range, and with it, constrain the way we can sample and acquire the final image.
+The fiber scanner uses the concept of mechanical resonance to amplify 100-fold the subtle movement of the piezoelectric tube into a big displacement and angular deflection of the GRIN lens at the tip of the scanning fiber. Therefore, as in any resonant system, its geometrical and mechanical characteristics fully define the operating frequency range, and with it, constrain the way we can sample and acquire the final image.
 
 \begin{figure}[h!]\centering
-      \includegraphics[width=10cm]{figures/30_DesignSimulation/Mechanical/spiralScanning.pdf}
-      \caption{Movement of the laser spot through time (red) and acquired points (black) during spiral scanning.}
-      \label{fig:spiralScanning}
+      \includegraphics[width=12cm]{figures/30_DesignSimulation/Mechanical/spiralScanningNT.pdf}
+      \caption{Schematic of the scanner focusing the OCT beam (red) in a plane. The beam describes a spiral trajectory to acquire an image. The $N_\mathrm{T}$ black dots represent the sampling points of the outermost ring of the spiral.}
+      \label{fig:spiralScanningNT}
 \end{figure}
 
-As a resonant system, the movement of the scanning fiber is constrained to harmonic oscillations with a frequency close to $f_{resonance}$. Thus, the number of sample points $N_{T}$ that can be acquired in period $T$ depend on the resonant frequency of the scanner and the sampling frequency of the OCT system:
-
+As a resonant system, the movement of the scanning fiber is constrained to harmonic oscillations with a frequency close to $f_\mathrm{resonance}$. If, for example, the scanner is moving in a circular pattern like in \autoref{fig:spiralScanningNT} with period $T$, the number of sample points 
 \begin{equation}
-N_{T} = \frac{f_{sampling}}{f_{resonance}}
+N_{T} = \frac{f_\mathrm{sampling}}{f_\mathrm{resonance}}
 \label{eq:nT}
 \end{equation}
+that can be acquired in this circle depend on the resonant frequency of the scanner and the sampling frequency of the OCT system.
 
-As OCT systems have a relatively small sampling frequency ($\pm$\SI{100}{\kilo\hertz}), we need to decrease the resonant frequency below \SI{1}{kHz} to achieve more than 100 points per sampling period. The following paragraphs describe how to calculate and reduce this frequency.
+
+
+As OCT systems have a relatively small sampling frequency ($\pm$\SI{100}{\kilo\hertz}), we need to decrease the resonant frequency below \SI{1}{kHz} to achieve more than 100 acquired point per ring of the spiral. 
+
+The following paragraphs describe how to calculate and reduce this frequency.
 
 \subsection{Resonant frequency calculation}
-Following Euler Bernoulli theory, the spring constant for a fixed-free, point loaded cantilever is given by Equation \ref{eq:EB}, considering that the moment of inertia of the cylindrical fiber is given by $I_{fiber} = \frac{\pi}{4} r^4$.
-
-
+Following Euler Bernoulli theory, the spring constant for a fixed-free, point loaded cantilever is given by 
 \begin{equation}
-K_{cantilever} = \frac{3 E I}{L^3} = \frac{3 \pi}{4} \frac{E_{fiber} r_{fiber}^4}{L^3}
+K_\mathrm{cantilever} = \frac{3 E I}{L^3} = \frac{3 \pi}{4} \frac{E_\mathrm{fiber} r_\mathrm{fiber}^4}{L^3}
 \label{eq:EB}
 \end{equation}
+considering that the moment of inertia of the cylindrical fiber is given by $I_\mathrm{fiber} = \frac{\pi}{4} r^4$.
 
 \begin{figure}[h!]\centering
       \includegraphics{figures/30_DesignSimulation/Mechanical/EB.pdf}
       \caption{\textbf{a)} Drawing of the piezoelectricscanner: piezoelectric tube, fiber and GRIN lens. 
-      \textbf{b)} Simplified mechanical diagram, }
+      \textbf{b)} Simplified mechanical diagram obtained by modeling the fiber as a weightless cantilever and the GRIN lens as a point mass.}
       \label{fig:EB}
 \end{figure}
 
-Approximating the fiber - GRIN assembly as a weightless, flexible, fixed-free cantilever and concentrating the weight of the GRIN lens in its center of gravity (Figure \ref{fig:EB}), we can estimate the resonant frequency of the scanner by applying the ideal mass-spring harmonic resonator equation for the first resonant mode (Eq. \ref{eq:fres}) \footnote{In order to assess the error of this approximation, we repeated the calculation of the resonant frequency using the method described in \cite{Huo2010}. In the plotted range, the error was smaller than 2\%.}. 
-
+The fiber-GRIN assembly can be modeled as a point-loaded, fixed-free cantilever and concentrating the weight of the GRIN lens in its center of gravity, as depicted in Figure \ref{fig:EB}). Now, by applying the ideal mass-spring harmonic resonator equation 
 \begin{equation}
-f_{res} = \frac{1}{2 \pi} \sqrt{\frac{K_{cantilever}}{m_{\mathit{GRIN}}}} 
+f_\mathrm{res} = \frac{1}{2 \pi} \sqrt{\frac{K_\mathrm{cantilever}}{m_{\mathrm{GRIN}}}} 
 \label{eq:fres}
 \end{equation}
 
-As we can observe from equation \ref{eq:EB} and \ref{eq:fres}, the resonance frequency increases quadratically with the diameter of the fiber. Therefore, by choosing a fiber with \SI{80}{\micro\meter} instead of the standard \SI{125}{\micro\meter}, the resonance frequency can be lowered from \SI{1900}{\hertz} to \SI{770}{\hertz} for a \SI{4.5}{\milli\meter} scanner.
+it is possible to estimate the resonant frequency of the scanner. Note that, in order to assess the error of this approximation, we repeated the calculation of the resonant frequency using a more precise numerical method described in \cite{Huo2010}. In the usable range of interest, the difference between the results from both methods differed by less than 2\%, indicating that \autoref{eq:fres} is adequate for the modeling of the scanner.
 
-The resonant frequency of a cantilever formed by a \SI{80}{\micro\meter} fused silica fiber with the chosen GRIN lens is computed in Figure \ref{fig:freq}.
+As we can observe from equation \ref{eq:EB} and \ref{eq:fres}, the resonance frequency increases quadratically with the diameter of the fiber. Therefore, by choosing a fiber with \SI{80}{\micro\meter} instead of the standard \SI{125}{\micro\meter}, the resonance frequency can be lowered from \SI{1900}{\hertz} to \SI{770}{\hertz} for a scanner with a total length of \SI{4.5}{\milli\meter}.
+
+The resonant frequency of a cantilever formed by a \SI{80}{\micro\meter} fused silica fiber with the chosen GRIN lens is computed in Figure \ref{fig:freq} using Equations \ref{eq:EB} and \ref{eq:fres}.
 
 \begin{figure}[h!]\centering
-      \includegraphics[width=10cm]{figures/30_DesignSimulation/Mechanical/fres.pdf}
-      \caption{Resonant frequency as a function of the scanning tip length (fiber + GRIN lens).}
+      \includegraphics[width=10cm]{figures/30_DesignSimulation/Mechanical/fres/fres.pdf}
+      \caption{Resonant frequency of the scanner as a function of the scanning tip length (fiber + GRIN lens). The chosen working point is labeled in the plot.}
       \label{fig:freq}
 \end{figure}
 
-As the scanner is buried in a \SI{1}{\milli\meter} channel, the maximum displacement of the GRIN lens is limited to $\pm\SI{325}{\micro\meter}$. Within that small displacement we want to achieve the maximum angular deflection of the GRIN lens to maximize the FOV, what can be achieved by using shorter fiber lengths. This shows a trade-off with the density of sampling $N_{T}$ -- which is increased with longer fiber lengths. To balance those terms, we chose a a total scanner length of \SI{4.5}{\milli\meter}, with characteristics summarized in Table \ref{tab:mech}.
+As the scanner is buried in a \SI{1}{\milli\meter} channel, the maximum displacement of the GRIN lens is limited to $\pm\SI{325}{\micro\meter}$. Within that small displacement we want to achieve the maximum angular deflection of the GRIN lens to maximize the FOV, what can be achieved by using shorter fiber lengths. This shows a trade-off with the density of sampling $N_\mathrm{T}$, which is increased with longer fiber lengths. To balance those terms, we chose a a total scanner length of \SI{4.5}{\milli\meter}, with characteristics summarized in Table \ref{tab:mech}.
 
 \begin{table}[h!]\centering
 	\begin{tabular}{rl}\\
@@ -300,27 +304,30 @@ As the scanner is buried in a \SI{1}{\milli\meter} channel, the maximum displace
 		\textbf{Max. angular deflection} & \SI{5}{\degree} \\ 
 		\hline
 	\end{tabular} 
-    \caption{Mechanical charactaristics.}
+    \caption{Mechanical characteristics of the fiber scanner.}
     \label{tab:mech}
 \end{table}
 
 \subsection{COMSOL simulation}
-In order to validate the theoretical analysis of the previous section, we performed a multiphysics FEM analysis using COMSOL. For that matter, the piezoelectricactuator was modeled as a radially polarized piezoelectric material (\textit{PIC 151}) and the rest of the structure as elastic material. The excitation voltage is a sinusoidal symmetrical potential between the top and bottom electrodes of the tube. As the system undergoes small deflections, it is simulated assuming linear behavior \cite{Fertis2006}.
 
-The first step is to simulate the resonant frequency of the system. Performing an \textit{Eigenfrequency} study, we obtain a first mode resonance at \SI{762}{\hertz}, which closely matches our analytical estimation (\SI{770}{\hertz}. The mode shape is shown in Figure \ref{fig:defle}.
+In order to validate the theoretical analysis of the previous section, we performed a multiphysics finite element analysis using COMSOL. For that matter, the actuator was modeled as a radially polarized piezoelectric material (\textit{PIC 151}) and the rest of the structure as elastic material. The excitation voltage is a sinusoidal symmetrical potential between the top and bottom electrodes of the tube. 
+
+As the system undergoes small deflections, it is simulated assuming linear behavior \cite{Fertis2006}.
+
+The first step is to simulate the resonant frequency of the system. Performing an \textit{Eigenfrequency} study, we obtain a first mode resonance at \SI{762}{\hertz}, which closely matches our analytical estimation of \SI{770}{\hertz}. The mode shape at resonance is shown in Figure \ref{fig:defle}.
 
 \begin{figure}[h!]\centering
       \includegraphics[width=10 cm]{figures/30_DesignSimulation/Mechanical/deflection.pdf}
-      \caption{COMSOL simulation of the total deflection in at resonance (\SI{762}{\hertz}).}
+      \caption{COMSOL simulation showing a cross section of the scanner at resonance at its maximum amplitude. The deformed structure is color coded showing the total displacement from the rest position (shown outlined). The base of the fiber (close to the actuator) is almost static, confirming the resonant behavior of the scanner.}
       \label{fig:defle}
 \end{figure}
 
-Note that, as the system is working at its resonance, it is very difficult to simulate the oscillation amplitude, as it depends on its damping factor which should be obtained experimentally. Thus, for the simulation, this value was chosen to fit the expected deflection. 
+%Note that, as the system is working at its resonance, it is very difficult to simulate the oscillation amplitude, as it depends on its damping factor which should be obtained experimentally. Thus, for the simulation, this value was chosen to fit the expected deflection. 
 
-Thanks to the multiphysics simulation, we can also check the electric field distribution inside the piezoelectric tube. As can be seen in Figure \ref{fig:field}, for a symmetrical actuation in the left and right electrodes with a voltage of $\pm \SI{75}{\volt}$, most of the volume under those electrodes experiences a field magnitude close to the expected theoretical value $E=U/d = \SI{75}{\volt}/\SI{150}{\micro\meter} = \SI{500}{\volt/\meter}$, which is under the safe operating field of \textit{PIC 151}: $ +\SI{1000}{\volt/\meter}$ to $ -\SI{700}{\volt/\meter}$. Only some fringe areas exceed these values, which could become depolarized with time.
+Thanks to the multiphysics simulation, we can also check the electric field distribution inside the piezoelectric tube. As can be seen in Figure \ref{fig:field}, for a symmetrical actuation in the left and right electrodes with a voltage of $\pm \SI{75}{\volt}$, most of the volume under those electrodes experiences a field magnitude close to the expected theoretical value $E=U/d = \SI{75}{\volt}/\SI{150}{\micro\meter} = \SI{500}{\volt/\meter}$, which is under the safe operating field of \textit{PIC 151}, ranging from $ +\SI{1000}{\volt/\meter}$ to $ -\SI{700}{\volt/\meter}$. Only some fringe areas exceed these values, which could become depolarized with time.
 \begin{figure}[h!]\centering
-      \includegraphics[width=10 cm]{figures/30_DesignSimulation/Mechanical/field.png}
-      \caption{Magnitude of the electrical field [\SI{}{\kilo \volt / \meter}] inside a cross-section of the piezoelectric tube with an excitation voltage of $\pm \SI{75}{\volt}$}.
+      \includegraphics{figures/30_DesignSimulation/Mechanical/field.pdf}
+      \caption{Magnitude of the electrical field inside a cross-section of the piezoelectric tube with an excitation voltage of $\pm \SI{75}{\volt}$.}.
       \label{fig:field}
 \end{figure}
 
