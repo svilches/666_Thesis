@@ -244,11 +244,11 @@ The fiber scanner uses the concept of mechanical resonance to amplify 100-fold t
 
 \begin{figure}[h!]\centering
       \includegraphics[width=12cm]{figures/30_DesignSimulation/Mechanical/spiralScanningNT.pdf}
-      \caption{Schematic of the scanner focusing the OCT beam (red) in a plane. The beam describes a spiral trajectory to acquire an image. The $N_\mathrm{T}$ black dots represent the sampling points of the outermost ring of the spiral.}
+      \caption{Schematic of the piezoelectric tube, fiber, GRIN and objective lens focusing the OCT beam (red) in a plane. The beam describes a spiral trajectory to acquire an image. The $N_\mathrm{T}$ black dots represent the sampling points of the outermost ring of the spiral.}
       \label{fig:spiralScanningNT}
 \end{figure}
 
-As a resonant system, the movement of the scanning fiber is constrained to harmonic oscillations with a frequency close to $f_\mathrm{resonance}$. If, for example, the scanner is moving in a circular pattern like in \autoref{fig:spiralScanningNT} with period $T$, the number of sample points 
+As a resonant system, the movement of the scanning fiber is constrained to harmonic oscillations with a frequency close to $f_\mathrm{resonance}$. If the scanner is moving in a spiral, as depicted \autoref{fig:spiralScanningNT}, in which each ring is scanned in a period $T$, the number of sample points 
 \begin{equation}
 N_{T} = \frac{f_\mathrm{sampling}}{f_\mathrm{resonance}}
 \label{eq:nT}
@@ -262,7 +262,7 @@ As OCT systems have a relatively small sampling frequency ($\pm$\SI{100}{\kilo\h
 The following paragraphs describe how to calculate and reduce this frequency.
 
 \subsection{Resonant frequency calculation}
-Following Euler Bernoulli theory, the spring constant for a fixed-free, point loaded cantilever is given by 
+Following the Euler-Bernoulli theory \cite{MarcJ.Madou2011}, the spring constant for a fixed-free, point loaded cantilever is given by 
 \begin{equation}
 K_\mathrm{cantilever} = \frac{3 E I}{L^3} = \frac{3 \pi}{4} \frac{E_\mathrm{fiber} r_\mathrm{fiber}^4}{L^3}
 \label{eq:EB}
@@ -276,25 +276,27 @@ considering that the moment of inertia of the cylindrical fiber is given by $I_\
       \label{fig:EB}
 \end{figure}
 
-The fiber-GRIN assembly can be modeled as a point-loaded, fixed-free cantilever and concentrating the weight of the GRIN lens in its center of gravity, as depicted in Figure \ref{fig:EB}). Now, by applying the ideal mass-spring harmonic resonator equation 
+The fiber-GRIN assembly can be modeled as a point-loaded, fixed-free cantilever and the GRIN lens weight can be concentrated in its center of gravity, as depicted in Figure \ref{fig:EB}). Now, by applying the ideal mass-spring harmonic resonator equation 
 \begin{equation}
 f_\mathrm{res} = \frac{1}{2 \pi} \sqrt{\frac{K_\mathrm{cantilever}}{m_{\mathrm{GRIN}}}} 
 \label{eq:fres}
 \end{equation}
 
-it is possible to estimate the resonant frequency of the scanner. Note that, in order to assess the error of this approximation, we repeated the calculation of the resonant frequency using a more precise numerical method described in \cite{Huo2010}. In the usable range of interest, the difference between the results from both methods differed by less than 2\%, indicating that \autoref{eq:fres} is adequate for the modeling of the scanner.
+it is possible to estimate the resonant frequency of the scanner. 
 
-As we can observe from equation \ref{eq:EB} and \ref{eq:fres}, the resonance frequency increases quadratically with the diameter of the fiber. Therefore, by choosing a fiber with \SI{80}{\micro\meter} instead of the standard \SI{125}{\micro\meter}, the resonance frequency can be lowered from \SI{1900}{\hertz} to \SI{770}{\hertz} for a scanner with a total length of \SI{4.5}{\milli\meter}.
+Note that, in order to assess the error of this approximation, we repeated the calculation of the resonant frequency using a more precise numerical method described in \cite{Huo2010}. In the usable range of interest, the difference between the results from both methods differed by less than 2\%, indicating that \autoref{eq:fres} is adequate for the modeling of the scanner.
+
+As we can derive from equation \ref{eq:EB} and \ref{eq:fres}, the resonance frequency increases quadratically with the diameter of the fiber. Therefore, by choosing a fiber with \SI{80}{\micro\meter} instead of the standard \SI{125}{\micro\meter}, the resonance frequency can be lowered by a factor of 60\%.
 
 The resonant frequency of a cantilever formed by a \SI{80}{\micro\meter} fused silica fiber with the chosen GRIN lens is computed in Figure \ref{fig:freq} using Equations \ref{eq:EB} and \ref{eq:fres}.
 
 \begin{figure}[h!]\centering
       \includegraphics[width=10cm]{figures/30_DesignSimulation/Mechanical/fres/fres.pdf}
-      \caption{Resonant frequency of the scanner as a function of the scanning tip length (fiber + GRIN lens). The chosen working point is labeled in the plot.}
+      \caption{Resonant frequency of the scanner as a function of the total scanning tip length ($L_\mathrm{fiber} + L_\mathrm{GRIN}$). The chosen working point is labeled in the plot.}
       \label{fig:freq}
 \end{figure}
 
-As the scanner is buried in a \SI{1}{\milli\meter} channel, the maximum displacement of the GRIN lens is limited to $\pm\SI{325}{\micro\meter}$. Within that small displacement we want to achieve the maximum angular deflection of the GRIN lens to maximize the FOV, what can be achieved by using shorter fiber lengths. This shows a trade-off with the density of sampling $N_\mathrm{T}$, which is increased with longer fiber lengths. To balance those terms, we chose a a total scanner length of \SI{4.5}{\milli\meter}, with characteristics summarized in Table \ref{tab:mech}.
+In order to select the length of the scanner there are two things to consider. As the scanner is buried in a \SI{1}{\milli\meter} channel, the maximum displacement of the GRIN lens is limited to $\pm\SI{325}{\micro\meter}$. Within that small displacement we want to achieve the maximum angular deflection of the GRIN lens to maximize the FOV, what can be achieved by using shorter fiber lengths. This shows a trade-off with the density of sampling $N_\mathrm{T}$, which is increased with longer fiber lengths. To balance those terms, we chose a a total scanner length of \SI{4.5}{\milli\meter}, which fulfills all the before-mentioned requirements, as \autoref{tab:mech} shows. 
 
 \begin{table}[h!]\centering
 	\begin{tabular}{rl}\\
@@ -304,27 +306,25 @@ As the scanner is buried in a \SI{1}{\milli\meter} channel, the maximum displace
 		\textbf{Max. angular deflection} & \SI{5}{\degree} \\ 
 		\hline
 	\end{tabular} 
-    \caption{Mechanical characteristics of the fiber scanner.}
+    \caption{Mechanical characteristics of the fiber scanner at its designed working point.}
     \label{tab:mech}
 \end{table}
 
 \subsection{COMSOL simulation}
 
-In order to validate the theoretical analysis of the previous section, we performed a multiphysics finite element analysis using COMSOL. For that matter, the actuator was modeled as a radially polarized piezoelectric material (\textit{PIC 151}) and the rest of the structure as elastic material. The excitation voltage is a sinusoidal symmetrical potential between the top and bottom electrodes of the tube. 
+In order to validate the theoretical analysis of the previous section, a multiphysics finite element analysis was performed using \textit{COMSOL}. For that matter, the actuator was modeled as a radially polarized piezoelectric material (\textit{PIC 151}) and the rest of the structure as fused silica. The excitation voltage is a sinusoidal symmetrical potential between the top and bottom electrodes of the tube. Note that, as the system undergoes small deflections, it is simulated assuming linear behavior \cite{Fertis2006} without incurring in important deviations.
 
-As the system undergoes small deflections, it is simulated assuming linear behavior \cite{Fertis2006}.
-
-The first step is to simulate the resonant frequency of the system. Performing an \textit{Eigenfrequency} study, we obtain a first mode resonance at \SI{762}{\hertz}, which closely matches our analytical estimation of \SI{770}{\hertz}. The mode shape at resonance is shown in Figure \ref{fig:defle}.
+As the first step, the resonant frequency of the system is simulated. An Eigenfrequency study calculates the first mode resonance at \SI{762}{\hertz}, which closely matches the analytical estimation of \SI{770}{\hertz}. The mode shape at resonance is shown in Figure \ref{fig:defle}, where it can be observed that the actuator and the base of the fiber are almost static, confirming the resonant behavior of the scanner.
 
 \begin{figure}[h!]\centering
       \includegraphics[width=10 cm]{figures/30_DesignSimulation/Mechanical/deflection.pdf}
-      \caption{COMSOL simulation showing a cross section of the scanner at resonance at its maximum amplitude. The deformed structure is color coded showing the total displacement from the rest position (shown outlined). The base of the fiber (close to the actuator) is almost static, confirming the resonant behavior of the scanner.}
+      \caption{COMSOL simulation showing a cross section of the scanner at resonance at its maximum amplitude. The deformed structure is color coded showing the total displacement from the rest position (shown outlined). }
       \label{fig:defle}
 \end{figure}
 
 %Note that, as the system is working at its resonance, it is very difficult to simulate the oscillation amplitude, as it depends on its damping factor which should be obtained experimentally. Thus, for the simulation, this value was chosen to fit the expected deflection. 
 
-Thanks to the multiphysics simulation, we can also check the electric field distribution inside the piezoelectric tube. As can be seen in Figure \ref{fig:field}, for a symmetrical actuation in the left and right electrodes with a voltage of $\pm \SI{75}{\volt}$, most of the volume under those electrodes experiences a field magnitude close to the expected theoretical value $E=U/d = \SI{75}{\volt}/\SI{150}{\micro\meter} = \SI{500}{\volt/\meter}$, which is under the safe operating field of \textit{PIC 151}, ranging from $ +\SI{1000}{\volt/\meter}$ to $ -\SI{700}{\volt/\meter}$. Only some fringe areas exceed these values, which could become depolarized with time.
+Thanks to the multiphysics simulation, it is also possible to check the electric field distribution inside the piezoelectric tube. As can be seen in Figure \ref{fig:field}, for a symmetrical actuation in the left and right electrodes with a voltage of $\pm \SI{75}{\volt}$, most of the volume under these electrodes experiences a field magnitude close to the expected theoretical value $E=U/d = \SI{75}{\volt}/\SI{150}{\micro\meter} = \SI{500}{\volt/\meter}$, which is under the safe operating field of \textit{PIC 151}, ranging from $ +\SI{1000}{\volt/\meter}$ to $ -\SI{700}{\volt/\meter}$. Only some fringe areas exceed these values, which could become depolarized with time.
 \begin{figure}[h!]\centering
       \includegraphics{figures/30_DesignSimulation/Mechanical/field.pdf}
       \caption{Magnitude of the electrical field inside a cross-section of the piezoelectric tube with an excitation voltage of $\pm \SI{75}{\volt}$.}.
