@@ -26,16 +26,20 @@ Introduction --------------------------------------------------------
 Theory --------------------------------------------------------------
 	
 	Optics
-		Point Scanned Imaging (General)
-			Confocal 
-			OCT (-> Sklarenko)
+		Fiber microscope
+			
+		OCT (-> Sklarenko)
+
+		Measurement of optical performance
+			What is MTF
+			How to measure (edge)
 
 	Mechanics - Piezo tube fiber scanners
 		Resonant Beam
+		
 		Piezoelectric Tube Actuator (-> Meinert)
 			Driving
 			[cross section]
-
 
 
 Design & Simulation  ------------------------------------------------
@@ -63,6 +67,13 @@ Design & Simulation  ------------------------------------------------
 		COMSOL simulation (Prove radiant point source)
 		Spiral scanning
 
+	Spiral Scanning
+		Signal generation (Modulation etc)
+		Semi-resonant operation (ellipse etc)
+		[Spiral Pattern], [Measurement setup]
+				Npx, quantization
+		Limitations: Aliasing of fmod into resonance!
+
 	Overview of design
 		[CAD with notes]
 	
@@ -87,34 +98,24 @@ Fabrication and Assembly --------------------------------------------
 		Steps
 
 
-Measurements (?) ----------------------------------------------------
-	
-	Electronics
-		PZT Driver (Floating source emulation)
+Experimental Characterization (?) ----------------------------------------------------
+	Setup and Methods	
 
 	Fiber scanner characterization
-		Res freq, angular displacement
-		Freq response, coupling of eigendirections
-
-	Spiral Scanning
-		Signal generation (Modulation etc)
-		Semi-resonant operation (ellipse etc)
-		[Spiral Pattern], [Measurement setup]
-		Limitations: Aliasing of fmod into resonance!
+		Res freq, angular displacement, losses, backreflections
+		% Freq response, coupling of eigendirections
 
 	Confocal Imaging
 		[Measurement setup]
 		LUT calibration
-		Npx, resolution, quantization
+		Resolution chromium edge 
 		Samples
 
 	OCT
 		[Measurement setup]
-		Backreflections 
 		Samples
 		Biological samples
-		Overlay OCT / confocal
-
+		% Overlay OCT / confocal
 
 Conclusion & Outlook ------------------------------------------------
 	

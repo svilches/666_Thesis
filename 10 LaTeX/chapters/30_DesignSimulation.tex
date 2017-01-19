@@ -231,35 +231,55 @@ To conclude the \textit{Design and Simulation} chapter, the most important chara
     \label{tab:simRes}
 \end{table}
 
-
+%%*****************************************************************************
+\section{Image acquisition: Spiral Scanning}
+\label{sec:spiralScanning}
 %%*****************************************************************************
 
+As described in the previous section, the OCT optical setup samples the object at only a single point. Thus, the focus point has to be 2D-scanned over the surface of the sample to obtain 3D OCT images.
+
+A very compact solution to achieve this are resonant fiber scanners. These devices use the concept of mechanical resonance to amplify 100-fold the subtle movement of a piezoelectric actuator into a big displacement and angular deflection of the tip of a scanning fiber. 
+
+As any resonant system, the movement of the scanning fiber is constrained to harmonic oscillations within a frequency close to its resonance frequency $f_\mathrm{res}$. This requirement constraints the possible scanning patters to harmonic movements at $f_\mathrm{res}$, excluding then  raster scanning, which require at least an axis working out of resonance. Then, conventional alternatives are Lissajous \cite{Moon2010} and spiral scanning. In order to ease the reconstruction of the image, this work implements the latter.
+
+The following pages describe the concept of spiral scanning, its characteristics, limitations and implementation.
+
+%%*****************************************************************************
+\subsection{Driving and Acquisition}
+%%*****************************************************************************
+The piezoelectric tube which drives the scanner has four outer gold electrodes to control the lateral movement of the scanner, as described in \autoref{ch:theory}. Two independent voltage sources control the vertical and horizontal movement of the actuator by addressing the corresponding pair of electrodes. If sine and cosine signals of the same frequency $\omega_\mathrm{drive}$ are used to drive the scanner, the GRIN lens will oscillate in a circle of constant radius. If now the amplitude of these signals is modulated, the resultant trajectory will be spiral, as illustrated in \autoref{fig:PZTDriving}.
+
+\begin{figure}[h!]\centering \includegraphics{figures/30_DesignSimulation/spiralScanning/PZTDrivingMoving.pdf}
+      \caption{Schematic of the piezoelectric tube, fiber, GRIN and objective lens focusing the OCT beam (red) in a plane. 
+      The piezoelectric tube is driven with two independent amplitude modulated sine and cosine signals to generate a spiral pattern, used to acquire an image. }
+      \label{fig:PZTDriving}
+\end{figure}
+
+During the full period of the spiral pattern $T_\mathrm{spiral}=f_\mathrm{mod}^{-1}$ , two complete frames are acquired, one while the spiral grows, another while it shrinks. The whole pattern can be divided in $N_\mathrm{rings} = f_\mathrm{drive}/f_\mathrm{mod}$ individual rings, as depicted in \autoref{fig:spiralScanningNT}, each one acquired in a period $T_\mathrm{ring}=f_\mathrm{drive}^{-1}$. Thus the number of sample points that can be acquired in an individual ring
+\begin{figure}[h!]\centering
+      \includegraphics[width=4cm]{figures/30_DesignSimulation/spiralScanning/spiralScanningNT.pdf}
+      \caption{Section of a spiral trajectory highlighting two different rings. The $N_\mathrm{T}$ black dots represent the sampling points of each ring. Notice that in the inner ring the sampling density is greater than in the outer one.}
+      \label{fig:spiralScanningNT}
+\end{figure}
+\begin{equation}
+N_{T} = \frac{f_\mathrm{s}}{f_\mathrm{drive}}
+\label{eq:nT}
+\end{equation}
+depends only on the driving frequency of the scanner and the sampling frequency of the spectrometer, which is usually constant. This value is very important, as it defines the spatial sampling density. 
+
+In order to fulfill the Nyquist theorem, the spacing between two adjacent sample points should be smaller than the Airy radius of the laser spot (refer to \autoref{ch:Theory}). This condition is easily fulfilled in the inner rings of the spiral, as there the focus spot has a small speed, but as the radius of the spiral grows, so does the scanning speed and therefore the distance between sample points, as seen in \autoref{fig:spiralScanningNT}.
+
+It is clear then that spiral scanning shows a non-uniform sampling distribution across the imaging field. Thus, to avoid undersampling in the outer areas, the number of samples per ring $N_\mathrm{T}$ should be as high as possible. As OCT systems have a relatively small sampling frequency ($\sim$\SI{100}{\kilo\hertz}), we need to decrease the resonant frequency below \SI{1}{kHz} to achieve more than 100 acquired points per ring of the spiral.
+
+
+%%*****************************************************************************
 \section{Mechanical Design}
 \label{sec:mechDesign}
 %%*****************************************************************************
+As explained in the previous section, in any resonant system, its geometrical and mechanical characteristics fully define the operating frequency range, and with it, constrain the way we can sample and acquire the final image.
 
-In the following paragraphs the behavior of the fiber scanner is mechanically modeled, and this information used to choose the most relevant fabrication parameters.
+In the following paragraphs the behavior of the fiber scanner is mechanically modeled, and this information used to choose the most relevant fabrication parameters leading to an adequate resonant frequency for OCT.
 
-The fiber scanner uses the concept of mechanical resonance to amplify 100-fold the subtle movement of the piezoelectric tube into a big displacement and angular deflection of the GRIN lens at the tip of the scanning fiber. Therefore, as in any resonant system, its geometrical and mechanical characteristics fully define the operating frequency range, and with it, constrain the way we can sample and acquire the final image.
-
-\begin{figure}[h!]\centering
-      \includegraphics[width=12cm]{figures/30_DesignSimulation/Mechanical/spiralScanningNT.pdf}
-      \caption{Schematic of the piezoelectric tube, fiber, GRIN and objective lens focusing the OCT beam (red) in a plane. The beam describes a spiral trajectory to acquire an image. The $N_\mathrm{T}$ black dots represent the sampling points of the outermost ring of the spiral.}
-      \label{fig:spiralScanningNT}
-\end{figure}
-
-As a resonant system, the movement of the scanning fiber is constrained to harmonic oscillations with a frequency close to $f_\mathrm{resonance}$. If the scanner is moving in a spiral, as depicted \autoref{fig:spiralScanningNT}, in which each ring is scanned in a period $T$, the number of sample points 
-\begin{equation}
-N_{T} = \frac{f_\mathrm{sampling}}{f_\mathrm{resonance}}
-\label{eq:nT}
-\end{equation}
-that can be acquired in this circle depend on the resonant frequency of the scanner and the sampling frequency of the OCT system.
-
-
-
-As OCT systems have a relatively small sampling frequency ($\pm$\SI{100}{\kilo\hertz}), we need to decrease the resonant frequency below \SI{1}{kHz} to achieve more than 100 acquired point per ring of the spiral. 
-
-The following paragraphs describe how to calculate and reduce this frequency.
 
 \subsection{Resonant frequency calculation}
 Following the Euler-Bernoulli theory \cite{MarcJ.Madou2011}, the spring constant for a fixed-free, point loaded cantilever is given by 
@@ -330,8 +350,23 @@ Thanks to the multiphysics simulation, it is also possible to check the electric
       \caption{Magnitude of the electrical field inside a cross-section of the piezoelectric tube with an excitation voltage of $\pm \SI{75}{\volt}$.}.
       \label{fig:field}
 \end{figure}
+      
+      
+%%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%%*****************************************************************************
+\clearpage
+\section{Overview of the Design}
+%%*****************************************************************************
+%%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+To conclude this chapter, Figure \ref{fig:overview} shows the complete design of the demonstrator probe used to evaluate the performance of the fiber scanner design and the optical system of the OCT beam path. 
 
+\begin{figure}[h!]\centering 
+\includegraphics[width=\columnwidth]{figures/40_Fabrication/overview.pdf}
+      \caption{CAD of the single modality demonstrator with the top of the housing removed. Total length: \SI{9}{\milli\meter}.}
+      \label{fig:overview}
+\end{figure}
 
+The design can be summarized as follows: The piezoelectric actuator has four outer gold electrodes to control the lateral movement of the scanner. The addressing of these electrodes is realized by a ribbon cable, which is wrapped around the piezoelectric tube. The single mode fiber is centered in the piezoelectric tube and the GRIN lens bonded to the tip of this fiber. 
 
-
+This arrangement enables a compact fiber scanner with a total length of \SI{9}{\milli\meter} and a resonance frequency of \SI{750}{\hertz} optimized for an OCT system with an A-Scan repetition rate of \SI{100}{\kilo\hertz}.
 
