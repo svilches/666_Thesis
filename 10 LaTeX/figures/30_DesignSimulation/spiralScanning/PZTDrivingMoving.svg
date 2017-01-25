@@ -207,9 +207,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="-0.12640603"
-     inkscape:cy="198.0876"
+     inkscape:zoom="1.979899"
+     inkscape:cx="246.36954"
+     inkscape:cy="117.44558"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -217,9 +217,9 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="1920"
+     inkscape:window-width="1858"
      inkscape:window-height="1058"
-     inkscape:window-x="1912"
+     inkscape:window-x="54"
      inkscape:window-y="-8"
      inkscape:window-maximized="1" />
   <metadata
@@ -704,12 +704,12 @@
            y="64.991722"
            style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:'Arial Italic'"><tspan
    style="font-style:normal"
-   id="tspan4346">sin</tspan>(ω<tspan
+   id="tspan4346">sin</tspan>(2πf<tspan
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.74960899px;font-family:Arial;-inkscape-font-specification:'Arial Italic';baseline-shift:sub"
    id="tspan10538">mod</tspan>t)<tspan
    style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:'Arial Bold Italic'"
-   id="tspan10573">sin</tspan>(ω<tspan
-   style="font-size:9.74960899px;baseline-shift:sub;font-style:normal"
+   id="tspan10573">sin</tspan>(2πf<tspan
+   style="font-style:normal;font-size:9.74960899px;baseline-shift:sub"
    id="tspan10541">drive</tspan>t)</tspan></text>
       <path
          inkscape:connector-curvature="0"
@@ -1072,12 +1072,12 @@
            y="287.70297"
            style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:'Arial Italic'"><tspan
    style="font-style:normal"
-   id="tspan4348">sin</tspan>(ω<tspan
+   id="tspan4348">sin</tspan>(2πf<tspan
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.7499609px;font-family:Arial;-inkscape-font-specification:'Arial Italic';baseline-shift:sub"
    id="tspan10538-6">mod</tspan>t)<tspan
    style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:'Arial Bold Italic'"
-   id="tspan10571">cos</tspan>(ω<tspan
-   style="font-size:9.7499609px;baseline-shift:sub;font-style:normal"
+   id="tspan10571">cos</tspan>(2πf<tspan
+   style="font-style:normal;font-size:9.7499609px;baseline-shift:sub"
    id="tspan10541-2">drive</tspan>t)</tspan></text>
     </g>
   </g>

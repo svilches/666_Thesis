@@ -13,101 +13,117 @@
 \section{Fiber Scanner Characterization}
 %%*****************************************************************************
 
+Three single modality demonstrator probes were assembled to test the repeatibility of the process.  For each probe, a characterization step was performed in order to measure its resonance frequency, laser coupling efficiency, backreflectivity and maximum unobstructed field of view. These results are summarized in \autoref{tab:char}.
+
 \begin{table}[h!]\centering
-\begin{tabular}{rccc}
-& \textbf{Probe A} & \textbf{Probe B} & \textbf{Probe C} \\ 
+\begin{tabular}{rcccc}
+& 							\textbf{Design Value}&\textbf{Probe 1} & \textbf{Probe 2} & \textbf{Probe 3} \\ 
 \hline
-Resonant Frequency [\SI{}{\hertz}] & 765 & 842 & 744 \\ 
-Coupling Efficiency & 0.61 & 0.58 & 0.53 \\ 
-Backreflectivity [\%]& 0.04 & 0.018 & 0.011 \\ 
-Field of View [\SI{}{\milli\meter}]& 1.2 & 1.2 & 1.1 \\ 
+Cantilever Length [\SI{}{\milli\meter}] & 	4.5		& 	4.45 	& 	4.44	& 	4.10	\\
+Field of View [\SI{}{\milli\meter}]		&	1.3		&	1.1	 	&	1.2 	& 	1.2  	\\ 
+Resonant Frequency [\SI{}{\hertz}]  	&	762		& 	744		&	765 	& 	842 	\\ 
+Coupling Efficiency  					&	-		& 	0.53	&	0.61 	&	0.58 	\\ 
+Backreflectivity [\%] 					&	-		& 	0.011	&	0.04 	& 	0.018 	\\ 
+\hline
 \end{tabular} 
-\caption{Optomechanical characteristics of three assembled single modality probes.}
-    \label{tab:simRes}
+\caption{Optomechanical characteristics of three assembled single modality probes compared with their expected values, calculated for a cantilever length of \SI{4.5}{\milli\meter}.}
+\label{tab:char}
 \end{table}
-
-Finding operating point\cite{Fertis2006}
-
-
-%Freq response, coupling of eigendirections
-%
-%\begin{figure}[h!]\centering \includegraphics[width=10cm,draft]{figures/foo.png}
-%      \caption{Pattern of single axis actuation VS Freq}
-%      %\label{}
-%\end{figure}
-%
-%
-%\begin{figure}[h!]\centering \includegraphics[width=10cm,draft]{figures/foo.png}
-%      \caption{Bode plot}
-%      %\label{}
-%\end{figure}
+\begin{itemize}
 
 
+\item \textbf{Cantilever Length:} The catilever length which was varied between \SI{4.10}{\milli\meter} and \SI{4.45}{\milli\meter} to test the behavior of the scanner under different parameters. 
 
+\item \textbf{Field of View:} At certain scanning amplitude, the laser beam becomes shadowed by the edges of the optical components. In the case of the single modality probe, this happens due to the walls of the housing, limiting the FoV to \SI{1.3}{\milli\meter}. Any misalignment between the optical axis of the scanner and the symmetry axis of the housing further reduces the FoV, due to decentering.
 
-%%*****************************************************************************
+\item \textbf{Resonant Frequency:} The resonance frequency was measured by driving the scanner with a sweeping sinusoidal signal and observing the  the amplitude of oscillation. The variability of the cantilever length explains the change of the resonant frequency: shorter cantilevers exhibit lower resonance frequency, as their stiffness is higher. It can be seen that for Probes 1 and 2, whose cantilever length is close to the designed \SI{4.5}{\milli\meter}, their resonant frequency is within 3\% of the expected \SI{762}{\hertz}. 
 
-\section{Scanned Imaging}
-%%*****************************************************************************
+\item \textbf{Coupling Efficiency:} This value was calculated by measuring the intensity of the beam exiting the probe and dividing it by the output power of the light source at its output fiber connector. Thus, the coupling efficiency measurement includes the losses from the FPC fiber connector, fiber interfaces and backreflections. It is believed that the main source of loss is the connector, which have variable losses up to 30\%, heavily depending on the quality of the polishing of the fiber facet. 
 
-Once that a suitable set of driving parameters has been found for each probe, and the scanner is performing an spiral pattern, the first step to assess the system is to couple light into the probe and measure the intensity of light which is backreflected from the sample. Then, by knowing the backreflected intensity at each point of the spiral it is possible to reconstruct an image of the sample. This imaging technique is thus denominated fiber-optical confocal scanning microscope, whose theory of operation is described in \autoref{ch:theory}.
+\item \textbf{Backreflectivity:}In order to measure the backreflected light intensity it is necessary to send and receive light through the scanning fiber. To achieve this, is it possible to reuse a FD-OCT measurement setup with some modifications. As seen in \autoref{fig:confSetup}, broadband infrared light with a center wavelength of $\lambda_o = \SI{1311}{\nano\meter}$ and a bandwidth of $\Delta \lambda = \SI{90}{\nano\meter} $ from an SLED is coupled to a circulator, which forwards it to the probe. Any light which is backreflected inside the probe, together with backscattered light from the sample is coupled back to the fiber and forwarded by the circulator to the photodetector. In case that the probe is pointing to free space, only the backreflected light coming from the probe is measured. By dividing this intensity by the source intensity and taking into account the coupling efficiencies of the system, the backreflectivity was measured to be well controlled under 0.02\%. The variability within probes can be attributed to differences in alignment and gluing of the fiber-GRIN.
 
-\subsection{Measurement Setup}
-In order to measure the backreflected light intensity it is necessary to send and receive light through the scanning fiber. To achieve this, is it possible to reuse a FD-OCT measurement setup with some modifications. As seen in \autoref{fig:confSetup}, broadband light is coupled from an SLED to a circulator, which forwards it to the probe. After hitting the sample, some of the backscattered light is coupled back into the probe, and is forwarded by the circulator to the photodetector.
+\end{itemize}
 
 \begin{figure}[h!]\centering \includegraphics[width=12cm]{figures/50_Measurements/conf/setup/confSetup.pdf}
       \caption{Measurement setup used for fiber-optical confocal scanning microscopy. Light originating from the SLED is coupled to the probe through the circulator, while the backscattered light from the sample is coupled to the photodetector.}
       \label{fig:confSetup}
 \end{figure}
 
-\subsection{Data Processing}
-While the probe scans an object with a spiral pattern defined by the driving voltage datapoints $(\mathbf{u_x}[n], \mathbf{u_y}[n])$, the data acquisition system (DAQ) samples a stream of intensities at the photodetector $\mathbf{I}[n]$, as shown in \autoref{fig:confPlotting} a). As these signals are generated and acquired synchronously, we expect that the intensity $\mathbf{I}[i]$ corresponds to a point in object space located at 
+%%*****************************************************************************
+\section{Laser Scanning Microscopy}
+%%*****************************************************************************
+This section explains how it is possible to use the single modality probe as a laser scanning microscope (LSM) and use the acquired images to assess its lateral resolution and depth of field. As LSM and OCT modalities use the same wavelenght, these results are also representative for OCT imaging.
+
+Once that a suitable set of driving parameters has been found for each probe, and the scanner is performing an spiral pattern, the first step to assess the system performance is to couple light into the probe and measure the intensity of light which is backreflected from the sample. Then, by knowing the backreflected intensity at each point of the spiral it is possible to reconstruct an image of the sample. This imaging technique is thus denominated fiber-optical confocal scanning microscope, a sub-type of LSM, whose theory of operation is described in \autoref{ch:theory}.
+
+
+\subsection{Imaging}
+The setup used to measure the backreflectivity of the probe, shown in \autoref{fig:confSetup}, can be used directly for LSM. While the probe scans an object with a spiral pattern defined by the driving voltage datapoints $(\mathbf{u_x}[n], \mathbf{u_y}[n])$, the data acquisition system (DAQ) samples a stream of intensities at the photodetector $\mathbf{I}[n]$, as shown in \autoref{fig:confPlotting} a). As these signals are generated and acquired synchronously, we expect that the intensity $\mathbf{I}[i]$ corresponds to a point in object space located at 
 $(x, y) = K_\mathrm{mech}(\mathbf{u_x}[i], \mathbf{u_y}[i])$, where $K_\mathrm{mech}$ is a mechanical constant that relates the driving voltage of the piezoelectric scanner to the position of the focus spot assuming a linear behavior. 
 
 \begin{figure}[h!]\centering \includegraphics{figures/50_Measurements/conf/proc/Plotting.pdf}
-      \caption{Confocal images}
+      \caption{Different representations of the same acquired datapoints $\mathbf{I}[n]$ using a USAF 1951 resolution test chart: 
+      \textbf{a}: Point cloud assuming ideal movement of the scanner.
+      \textbf{b}: Point cloud after correcting the position of each dot using a lookup table.
+      \textbf{c}: Raster image after performing a 2D interpolation from the data in d.}
       \label{fig:confPlotting}
 \end{figure}
 
-Now, if all the datapoints $\mathbf{I}_{[n]}$ acquired during a full spiral are plotted as a dot located at the position $K_\mathrm{mech}(\mathbf{u_x}[n], \mathbf{u_y}[n])$, the resultant image would look as in \autoref{fig:confPlotting} b): distorted. Notice how the dot plot defines two overlaid swirled images. This proves that the previous assumption is not valid, and thus the relationship between $(\mathbf{u_x}[i], \mathbf{u_y}[i])$ and $(\mathbf{x}[i], \mathbf{y}[i])$ is neither linear nor simple. This effect is caused by the subtle changes in the dynamic behavior of the fiber scanner at different oscillation amplitudes, and is typical of spiral fiber scanners \cite{Seibel2006}.
+Now, if all the datapoints $\mathbf{I}_{[n]}$ acquired during a full spiral are plotted as a dot located at the position $K_\mathrm{mech}(\mathbf{u_x}[n], \mathbf{u_y}[n])$, the resultant image would look as in \autoref{fig:confPlotting}b: distorted. Notice how the dot plot defines two overlaid swirled images. This proves that the previous assumption is not valid, and thus the relationship between $(\mathbf{u_x}[i], \mathbf{u_y}[i])$ and $(\mathbf{x}[i], \mathbf{y}[i])$ is neither linear nor simple. This effect is caused by the subtle changes in the dynamic behavior of the fiber scanner at different oscillation amplitudes, and is typical of spiral fiber scanners \cite{Seibel2006}.
 
 There are two general methods to overcome this problem:
-
 The first one involves closed loop operation, where the information of the current position of the scanner is measured inside the probe and fed to the plotting system \cite{Yeoh2014}. 
+The open loop alternative, used in this work, assumes that the pattern of the focus spot is constant for a given driving signal. Thus, $(x[i], y[i])$ is measured using a position sensitive device (PSD) after the assembly of the probe and stored as a calibration lookup table. 
 
-The open loop alternative, used in this work, assumes that the pattern of the focus spot is constant for a given driving signal. Thus, $(x[i], y[i])$ is measured using a position sensitive device (PSD) after the assembly of the probe and stored as a calibration lookup table. As an example, \autoref{fig:calib} shows the measured values of $(\mathbf{x}[i], \mathbf{y}[i])$ as a point cloud. 
-\begin{figure}[h!]\centering \includegraphics[width=6cm]{figures/50_Measurements/conf/proc/samplingDensity.png}
-      \caption{Confocal images 21 lp/mm}
-      \label{fig:calib}
-\end{figure}
 Once this calibration step is performed, any further frame is plotted by assigning a position $(\mathbf{x}[i], \mathbf{y}[i])$ to every measured intensity $\mathbf{I}[n]$, as depicted in \autoref{fig:confPlotting} c), which results in the dot plot from \autoref{fig:confPlotting} d). This process is performed in real time.
 
-The dot plots which are obtained from spiral scanners have the inconvenient of non-uniform sampling, as can be seen in \autoref{fig:calib}. Thus, to ease the further processing of the acquired images, it is beneficial to convert the non-uniform dot plot into a cartesian matrix. This can be perform by 2D interpolation.
+The dot plots which are obtained from spiral scanners have the inconvenient of non-uniform sampling, as can be seen in \autoref{fig:calib}. Thus, to ease the further processing of the acquired images, it is beneficial to convert the non-uniform dot plot into a cartesian matrix. This can be performed by 2D interpolation (\autoref{fig:confPlotting}e,f).
 
-\subsection{Resolution and Depth of Field Measurement}
+As an example, \autoref{fig:calib} shows the measured values of $(\mathbf{x}[i], \mathbf{y}[i])$ as a point cloud. 
 
-\begin{figure}[h!]\centering \includegraphics{figures/50_Measurements/conf/res/confResMeas.pdf}
-      \caption{Confocal images 21 lp/mm}
-      %\label{}
+\begin{figure}[h!]\centering \includegraphics[width=5cm]{figures/50_Measurements/conf/proc/samplingDensity.png}
+      \caption{measured values of $(\mathbf{x}[i], \mathbf{y}[i])$ as a point cloud. }
+      \label{fig:calib}
 \end{figure}
+
+
+\subsection{Lateral Resolution Measurement}
+The optical performance of the scanner is qualitatively evaluated by capturing a simple 2D image of a USAF 1951 resolution test chart with a spiral scanning pattern and a \SI{1331}{\nano\meter} light source. As can be seen in \autoref{fig:confPlotting}, the elements 4.1 through 4.4 are resolved, indicating a resolution of 22 line pairs/mm or \SI{45}{\micro\meter}. 
+
+A more robust method for the calculation of the optical resolution is detailed in \autoref{sec:PSF}: by capturing a sharp chromium edge of the test chart, the edge spread function (ESF)shown in \autoref{fig:MTF} is obtained. By derivating and then performing a Fourier transform of the ESF, the MTF can be obtained. \autoref{fig:MTF} illustrates the results of this measurement. Based on this curve the lateral resolution of the OCT beam path were determined at 21 line pairs/mm or \SI{47.6}{\micro\meter}. 
+\begin{figure}[h!]\centering \includegraphics{figures/50_Measurements/conf/res/confResMeas.pdf}
+      \caption{Left: Measured edge spread function (ESF) of the OCT beampath for the center of the field of view. 
+      Right: Corresponding MTF compared with the theorical limit using the theory from \autoref{sec:conf}.}
+      \label{fig:MTF}
+\end{figure}
+A good concordance is observed between the shape of the analytical and the measured MTF curves of the scanning modality. However, the overall performance is reduced by 10\% compared to the simulation. This deviation can be explained by small misalignments of the optical components induced by the process tolerances of the 3D-printed housing. Since a better alignment can be achieved in the silicon micro bench due to the higher precision of the MEMS processes a better match between simulation and reality can be expected.
+
+%%*****************************************************************************
+\subsection{Depth of Field Measurement}
+%%*****************************************************************************
+The depth of field (DoF) of the OCT imaging system can me determined by measuring how much light is backreflected upon a mirror while moving it though the z axis. As seen in \autoref{fig:FWHM}, the full width half maximum (FWHM) DoF is \SI{3.5}{\milli\meter}. This value closely matches the maximum imaging depth of the OCT measurement setup, \SI{3}{\milli\meter}. 
 
 \begin{figure}[h!]\centering \includegraphics{figures/50_Measurements/conf/res/PSFz.pdf}
-      \caption{d}
-      %\label{}
+      \caption{Measurement of the axial resolution of the single modality probe. The intensity of the light coupled back into the optical system after reflection on a mirror is plotted against the translation of the mirror by $\pm \SI{4.5}{\milli\meter}$ from the focal plane of the probe. }
+      \label{fig:FWHM}
 \end{figure}
+
 
 %%*****************************************************************************
 \clearpage
 \subsection{OCT Imaging}
 %%*****************************************************************************
-\begin{figure}[h!]\centering \includegraphics{figures/50_Measurements/oct/octSetup.pdf}
+
+
+In addition, first OCT tests were performed as a proof of concept. Therefore, first circular B-Scans were captured with a swept-source OCT system of the Medical University Vienna. This system is operating with a center wavelength of \unit[1.34]{\textmu m}, a bandwith of \unit[37]{nm} and a theoretical axial resolution in air of \unit[26.9]{\textmu m}. \autoref{fig:B-Scan} shows a first circular B-Scan of a colon polyp captured with the single modality demonstrator and the measurement arrangement. 
+
+\begin{figure}[h!]\centering \includegraphics[width=12cm]{figures/50_Measurements/oct/octSetupVienna.pdf}
       \caption{Measurement setup}
       %\label{}
 \end{figure}
 
 
-Biological samples
-\begin{figure}[h!]\centering \includegraphics[width=12cm]{figures/50_Measurements/oct/Measurement_arrangement.png}
-      \caption{Biological samples: Vienna B-scan}
-      %\label{}
+\begin{figure}[h!]\centering \includegraphics{figures/50_Measurements/oct/Measurement_arrangement.pdf}
+      \caption{a) Illustration of the measurement arrangement for the circular B-Scan used as a proof of concept. b) Image of a circular B-Scan of a colon polyp with a diameter $d=0.8\,\text{mm}$. Structural changes within the tissue can be detected and at the current state of the investigation the images suggest that blood vessels can be detected.}
+      \label{fig:B-Scan}
 \end{figure}
