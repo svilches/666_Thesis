@@ -22,7 +22,7 @@ The OCT microscope should fulfill the following requirements:
 \paragraph{Mechanical Requirements} 
 \begin{itemize}
 
-\item The scanner, electrical connections and optics should fit in a channel with a $\SI{1}{\milli\meter} \times \SI{1}{\milli\meter}$ cross section located in the lower level of the multimodal bench. This way the total cross section of the endoscope can be kept below $3 \times \SI{2}{\milli\meter^2}$). 
+\item The scanner, electrical connections and optics should fit in a channel with a $\SI{1}{\milli\meter} \times \SI{1}{\milli\meter}$ cross section located in the lower level of a multimodal bench. This way the total cross section of the endoscope can be kept below $3 \times \SI{2}{\milli\meter^2}$). 
 \item Its length should be minimized to allow its integration in flexible-head endoscopes.
 \item The field of view should be maximized for a 2 mm diameter objective lens, that is shared with the endomicroscopy beam path.
 \item The scanning speed should be adequate for the sampling rates characteristic of SD-OCT ($\sim \SI{100}{\kilo\hertz} $).
@@ -33,7 +33,7 @@ The OCT microscope should fulfill the following requirements:
 
 \begin{itemize}
 \item The microscopy and OCT imaging fields should be coaxial to avoid parallax errors. 
-\item The OCT field should be distal-side telecentric to avoid field curvature distortions.
+\item The OCT field should be telecentric to avoid field curvature distortions.
 \item The lateral resolution and depth of field should be adequate for OCT i.e. with numerical aperture ranging from 0.02 to 0.05.
 \item The backreflections inside the probe should be minimized to reduce any loss of contrast and penetration depth.
 \end{itemize}
@@ -44,21 +44,21 @@ The OCT microscope should fulfill the following requirements:
 \section{Design overview}
 %%*****************************************************************************
 
-The main challenge of this work is to design an OCT scanning mechanism compact enough to be placed in a thin, buried channel of a multimodal probe.  Although it is theoretically possible to keep a scanner at the proximal end of the endoscope and use a coherent fiber bundle (CFB) as a relay, there are inherent drawbacks of this method, such as low light throughput, cross-talk and mechanical rigidity \cite{Ford2009}. 
+The main challenge of this work is to design an OCT scanning mechanism compact enough to be placed in a thin, buried channel of a multimodal probe.  Although it is theoretically possible to keep a scanner at the proximal end of the endoscope and use a coherent fiber bundle as a relay, there are inherent drawbacks of this method when applied for OCT, such as low light throughput, cross-talk and mechanical rigidity \cite{Ford2009}. 
 
 Another challenging requirement is the superposition of the images acquired by the different modalities. If the optical axes are not coaxial, the fields will be shifted and tilted due to parallax error --- which gains importance at the small working distances common in endoscopy.
 
-To overcome these problems, and taking into account the above-mentioned requirements, we propose a design based on the HYAZINT multimodal probe \cite{Kretschmer}. By creating a two layer microbench, it is possible to bury the OCT resonant fiber scanner in the bottom level and merge both modalities in the top level using a beamsplitter. An schematic of this mechanism can be seen in \autoref{fig:bimodalSketch}.
+To overcome these problems, and taking into account the above-mentioned requirements, we propose a design based on the HYAZINT multimodal probe \cite{Blattmann2016}. By creating a two layer microbench, it is possible to bury the OCT resonant fiber scanner in the bottom level and merge both modalities in the top level using a dichroic beamsplitter. An schematic of this mechanism can be seen in \autoref{fig:bimodalSketch}.
 
 \begin{figure}[h!]\centering
       \includegraphics{figures/30_DesignSimulation/Overview/crossSection.pdf}
-      \caption{Schematic of the MEMS endomicroscope. Two glass lenses glued directly to the dichroic beamsplitter cube form the full field microscopy beam path. A silicon aperture is used to reduce the spherical aberrations. Buried beneath the full field optics, a single mode fiber glued to a collimating GRIN lens forms the OCT channel. The single-mode fiber is fixed in a piezoelectric tube to create a fiber scanner enabling 3D OCT. A reflecting micro-prism glued to a dichroic beamsplitter cube combines the two beam paths.}
+      \caption{Schematic of the MEMS endomicroscope based on the HYAZINT probe \cite{Blattmann2016}. Two glass lenses glued directly to the dichroic beamsplitter cube form the full field microscopy beam path. A silicon aperture is used to reduce the spherical aberrations. Buried beneath the full field optics, a single mode fiber glued to a collimating GRIN lens forms the OCT channel. The single-mode fiber is centered in a piezoelectric tube to create a fiber scanner enabling 3D OCT. A reflecting micro-prism glued to a dichroic beamsplitter cube combines the two beam paths.}
       \label{fig:bimodalSketch}
 \end{figure}
 
-The base of the microbench with dimensions of $13 \times 2 \times \SI{1}{\milli\meter^3} $ is realized by standard silicon bulk micromachining. On the top layer, the bench accommodates the full field imaging optics that consists of a dichroic beamsplitter cube with dimensions of $2\times 2 \times  \SI{2}{\milli\meter^3}$ to separate the two beam paths and two plano-convex lenses with \SI{2}{\milli\meter} diameter, which form a full field microscope. To achieve a highly compact opto-mechanical design, the components of the OCT beam path are buried within a cavity in the base of the micro bench. On the bottom layer a gradient index lens (GRIN lens) with a diameter of \SI{350}{\micro\meter} is directly glued to the tip of a \SI{80}{\micro\meter} single mode fiber to collimate the infrared light of the OCT system with a center wavelength of $\lambda_o = \SI{1311}{\nano\meter}$ and a bandwidth of $\Delta \lambda = \SI{90}{\nano\meter} $. A spiral scanning of the OCT beam path is achieved by an angular scanner implemented using a piezoelectric tube actuator.
+The base of the microbench with dimensions of $13 \times 2 \times \SI{1}{\milli\meter^3} $ is realized by standard silicon bulk micromachining. On the top layer, the bench accommodates the full field imaging optics that consists of a dichroic beamsplitter cube with dimensions of $2\times 2 \times  \SI{2}{\milli\meter^3}$ to separate the two beam paths and two plano-convex lenses with \SI{2}{\milli\meter} diameter, which form a full field microscope. To achieve a highly compact opto-mechanical design, the components of the OCT beam path are buried within a cavity in the base of the micro bench. On the bottom layer a gradient index lens (GRIN lens) with a diameter of \SI{350}{\micro\meter} is directly glued to the tip of a \SI{80}{\micro\meter} single mode fiber to collimate the infrared light of the OCT system with a center wavelength of $\lambda_o = \SI{1311}{\nano\meter}$. A spiral scanning of the OCT beam path is achieved by an angular scanner implemented using a piezoelectric tube actuator.
 
-This actuator, called resonant fiber scanner, is able to scan a collimated beam by more than $\pm \SI{5}{\degree}$ by mechanically amplifying the subtle vibration of a piezoelectric actuator.  An objective lens focuses the beam on the tissue and transforms the angular displacement into a translation. By driving the scanner in two axes with two sinusoids at different phases, it is possible to sample a 2D area of the object in a spiral fashion, as explained in detail in Section \ref{sec:Optical}.
+This actuator, called resonant fiber scanner, is able to scan a collimated beam by more than $\pm \SI{5}{\degree}$ by mechanically amplifying the subtle vibration of a piezoelectric actuator.  An objective lens focuses the beam on the tissue and transforms the angular displacement into a translation. By driving the scanner in two axes with two sinusoids at different phases, it is possible to sample a 2D area of the object in a spiral fashion \cite{Seibel2006}, as explained in detail in Section \ref{sec:Optical}.
 
 The rest of this chapter shows the design and development of the OCT imaging path for the multi-modal probe. However, in order to independently test the behavior of the OCT scanner and optics, a single modality probe was fabricated as a demonstrator. Both systems are mechanically and optically equivalent -- the only difference is the presence of the beam splitter. 
 For completeness, both multi-mode and single-mode optical systems are described.
@@ -78,10 +78,9 @@ This section explains in detail the design of the OCT optics and its scanning me
 The OCT beam path is designed as an distal-side telecentric system to avoid distortions in the 3D OCT measurement. To achieve this, the fiber scanner is driven with small angles and is positioned such that the lateral and angular movement of the scanner imitates the beam angles that can be observed in the collimated region of a classical telecentric lens system. Figure \ref{fig:fps} illustrates this approach. The whole scanner is buried in a channel with a inner diameter of \SI{1}{\milli\meter} limiting the movement of the scanner to a maximum angle $\theta$ of \SI{5}{\degree} that allows a maximum FOV of \SI{1}{\milli\meter} of the OCT beam path.
 
 
-
 \begin{figure}[h!]\centering \includegraphics[width=\columnwidth]{figures/30_DesignSimulation/fps.pdf}
       \caption{\textbf{a)} Illustration of a classical telecentric system. The height of the object is translated into an angle $\theta$ in the collimated region between the two lenses. This angle is again translated into a corresponding image height by the second lens.
-      \textbf{b)} Illustration of the OCT beam path using a fiber scanner in first resonance mode without micro prism and BS. The movement of the GRIN lens due to the fiber scanner and the distance between the GRIN lens and the focusing lens creating the same optical behavior as it can be observed in a classical object sided telecentric system. \\ \textbf{c)} Nomenclature used in this work.}
+      \textbf{b)} Illustration of the OCT beam path using a fiber scanner in first resonance mode without micro prism and BS. The movement of the GRIN lens due to the fiber scanner and the distance between the GRIN lens and the focusing lens creating the same optical behavior as it can be observed in a classical distal-sided telecentric system. \\ \textbf{c)} Nomenclature used in this work.}
       \label{fig:fps}
 \end{figure}
 
@@ -94,33 +93,33 @@ For the scanner to work as a Fourier plane scanner, at any point of the oscillat
 \end{figure}
 
 
-In a Fourier plane scanner, the numerical apertures and focal lengths of the scanning and objective lens are related by the diameter of the beam in the intermediate region between both lenses. Thus, based on the schematic of Figure \ref{fig:fps}c, the following geometrical optics relations are obtained: $d_\mathrm{beam} \simeq 2\cdot f_\mathrm{GRIN}\cdot \mathrm{NA}_\mathrm{fiber}$ and $d_\mathrm{beam} \simeq 2 \cdot f_\mathrm{obj}\cdot \mathrm{NA}_\mathrm{OCT}$. By combining them together, the main design equation for the scanner follows:
+In a Fourier plane scanner, the numerical apertures and focal lengths of the scanning and objective lens are related by the diameter of the beam in the intermediate region between both lenses. Thus, based on the schematic of Figure \ref{fig:fps}c, the following geometrical optics relations are obtained: $d_\mathrm{beam} \simeq 2\cdot f_\mathrm{GRIN}\cdot \mathrm{NA}_\mathrm{fiber}$ and $d_\mathrm{beam} \simeq 2 \cdot f_\mathrm{obj}\cdot \mathrm{NA}_\mathrm{OCT}$. By combining them together,
 
 \begin{equation}
 f_\mathrm{GRIN} \cdot \mathrm{NA}_\mathrm{fiber} = f_\mathrm{obj} \cdot \mathrm{NA}_\mathrm{OCT}
 \label{eq:fpsNA}
 \end{equation}
 
-Note that these equations use a small angle approximation valid for small NA: \\ $\tan[	\sin^{-1}(\mathrm{NA})] \simeq \mathrm{NA} $. In this case, as any NA is smaller than 0.25, the error of this simplification is smaller than 2\%.
+the main design equation for the scanner is obtained. Note that these equations use a small angle approximation valid for small NA:  $\tan[\sin^{-1}(\mathrm{NA})] \simeq \mathrm{NA} $. In this case, as any NA is smaller than 0.25, the error of this simplification is smaller than 2\%.
 
 \subsection{Component Selection}
 The design equations that were obtained in the previous section relate all the optical components together. Therefore, once the desired NA is chosen, there is only a free variable available. In this case, the major constraint is given by the commercial availability of the single mode fiber, so the selection of the rest of the components will follow from it.
 
-The only commercially available single mode fiber working in our wavelength range and with thinned cladding diameter (refer to Section \ref{sec:mechDesign}) is \textit{Thorlabs SM980G80}, with a diameter of \SI{80}{\micro\meter} and with $\mathrm{NA_\mathrm{fiber}} = 0.18$ at \SI{1.33}{\micro\meter}. 
+The only commercially available single mode fiber working in our wavelength range and with thinned cladding diameter (refer to Section \ref{sec:mechDesign}) is \textit{Thorlabs SM980G80}, with a diameter of \SI{80}{\micro\meter} and with $\mathrm{NA_\mathrm{fiber}} = 0.18$ at $\lambda = \SI{1.33}{\micro\meter}$. 
 
 In order to collimate the output from the fiber without clipping the gaussian beam, a GRIN lens with an $\mathrm{NA_{GRIN}}$ higher than $\mathrm{NA_{fiber}}$ is needed. A good fit from the GRINTECH catalog is \textit{GT-LFRL-035-024-20-CC (1550)}, with an $\mathrm{NA_\mathrm{GRIN}} = 0.20$ and $\mathit{f_\mathrm{GRIN}} = \SI{0.91}{\milli\meter}$. 
 
-Now, by using the relation in \autoref{eq:fpsNA} we can design $f_\mathrm{objective}$ by choosing an adequate $\mathrm{NA_\mathrm{OCT}}$. To preserve a high depth of field (DOF), allow enough space for the beamsplitter and a long working distance, a narrow $\mathrm{NA_\mathrm{OCT}}$ is is preferred -- in the range of 0.020 - 0.025. By choosing an intermediate $\mathrm{NA_\mathrm{OCT}}$ of 0.022, the focal length of the objective lens 
+Now, by using the relation in \autoref{eq:fpsNA} we can design $f_\mathrm{objective}$ by choosing an adequate $\mathrm{NA_\mathrm{OCT}}$. To preserve a high depth of field (DOF), allow enough space for the beamsplitter and a long working distance, a narrow $\mathrm{NA_\mathrm{OCT}}$ is preferred -- in the range of 0.020 - 0.025. By choosing an intermediate $\mathrm{NA_\mathrm{OCT}}$ of 0.022, the focal length of the objective lens 
 \begin{equation}
 \mathit{f_\mathrm{obj}} = f_\mathrm{GRIN}\ \frac{\mathrm{NA_\mathrm{fiber}}}{\mathrm{NA_\mathrm{OCT}}}  = \SI{0.91}{\milli\meter}\ \frac{0.18}{0.022} = \SI{7.5}{\milli\meter}
 \end{equation}
-can be selected. As one of the facets of the lens has to be cemented to the beamsplitter cube, it is fabricated as a plano-convex spherical lens by \textit{Optik+}.
+can be selected. The manufacturing of this lens was performed by \textit{Optik+} with a plano-convex spherical geometry, as one of the facets of the lens has to be cemented to the beamsplitter cube.
 
 The field of view (FOV) of the OCT modality can be now calculated considering the maximum angular deflection of the GRIN lens in the tip of the scanning fiber by 
 \begin{equation}
 h_\mathrm{max} = f_\mathrm{obj}\cdot \tan  \theta_\mathrm{max} = \SI{7.5}{\milli\meter} \cdot \tan \SI{5}{\degree} = \SI{0.66}{\milli\meter}, 
 \end{equation}
-equivalent to a FOV of \SI{1.2}{\milli\meter} for a $\theta_\mathrm{max} $ of $ \pm \SI{5}{\degree}$ (section \ref{sec:mechDesign}).
+equivalent to a FOV of \SI{1.2}{\milli\meter} for a $\theta_\mathrm{max} $ of $ \pm \SI{5}{\degree}$, as calculated in section \ref{sec:mechDesign}.
 
 
 \subsection{ZEMAX Simulation}
@@ -150,7 +149,7 @@ In OCT, any backreflection inside the probe increases the background intensity a
 
 \begin{figure}[h!]\centering
       \includegraphics{figures/30_DesignSimulation/Optical/Backreflections/backreflections.pdf}
-      \caption{Schematic of the multimodal probe showing the main interfaces where backreflections can originate inside the probe (red). 1) Fiber - GRIN. 2) GRIN - gap. 3) Gap - prism. 4) Objective - air. }
+      \caption{Schematic of the multimodal probe showing the main interfaces where backreflections can originate inside the probe (red). 1) Fiber - GRIN. 2) GRIN - air gap. 3) Air gap - prism. 4) Objective - air. }
       \label{fig:backreflections}
 \end{figure}
 
@@ -176,10 +175,10 @@ The result is visible in the simulation from \autoref{fig:tilt}: the backreflect
 \item \textbf{Objective lens - air interface:} After the prism, the beamsplitter and objective lens are cemented together, making any backreflections negligible. The objective lens has an interface with air, but has an anti-reflection coating on this surface. Furthermore, due to the curved surface of this lens, the backreflected light won't be focused back in the single mode fiber significantly.
 \end{enumerate}
 
-Taking these considerations into account, the backreflections were kept below 0.02\% in all the manufactured probes, as detailed in \autoref{ch:Results}.
+%Taking these considerations into account, the backreflections were kept below 0.02\% in all the manufactured probes, as detailed in \autoref{ch:Results}.
 
 \subsection{Single Modality Probe}
-As stated in the Design Overview, in order to independently test the behavior of the OCT scanner and optics, a single modality probe was fabricated as a demonstrator. Its optical design, depicted in \autoref{fig:single}, emulates the multimodal design from \autoref{fig:BS} by unfolding its optical path. The main difference is the lack of the prism and beamsplitter and the orientation of the planoconvex lens, which has now with its convex surface facing the GRIN lens to reduce the backreflections which would happen in the case of normal incidence on the planar side of the lens.
+As stated in the Design Overview, in order to independently test the behavior of the OCT scanner and optics, a single modality probe was fabricated as a demonstrator. Its optical design, depicted in \autoref{fig:single}, emulates the multimodal design from \autoref{fig:BS} by unfolding its optical path. The main difference is the lack of the prism and beamsplitter and the orientation of the planoconvex lens, which is flipped to reduce the backreflections caused by normal incidence on the planar side of the lens.
 
 \begin{figure}[h!]\centering
       \includegraphics[width=12cm]{figures/30_DesignSimulation/Optical/singleAll.pdf}
@@ -203,6 +202,7 @@ Due to these similarities, it is expected that any experimental result obtained 
 To conclude the \textit{Design and Simulation} chapter, the most important characteristics of the components of the OCT microscope are listed in \autoref{tab:simChar} and the simulated performance in \autoref{tab:simRes}.
 
 \begin{table}[h!]\centering
+	\caption{Summary of the most relevant characteristics of the optical components used in the OCT modality.}
 	\begin{tabular}{cc}\\
 		\textbf{Parameter} & \textbf{Value} \\ 		
 		\hline
@@ -212,11 +212,11 @@ To conclude the \textit{Design and Simulation} chapter, the most important chara
 		\textbf{Planoconvex lens focal length} & \SI{7.5}{\milli\meter} \\ 
 		\hline
 	\end{tabular}
-		\caption{Summary of the most relevant characteristics of the optical components used in the OCT modality.}
 \label{tab:simChar}
 \end{table}
 
 \begin{table}[h!]\centering
+	\caption{Simulated optical performance and characteristics of the OCT modality. All resolution values follow the Rayleigh convention of 15.5\% modulation \cite{Kretschmer}.}
 	\begin{tabular}{ccc}\\
 		\textbf{Parameter} & \textbf{Bimodal Probe} & \textbf{Single Mode Demonstrator} \\ 
 		\hline
@@ -227,7 +227,6 @@ To conclude the \textit{Design and Simulation} chapter, the most important chara
 		\textbf{Lateral Resolution} & \SI{43}{\micro\meter} & \SI{43}{\micro\meter}\\ 
 		\hline
 	\end{tabular} 
-    \caption{Simulated optical performance and characteristics of the OCT modality. All resolution values follow the Rayleigh convention of 15.5\% modulation \cite{Kretschmer}.}
     \label{tab:simRes}
 \end{table}
 
@@ -291,7 +290,7 @@ The scanner used in the probe consists of a piezoelectric tube which drives a be
       \label{fig:EB}
 \end{figure}
 
-The Euler-Bernoulli method can be used to estimate the resonant frequency of this scanner as detailed in \autoref{sec:EB}. Equations \ref{eq:EB} and \ref{eq:fres} show that there are several paths to reduce this frequency: increasing the cantilever length $L$, decreasing the radius of the fiber $r_\mathrm{fiber}$ or increasing the mass at the tip $m_{\mathrm{GRIN}}$. First, by having a GRIN lens attached at the tip, the resonance frequency is reduced by a factor of 62\%. Furthermore, by choosing a fiber with \SI{80}{\micro\meter} instead of the standard \SI{125}{\micro\meter}, the resonance frequency can be lowered by an extra factor of 60\%, as the sensitivity of the resonance frequency to the diameter of the fiber is quadratic. Under these conditions, the resonant frequency vs. length of the cantilever formed by a \SI{80}{\micro\meter} fused silica fiber with the chosen GRIN lens is computed in Figure \ref{fig:freq} using Equations \ref{eq:EB} and \ref{eq:fres}.
+The Euler-Bernoulli method can be used to estimate the resonant frequency of this scanner as detailed in \autoref{sec:EB}. The resulting equations \ref{eq:EB} and \ref{eq:fres} show how the different mechanical properties of the scanner influence its resonant frequency. Thus, this frequency can be reduced in different ways: increasing the cantilever length $L$, decreasing the radius of the fiber $r_\mathrm{fiber}$ or increasing the mass at the tip $m_{\mathrm{GRIN}}$. First, by having a GRIN lens attached at the tip, the resonance frequency is reduced by a factor of 62\%. Furthermore, by choosing a fiber with \SI{80}{\micro\meter} instead of the standard \SI{125}{\micro\meter}, the resonance frequency can be lowered by an extra factor of 60\%, as the sensitivity of the resonance frequency to the diameter of the fiber is quadratic. Under these conditions, the resonant frequency vs. length of the cantilever formed by a \SI{80}{\micro\meter} fused silica fiber with the chosen GRIN lens is computed in Figure \ref{fig:freq} using Equations \ref{eq:EB} and \ref{eq:fres}.
 
 \begin{figure}[h!]\centering
       \includegraphics[width=10cm]{figures/30_DesignSimulation/Mechanical/fres/fres.pdf}
@@ -302,6 +301,7 @@ The Euler-Bernoulli method can be used to estimate the resonant frequency of thi
 In order to select the length of the scanner there are two things to consider. As the scanner is buried in a \SI{1}{\milli\meter} channel, the maximum displacement of the GRIN lens is limited to $\pm\SI{325}{\micro\meter}$. Within that small displacement we want to achieve the maximum angular deflection of the GRIN lens to maximize the FOV, what can be achieved by using shorter fiber lengths. This shows a trade-off with the density of sampling $N_\mathrm{T}$, which is increased with longer fiber lengths. To balance those terms, we chose a a total scanner length of \SI{4.5}{\milli\meter}, which fulfills all the before-mentioned requirements, as \autoref{tab:mech} shows. 
 
 \begin{table}[h!]\centering
+	\caption{Mechanical characteristics of the fiber scanner at its designed working point.}
 	\begin{tabular}{rl}\\
 		\hline
 		\textbf{Cantilever length} & \SI{4.5}{\milli\meter} \\ 
@@ -309,7 +309,6 @@ In order to select the length of the scanner there are two things to consider. A
 		\textbf{Max. angular deflection} & \SI{5}{\degree} \\ 
 		\hline
 	\end{tabular} 
-    \caption{Mechanical characteristics of the fiber scanner at its designed working point.}
     \label{tab:mech}
 \end{table}
 

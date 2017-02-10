@@ -7,7 +7,7 @@
 \chapter{Experimental Characterization}
 \label{Ch:Measurements}	
 
-The following pages describe the performance of the OCT scanner demonstrator probe. First, the optomechanical characteristics of three manufactured probes are compared with their expected values. Later, a set of driving parameters optimized for each probe is used to image a sample using spiral scanning. The challenges and solutions associated with this method are discussed, highlighting the different data processing methods. Eventually, the OCT setup is presented together with biological samples.
+The following pages describe the performance of the OCT scanner demonstrator probe. First, the optomechanical characteristics of three manufactured probes are compared with their expected values. Later, a set of driving parameters optimized for each probe is used to image a sample using spiral scanning. The challenges and solutions associated with this method are discussed, highlighting the different data processing methods. Eventually, OCT measurements of biological samples are presented.
 
 %%*****************************************************************************
 \section{Fiber Scanner Characterization}
@@ -16,6 +16,7 @@ The following pages describe the performance of the OCT scanner demonstrator pro
 Three single modality demonstrator probes were assembled to test the repeatibility of the process.  For each probe, a characterization step was performed in order to measure its resonance frequency, laser coupling efficiency, backreflectivity and maximum unobstructed field of view. These results are summarized in \autoref{tab:char}.
 
 \begin{table}[h!]\centering
+\caption{Optomechanical characteristics of three assembled single modality probes compared with their expected values, calculated for a cantilever length of \SI{4.5}{\milli\meter}.}
 \begin{tabular}{rcccc}
 & 							\textbf{Design Value}&\textbf{Probe 1} & \textbf{Probe 2} & \textbf{Probe 3} \\ 
 \hline
@@ -26,7 +27,6 @@ Coupling Efficiency  					&	-		& 	0.53	&	0.61 	&	0.58 	\\
 Backreflectivity [\%] 					&	-		& 	0.011	&	0.04 	& 	0.018 	\\ 
 \hline
 \end{tabular} 
-\caption{Optomechanical characteristics of three assembled single modality probes compared with their expected values, calculated for a cantilever length of \SI{4.5}{\milli\meter}.}
 \label{tab:char}
 \end{table}
 \begin{itemize}
@@ -34,9 +34,9 @@ Backreflectivity [\%] 					&	-		& 	0.011	&	0.04 	& 	0.018 	\\
 
 \item \textbf{Cantilever Length:} The catilever length which was varied between \SI{4.10}{\milli\meter} and \SI{4.45}{\milli\meter} to test the behavior of the scanner under different parameters. 
 
-\item \textbf{Field of View:} At certain scanning amplitude, the laser beam becomes shadowed by the edges of the optical components. In the case of the single modality probe, this happens due to the walls of the housing, which by design limit the FoV to \SI{1.3}{\milli\meter}. Any misalignment between the optical axis of the scanner and the symmetry axis of the housing further reduces the FoV due to decentering.
+\item \textbf{Field of View:} At a certain scanning amplitude, the laser beam becomes shadowed by the edges of the optical components. In the case of the single modality probe, this happens due to the walls of the housing, which by design limit the FoV to \SI{1.3}{\milli\meter}. Any misalignment between the optical axis of the scanner and the symmetry axis of the housing further reduces the FoV due to decentering.
 
-\item \textbf{Resonant Frequency:} The resonance frequency was measured by driving the scanner with a sweeping sinusoidal signal and observing the  the amplitude of oscillation. The variability of the cantilever length explains the change of the resonant frequency: shorter cantilevers exhibit lower resonance frequency, as their stiffness is higher. It can be seen that for Probes 1 and 2, whose cantilever length is close to the designed \SI{4.5}{\milli\meter}, their resonant frequency is within 3\% of the expected \SI{762}{\hertz}. 
+\item \textbf{Resonant Frequency:} The resonance frequency was measured by driving the scanner with a sweeping sinusoidal signal and observing the amplitude of oscillation. The variability of the cantilever length explains the change of the resonant frequency: shorter cantilevers exhibit lower resonance frequency, as their stiffness is higher. It can be seen that for Probes 1 and 2, whose cantilever length is close to the designed \SI{4.5}{\milli\meter}, their resonant frequency is within 3\% of the expected \SI{762}{\hertz}. 
 
 \item \textbf{Coupling Efficiency:} This value was calculated by measuring the intensity of the beam exiting the probe divided by the power of the light source at its output fiber connector. Thus, it includes the losses from the FPC fiber connector, fiber interfaces and backreflections. It is believed that the main source of loss is the connector, which has variable losses up to 30\%, depending on the quality of the polishing of the fiber facet and any surface imperfection or contamination. 
 
@@ -68,9 +68,7 @@ The setup used to measure the backreflectivity of the probe, shown in \autoref{f
       \label{fig:confPlotting}
 \end{figure}
 
-If all the datapoints $\mathbf{I}_{[n]}$ acquired during a full spiral are plotted as a color-coded dot located at the position $K_\mathrm{mech}(\mathbf{u_x}[n], \mathbf{u_y}[n])$, the resultant image would look as in \autoref{fig:confPlotting}a: distorted. Notice how the dot plot defines two overlaid swirled images. This proves that the previous assumption of linearity is not valid, and thus the relationship between $(\mathbf{u_x}[i], \mathbf{u_y}[i])$ and $(\mathbf{x}[i], \mathbf{y}[i])$ is neither linear nor simple. This effect is caused by the subtle changes in the dynamic behavior of the fiber scanner at different oscillation amplitudes, and is typical of spiral fiber scanners \cite{Seibel2006}.
-
-There are two general methods to overcome this problem:
+If all the datapoints $\mathbf{I}_{[n]}$ acquired during a full spiral are plotted as a color-coded dot located at the position $K_\mathrm{mech}(\mathbf{u_x}[n], \mathbf{u_y}[n])$, the resultant image would look as in \autoref{fig:confPlotting}a: distorted. Notice how the dot plot defines two overlaid swirled images. This proves that the previous assumption of linearity is not valid, and thus the relationship between $(\mathbf{u_x}[i], \mathbf{u_y}[i])$ and $(\mathbf{x}[i], \mathbf{y}[i])$ is neither linear nor simple. This effect is caused by the subtle changes in the dynamic behavior of the fiber scanner at different oscillation amplitudes, and is typical of spiral fiber scanners \cite{Seibel2006}. There are two general methods to overcome this problem:
 
 The first one involves closed loop operation, where the current position of the scanner is measured inside the probe and used by the plotting system to correct for the distortion \cite{Yeoh2014}. 
 
@@ -100,7 +98,7 @@ A good concordance is observed between the shape of the analytical and the measu
 %%*****************************************************************************
 \subsection{Depth of Field Measurement}
 %%*****************************************************************************
-The depth of field (DoF) of the OCT imaging system can me determined by measuring how much light is backreflected upon a mirror while moving it though the z axis. The results from this experiment are plotted in \autoref{fig:FWHM}, where a full width half maximum (FWHM) DoF of \SI{3.5}{\milli\meter} is calculated. This value exceeds the desired maximum imaging depth of the OCT measurement setup, \SI{3}{\milli\meter}. 
+The depth of field (DoF) of the OCT imaging system can me determined by measuring how much light is backreflected upon a mirror while moving it though the z axis. The results from this experiment are plotted in \autoref{fig:FWHM}, where a full width half maximum (FWHM) DoF of \SI{3.5}{\milli\meter} is calculated. 
 
 \begin{figure}[h!]\centering \includegraphics{figures/50_Measurements/conf/res/PSFz.pdf}
       \caption{Measurement of the axial resolution of the single modality probe. The intensity of the light coupled back into the optical system after reflection on a mirror is plotted against the translation of the mirror by $\pm \SI{4.5}{\milli\meter}$ from the focal plane of the probe. }

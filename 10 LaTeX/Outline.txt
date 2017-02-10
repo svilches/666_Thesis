@@ -26,20 +26,16 @@ Introduction --------------------------------------------------------
 Theory --------------------------------------------------------------
 	
 	Optics
-		Fiber microscope
-			
+		Resolution of confocal Fiber Scanner 
+		MTF measurement
 		OCT (-> Sklarenko)
-
-		Measurement of optical performance
-			What is MTF
-			How to measure (edge)
 
 	Mechanics - Piezo tube fiber scanners
 		Resonant Beam
-		
 		Piezoelectric Tube Actuator (-> Meinert)
 			Driving
 			[cross section]
+
 
 
 Design & Simulation  ------------------------------------------------
@@ -67,13 +63,6 @@ Design & Simulation  ------------------------------------------------
 		COMSOL simulation (Prove radiant point source)
 		Spiral scanning
 
-	Spiral Scanning
-		Signal generation (Modulation etc)
-		Semi-resonant operation (ellipse etc)
-		[Spiral Pattern], [Measurement setup]
-				Npx, quantization
-		Limitations: Aliasing of fmod into resonance!
-
 	Overview of design
 		[CAD with notes]
 	
@@ -98,24 +87,34 @@ Fabrication and Assembly --------------------------------------------
 		Steps
 
 
-Experimental Characterization (?) ----------------------------------------------------
-	Setup and Methods	
+Measurements (?) ----------------------------------------------------
+	
+	Electronics (?)
+		PZT Driver (Floating source emulation)
 
 	Fiber scanner characterization
-		Res freq, angular displacement, losses, backreflections
-		% Freq response, coupling of eigendirections
+		Res freq, angular displacement
+		Freq response, coupling of eigendirections
+
+	Spiral Scanning
+		Signal generation (Modulation etc)
+		Semi-resonant operation (ellipse etc)
+		[Spiral Pattern], [Measurement setup]
+		Limitations: Aliasing of fmod into resonance!
 
 	Confocal Imaging
 		[Measurement setup]
 		LUT calibration
-		Resolution chromium edge 
+		Npx, resolution, quantization
 		Samples
 
 	OCT
 		[Measurement setup]
+		Backreflections 
 		Samples
 		Biological samples
-		% Overlay OCT / confocal
+		Overlay OCT / confocal
+
 
 Conclusion & Outlook ------------------------------------------------
 	
