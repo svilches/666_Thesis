@@ -26,17 +26,15 @@ Introduction --------------------------------------------------------
 Theory --------------------------------------------------------------
 	
 	Optics
-		Resolution of confocal Fiber Scanner 
-		MTF measurement
-		OCT (-> Sklarenko)
+		OCT Text, diagrams, spectrum (-> Sklarenko)
+		Resolution of confocal Fiber Scanner
+		MTF measurement (Ch 4 MTF)
 
 	Mechanics - Piezo tube fiber scanners
 		Resonant Beam
 		Piezoelectric Tube Actuator (-> Meinert)
-			Driving
+			Driving http://www.piezodrive.com/product-tubes.html
 			[cross section]
-
-
 
 Design & Simulation  ------------------------------------------------
 	

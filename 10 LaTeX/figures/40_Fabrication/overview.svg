@@ -158,14 +158,14 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="3.959798"
-     inkscape:cx="87.512712"
-     inkscape:cy="46.478158"
+     inkscape:cx="101.90739"
+     inkscape:cy="48.245925"
      inkscape:document-units="px"
      inkscape:current-layer="g9520"
      showgrid="false"
-     inkscape:window-width="1920"
+     inkscape:window-width="1858"
      inkscape:window-height="1058"
-     inkscape:window-x="1912"
+     inkscape:window-x="54"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      fit-margin-top="0"
@@ -180,7 +180,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -258,7 +258,7 @@
            x="219.11949"
            y="299.01355"
            id="tspan7588"
-           style="text-align:center;text-anchor:middle">Polyimide Ribbon Cable</tspan></text>
+           style="text-align:center;text-anchor:middle">polyimide Ribbon Cable</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.625px;line-height:125%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -323,7 +323,7 @@
            x="208.61"
            y="374.74789"
            id="tspan7588-8"
-           style="text-align:center;text-anchor:middle">Housing</tspan></text>
+           style="text-align:center;text-anchor:middle">housing</tspan></text>
     </g>
   </g>
 </svg>
