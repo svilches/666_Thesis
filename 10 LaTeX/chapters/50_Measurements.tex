@@ -36,7 +36,7 @@ Backreflectivity [\%] 					&	-		& 	0.011	&	0.04 	& 	0.018 	\\
 
 \item \textbf{Field of View:} At a certain scanning amplitude, the laser beam becomes shadowed by the edges of the optical components. In the case of the single modality probe, this happens due to the walls of the housing, which by design limit the FoV to \SI{1.3}{\milli\meter}. Any misalignment between the optical axis of the scanner and the symmetry axis of the housing further reduces the FoV due to decentering.
 
-\item \textbf{Resonant Frequency:} The resonance frequency was measured by driving the scanner with a sweeping sinusoidal signal and observing the amplitude of oscillation. The variability of the cantilever length explains the change of the resonant frequency: shorter cantilevers exhibit lower resonance frequency, as their stiffness is higher. It can be seen that for Probes 1 and 2, whose cantilever length is close to the designed \SI{4.5}{\milli\meter}, their resonant frequency is within 3\% of the expected \SI{762}{\hertz}. 
+\item \textbf{Resonant Frequency:} The resonance frequency was measured by driving the scanner with a sweeping sinusoidal signal and observing the amplitude of oscillation An example of such response can be seen in \autoref{fig:bode}. The variability of the cantilever length explains the change of the resonant frequency: shorter cantilevers exhibit lower resonance frequency, as their stiffness is higher. It can be seen that for Probes 1 and 2, whose cantilever length is close to the designed \SI{4.5}{\milli\meter}, their resonant frequency is within 3\% of the expected \SI{762}{\hertz}. 
 
 \item \textbf{Coupling Efficiency:} This value was calculated by measuring the intensity of the beam exiting the probe divided by the power of the light source at its output fiber connector. Thus, it includes the losses from the FPC fiber connector, fiber interfaces and backreflections. It is believed that the main source of loss is the connector, which has variable losses up to 30\%, depending on the quality of the polishing of the fiber facet and any surface imperfection or contamination. 
 
@@ -53,12 +53,18 @@ Backreflectivity [\%] 					&	-		& 	0.011	&	0.04 	& 	0.018 	\\
 \section{Dynamic behavior of the scanner}
 %%*****************************************************************************
 
+The use of fiber scanners for imaging involves the challenge of whirling, identified already in the first experiments by Seibel \cite{Seibel2001}.
 
-\begin{figure}[h!]\centering \includegraphics{figures/50_Measurements/bode/bodeGain.pdf}
-      \caption{Dynamic behavior of the scanner in \textit{Probe 2} under harmonic excitation. The two eigenfrequencies corresponding to the main axes of the scanner are marked as $f_\mathrm{x} = \SI{765.8}{\hertz}$ and $f_\mathrm{y} = \SI{768.1}{\hertz}$. For the imaging experiments, the scanner operates at a working point \textit{WP} far away from the resonance, in order to minimize nonlinearities.
-      The right axis shows the mechanical gain due to resonance, defined as the ratio of the displacement of the GRIN tip to the displacement of the piezoelectric tube tip.}
+If a cantilever is rotationally symmetric, it will exhibit a single transversal resonant frequency. In this case, according to linear theory, if the base is excited in only one plane, the fiber will also only vibrate in that plane. But if a cantilever shows a small misalignment or non symmetric profile -- as expected in any real world implementation -- it will exhibit two different frequency responses with peaks $f_x$ and $f_y$, corresponding to two planes of symmetry or eigendirections $x,y$, as can be seen in the example from \autoref{fig:bode}a. Far away from resonance the difference between axes is minimal, but close to resonance, nonlinear effects create a cross-plane instability: excitation of the base of the resonator in the $x$ direction can lead to oscillations in both $x$ and $y$ directions. This effect can be appreciated in the whirl plots in  \autoref{fig:bode}b. 
+
+\begin{figure}[h!]\centering \includegraphics{figures/50_Measurements/bode/bodeWhirl.pdf}
+      \caption{\textbf{a)} Dynamic behavior of the scanner in \textit{Probe 2} under harmonic excitation. The two eigenfrequencies corresponding to the main axes of the scanner are marked as $f_\mathrm{x} = \SI{765.8}{\hertz}$ and $f_\mathrm{y} = \SI{768.1}{\hertz}$. 
+      The right axis shows the mechanical gain due to resonance, defined as the ratio of the displacement of the GRIN tip to the displacement of the piezoelectric tube tip.
+      \textbf{b)} Whirl patterns obtained by exciting the scanner in the $x$ direction with different harmonic frequencies. }
       \label{fig:bode}
 \end{figure}
+
+Therefore, for the imaging experiments, the scanner operates at a working point \textit{WP} far away from the resonance, in order to minimize the effect of whirling.
 
 
 %%*****************************************************************************

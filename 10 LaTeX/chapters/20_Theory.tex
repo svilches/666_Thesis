@@ -99,7 +99,7 @@ Thus, by simply differentiating the ESF it is possible to obtain the PSF, and by
 The imaging topology used in this work is denominated Confocal Laser Scanning Microscopy (CLSM). This technique, represented in \autoref{fig:thConfSetup}, uses a fiber coupled laser source to project a focused beam in the sample. Some of the backscattered light from the sample is collected back to the fiber and detected by a photodiode. By scanning the focus position through the sample it is possible to obtain 2D or 3D images.
 
 \begin{figure}[h!]\centering \includegraphics{figures/20_Theory/Optical/confSetup.pdf}
-      \caption{			}
+      \caption{Confocal laser scanning microscopy setup. Light originating from the laser source is coupled to a probe through a circulator, while the backscattered light from the sample is coupled to the photodetector.}
       \label{fig:thConfSetup}
 \end{figure}
 
@@ -161,7 +161,7 @@ In this work, the pinhole is defined by the diameter of the GRIN lens, which tru
 
 \section{Mechanics of fiber scanners}
 
-The previous section focused in the acquisition of the depth information of a single column of a sample. But, in order to acquire a full, 3D volume of the sample, a 2D scanning mechanism is required. This section briefly goes over the physics and fundamental aspects of piezoelectric tube fiber scanners, starting with their actuation mechanism followed by the analytical modeling of their resonant scanning fiber.
+The previous section focused in the acquisition of the depth information of a single column of a sample. But, in order to acquire a full, 3D volume of the sample, a 2D scanning mechanism is required. This section briefly goes over the physics and fundamental aspects of piezoelectric tube fiber scanners, starting with their actuation mechanism and followed by the analytical modeling of their resonant scanning fiber.
 
 \subsection{Piezoelectric tube actuators}
 A piezoelectric tube is a solid state actuator consisting of a tube made of radially polarized piezoelectric material with inner and outer electrodes, as depicted in \autoref{fig:pztTheory}a. 
@@ -169,20 +169,24 @@ A piezoelectric tube is a solid state actuator consisting of a tube made of radi
       \centering
       \includegraphics{figures/20_Theory/Mechanical/pztTheory.pdf}
       \caption{	\textbf{a)} Render of a piezoelectric tube.
-      			\textbf{b)} Half-cut drawing of a piezoelectric tube in actuated state. The radial polarization of the piezoelectric material is shown in gray arrows. A voltage $\pm u_\mathrm{y}(t)$ is applied to the top and bottom outer electrodes, creating a radial electric field under those electrodes, depicted as red arrows. Due to the piezoelectric effect, the top of the tube contracts, while the bottom expands, inducing a bending of the tube.
+      			\textbf{b)} Half-cut drawing of a piezoelectric tube in actuated state. The radial polarization of the piezoelectric material is shown in gray arrows. A voltage $\pm u_\mathrm{y}(t)$ is applied to the top and bottom outer electrodes, creating a radial electric field under those electrodes, depicted as red arrows. Due to the piezoelectric effect, the top quarter of the tube contracts, while the bottom quarter expands, inducing a bending of the tube and a deflection of its tip $\Delta y(V)$.
       			\textbf{c)} Electrical model of the piezoelectric tube with four electrodes.}
       \label{fig:pztTheory}
 \end{figure}
-The outer metallization of the tube is divided in four quarter electrodes, which generate a radial electric field in the sandwiched portion of the piezoelectric material, shown in \autoref{fig:pztTheory}b. If a voltage difference is applied to two opposite electrodes of the tube, one side will contract while the other will expand due to the piezoelectric effect. This behavior is modeled \cite{Arnau2008} linearly by $\epsilon = d_{31} E$, where $\epsilon$ represents the in-plane strain, $d_{31}$ the piezoelectric strain coefficient, and \textit{E} the out-of-plane electric field magnitude. This asymmetry creates a bending moment across the axis of the tube, inducing its deformation. If one end of the actuator is kept static, the tip of the actuator will deflect and tilt according to the applied voltage. A 2D scanner can be created out of this setup if two independent signal control the horizontal and vertical electrodes, as shown in \autoref{fig:pztTheory}c.
+The outer metallization of the tube is divided in four quarter electrodes, which generate a radial electric field in the sandwiched portion of the piezoelectric material, shown in \autoref{fig:pztTheory}b. If a voltage difference is applied to two opposite electrodes of the tube, one side will contract while the other will expand due to the piezoelectric effect. This behavior is modeled linearly \cite{Arnau2008} as $\epsilon = d_{31} E$, where $\epsilon$ represents the in-plane strain, $d_{31}$ the piezoelectric strain coefficient, and \textit{E} the out-of-plane electric field magnitude. This asymmetry creates a bending moment across the axis of the tube, inducing its deformation. If one end of the actuator is kept static, the tip of the actuator will deflect and tilt according to the applied voltage. A 2D scanner can be created out of this setup if two independent signals control the horizontal and vertical electrodes, as shown in \autoref{fig:pztTheory}c.
 
-The deflection of the tip of the tube is linear with the applied voltage, and in case of bipolar operation, estimated by \cite{Chen} to be
-$$ \Delta y = V  \frac{2 \sqrt{2} d_{31} L^2}{\pi D h} $$
-, where \textit{V} is the applied voltage to each opposing electrode, $d_{31}$ is the piezoelectric strain coefficient of the material in direction perpendicular to the polarization direction, \textit{L} is the length of the tube, \textit{D} its outer diameter and \textit{h} the thickness of its wall. Thus, longer tubes with a thinner diameter and wall thickness maximize the deflection of the tip. Typical deflections for small actuators lie in the order of $\SI{20}{\nano\meter / \volt}$.
+The deflection of the tip of the tube reacts linearly with the applied voltage, and in case of bipolar operation, estimated by \cite{Chen} as
+
+\begin{equation}
+\Delta y = V  \frac{2 \sqrt{2} d_{31} L^2}{\pi D h},
+\end{equation}
+
+where \textit{V} is the voltage applied to each opposing electrode, $d_{31}$ is the piezoelectric strain coefficient of the material in direction perpendicular to the polarization direction, \textit{L} is the length of the tube, \textit{D} its outer diameter and \textit{h} the thickness of its wall. Thus, longer tubes with a thinner diameter and wall thickness maximize the deflection of the tip. Typical deflections for small actuators lie in the order of $\SI{20}{\nano\meter / \volt}$.
 
 
 \subsection{Resonant Beam Theory}
 \label{sec:EB}
-The piezoelectric actuator described in the last paragraphs couples mechanical energy into the cantilever of the scanner, formed by a fiber optic segment to which a GRIN lens is glued, as depicted in \autoref{fig:EB}a. As the scanner uses mechanical resonance to amplify the small displacements of the actuator, it is important to model the resonance frequency of such a system. 
+The piezoelectric actuator described in the last paragraphs couples mechanical energy into the cantilever of the scanner, formed by a fiber optic segment to which a GRIN lens is glued, as depicted in \autoref{fig:EB}a. As the scanner uses mechanical resonance to amplify the small displacements of the actuator, it is important to analyze the resonance frequency of such a system. 
 
 \begin{figure}[h!]\centering
       \includegraphics{figures/20_Theory/Mechanical/EB.pdf}
@@ -191,7 +195,7 @@ The piezoelectric actuator described in the last paragraphs couples mechanical e
       \label{fig:EB}
 \end{figure}
 
-The fiber-GRIN assembly can be modeled as a point-loaded, fixed-free cantilever and the GRIN lens weight can be concentrated in its center of gravity, as represented in Figure \ref{fig:EB})b. 
+The fiber-GRIN assembly can be modeled as a point-loaded, fixed-free cantilever where the weight of the GRIN lens is concentrated in its center of gravity, as represented in Figure \ref{fig:EB})b. 
 
 Now, by applying the ideal mass-spring harmonic resonator equation, the resonance frequency can be estimated as 
 \begin{equation}
