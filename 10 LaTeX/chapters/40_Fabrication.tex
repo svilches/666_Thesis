@@ -10,7 +10,7 @@ This chapter details the implementation of the probe shown in \autoref{fig:overv
 
 \begin{figure}[h!]\centering 
 \includegraphics[width=\columnwidth]{figures/40_Fabrication/overview.pdf}
-      \caption{CAD of the single modality demonstrator with the top of the housing removed. Total length: \SI{9}{\milli\meter}.}
+      \caption{CAD of the single modality demonstrator with the top of the housing removed. Total length: \SI{15}{\milli\meter}.}
       \label{fig:overview}
 \end{figure}
 
@@ -24,7 +24,7 @@ The following paragraphs describe the manufacturing process and assembly of the 
 %%*****************************************************************************
 The first challenge that appears in the manufacturing of the scanner lies in contacting the four external electrodes of the piezoelectric tube. 
 
-Due to the small diameter of the tube (\SI{800}{\micro\meter}), creating a reliable interface between the driving circuit and its electrodes is not trivial. Other piezoscanner implementations use soft soldering and insulated copper wires \cite{Lee2010}, \cite{Meinert}, \cite{Huo2010}, but the soldering process can damage the piezoelectric material, as it is exposed to temperatures above its Curie temperature. This method also increases the diameter of the actuator significantly, as a solder blob is needed. %Furthermore, it requires welding by hand in a \SI{600}{\micro\meter} curved electrode.
+Due to the small diameter of the tube (\SI{800}{\micro\meter}), creating a reliable interface between the driving circuit and its electrodes is not trivial. Other piezoscanner implementations use soft soldering and insulated copper wires \cite{Lee2010, Meinert, Huo2010}, but the soldering process can damage the piezoelectric material, as it is exposed to temperatures above its Curie temperature. This method also increases the diameter of the actuator significantly, as a solder blob is needed. %Furthermore, it requires welding by hand in a \SI{600}{\micro\meter} curved electrode.
 
 Instead, this design uses a polyimide ribbon cable which is wrapped around the piezotube and addresses its four external electrodes using vias. Its geometry, cross section and application over the tube is depicted in Figure \ref{fig:piRolled}, while \autoref{fig:piRender} shows its complete design.
 
@@ -33,11 +33,11 @@ Instead, this design uses a polyimide ribbon cable which is wrapped around the p
       \textbf{a)} \textit{Left}: Photo of the polyimide ribbon cable with four vias to contact the four gold electrodes of the piezoelectric tube. \textit{Right}: Piezoelectric tube.
       \textbf{b)} Schematic of one via and its cross section. The platinum around the via is partly uncovered to improve the electrical connection between the cable and the piezoelctric tube.
       \textbf{c)} Photography of a polyimide ribbon cable, wrapped around the piezoelectric tube that is electrical connected through the vias by conductive glue.
-      \textbf{d)} Microphotograph of the via after bonding with conductive glue.}
+      \textbf{d)} Microphotograph of the via after bonding with conductive glue, where a good wetting behavior can be observed.}
       \label{fig:piRolled}
 \end{figure}
 
-The polyimide ribbon cables are manufactured using a cleanroom process similar to the develped for cuff electrodes for nerve stimulation \cite{Rodriguez2000} and consists of platinum tracks and via holes embedded in a polyimide substrate. One end the cable is shaped to fit a zero insertion force (ZIF) connector. The other end can be rolled around the piezoelectric tube, allowing the bonding to its gold electrodes using conductive glue (Araldite 2020 with 80\% wt. silver particles).
+The polyimide ribbon cables are manufactured using a cleanroom process similar to the one developed for cuff electrodes for nerve stimulation \cite{Rodriguez2000} and consists of platinum tracks and via holes embedded in a polyimide substrate. One end the cable is shaped to fit a zero insertion force (ZIF) connector. The other end can be rolled around the piezoelectric tube, allowing the bonding to its gold electrodes using conductive glue (Araldite 2020 with 80\% wt. silver particles).
 
 \begin{figure}[h!]\centering \includegraphics[width=15cm]{figures/40_Fabrication/PI/render.JPG}
       \caption{Render of a manufactured polyimide electrode. The left side fits a ZIF connector, the right side is rolled around the piezoelectric tube to address its electrodes.}
@@ -47,7 +47,7 @@ The polyimide ribbon cables are manufactured using a cleanroom process similar t
 
 
 \subsection{Cleanroom processing}
-The polyimide ribbon cables are manufactured and singulated at wafer level. The process involves spin coating a \SI{5}{\micro\meter} layer of polyimide, which is cured at \SI{450}{\celsius} during \SI{10}{\minute}. Next, a \SI{100}{\nano\meter} layer of platinum is sputtered and patterned via liftoff, defining the conductive traces and the bondpads. On top of it, a second \SI{5}{\micro\meter} polyimide layer is spincoated and cured. Finally, the vias, openings and external shape of the cables are patterned through reactive ion etching (RIE), using the platinum as stop layer for the vias. This process is described in Figure \ref{fig:piProcess} and the resultant wafer in \autoref{fig:piwafer}.
+The polyimide ribbon cables are manufactured and singulated at wafer level. The process involves spin coating a \SI{5}{\micro\meter} layer of polyimide, which is cured at \SI{450}{\celsius} for \SI{10}{\minute}. Next, a \SI{100}{\nano\meter} layer of platinum is sputtered and patterned via liftoff, defining the conductive traces and the bondpads. On top of it, a second \SI{5}{\micro\meter} polyimide layer is spincoated and cured. Finally, the vias, openings and external shape of the cables are patterned through reactive ion etching (RIE), using the platinum as stop layer for the vias. This process is described in Figure \ref{fig:piProcess} and the resultant wafer in \autoref{fig:piwafer}.
 
 
 \begin{figure}[h!]\centering \includegraphics[width=15cm]{figures/40_Fabrication/PI/processH.pdf}
@@ -65,12 +65,12 @@ The polyimide ribbon cables are manufactured and singulated at wafer level. The 
 \section{Fiber-GRIN bonding}
 \label{sec:fiberGRIN}
 %%*****************************************************************************
-Another step that has to be performed before the final assembly of the probe is to bond the GRIN lens to the end of the fiber optically and mechanically. This interface is critical: first, because it is subjected to very high forces due to the oscillation of the scanner, and second, because any angular or displacement error would degrade the optical quality.
+Another step that has to be performed before the final assembly of the probe is to optically and mechanically bond the GRIN lens to the end of the fiber . This interface is critical: first, because it is subjected to very high forces due to the oscillation of the scanner, and second, because any angular or displacement error would degrade the optical quality.
 
 To overcome these challenges, fiber and GRIN lens are aligned together using a custom made, KOH-etched silicon alignment tool. The geometry of the KOH-etched grooves together with the cylindrical shape of both components allow the precise angle and position control of the fiber and GRIN lens. Once in place, a drop of index-matched UV-curable glue (NOA 76) bonds the components together. The wetting behavior and surface tension of the glue create a symmetrical wedge which provides extra mechanical integrity, as can be seen in \autoref{fig:fiberGRINglue}.
 
 \begin{figure}[h!]\centering \includegraphics{figures/40_Fabrication/FiberGRIN/fiberGRINglue.pdf}
-      \caption{\textbf{a)} Photography of the tip of the fiber (right) and GRIN lens (left) seating in the alignment tool.
+      \caption{\textbf{a)} Photography of the tip of the fiber (left) and GRIN lens (right) seating in the alignment tool.
       \textbf{b)} Bonding with UV-curable adhesive.}
       \label{fig:fiberGRINglue}
 \end{figure}
@@ -100,7 +100,7 @@ This is possible because, even though the dimensional accuracy of the printed ho
       \label{fig:housingDim}
 \end{figure}
 
-This relatively low resolution together with high part-to-part and batch-to-batch variations, encourage a careful tolerance analysis during the design of the part. Nevertheless, these issues were compensated by the fast iterations in the design.
+This relatively low resolution together with high part-to-part and batch-to-batch variations found in this method encourage a careful tolerance analysis during the design of the part. Nevertheless, these issues were compensated by the fast iterations in the design, allowing a successful implementation.
 
 
 %As an example, in order to center the piezotube in the housing, first the fiber is retracted so that the GRIN lens seats in the GRIN alignment structure (Figure \ref{fig:grinAlignment} left). This way the piezotube is aligned in the housing and, after being glued in place, it is possible to push the fiber so that the GRIN is at its proper distance (Figure \ref{fig:grinAlignment} right). 
@@ -127,17 +127,16 @@ This relatively low resolution together with high part-to-part and batch-to-batc
 
 Once all the components are ready, the assembly is performed manually using the multiple alignment features of the housing. The exploded view in \autoref{fig:exploded} shows the placement of the components prior to assembly, followed by the final encapsulation. This process is summarized as follows:
 
+\begin{enumerate}
+\item The GRIN lens is bonded to the end of the fiber using the alignment tool (\autoref{sec:fiberGRIN}).
+\item The GRIN-fiber assembly is slid through the piezotube and centered with FR-2 fittings, which are glued to the piezotube using cyanocrilate.
+\item The piezotube-fiber-GRIN assembly is placed in the bottom half of the housing and glued in place using cyanocrilate with help of the alignment structures.
+\item The planoconvex lens is placed in the bottom half of the housing and glued using UV-curable optical glue.
+\item The probe is closed with the top half of the housing and sealed with UV-curable glue.
+\end{enumerate}
+
 \begin{figure}[h!]\centering \includegraphics{figures/40_Fabrication/Assy/explodedRender/explodedRenderLaser.pdf}
       \caption{\textbf{a)} Exploded view of the components which form the single modality probe.
       \textbf{b)} Render of the complete probe after assembly.}
       \label{fig:exploded}
 \end{figure}
-
-\begin{enumerate}
-\item The GRIN lens is bonded to the end of the fiber using the alignment tool (\autoref{sec:fiberGRIN}).
-\item The GRIN-fiber assembly is slid through the piezotube and centered with FR-2 fittings, which are glued to the piezotube using cyanocrilate.
-\item The piezotube-fiber-GRIN assembly is placed in the housing and glued in place using cyanocrilate with help of the alignment structures.
-\item The planoconvex lens is placed in the bottom half of the housing and glued using UV-curable optical glue.
-\item The probe is closed with the top half of the housing and sealed with UV-curable glue.
-\end{enumerate}
-

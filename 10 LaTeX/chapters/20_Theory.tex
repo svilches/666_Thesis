@@ -6,12 +6,12 @@
 \chapter{Theory}
 \label{Ch:Theory}	
 
-This work combines several principles of optics and mechanics to create an imaging device. Therefore, a review of some relevant theoretical fundamentals will ease the understanding of the design and functionality of the presented device.
+This work combines several principles of optics and mechanics to create an imaging system. Therefore, a review of some relevant theoretical fundamentals will ease the understanding of the design and functionality of the presented device.
 
-Starting with the optical design, the probe uses the concept of Fourier Domain Optical Coherence Tomography (FD-OCT) to extract the depth information of the sample and the mechanism of Laser Scanning for OCT to acquire its lateral information. A LSM needs a scanning mechanism to displace laterally the focus position of an optical imaging device. In this work, this displacement is achieved by a tube shaped actuator which uses the piezoelectric effect to drive a thin resonant beam into resonance.
+Starting with the optical design, the probe uses the concept of Swept-Source Optical Coherence Tomography (SS-OCT) to extract the depth information of the sample and the mechanism of Laser Scanning Imaging (LSI) to acquire the OCT lateral information. LSI needs a scanning mechanism to displace laterally the focus position of an optical imaging device. In this work, this displacement is achieved by a tube shaped actuator which uses the piezoelectric effect to drive a thin resonant beam into resonance.
 
 \section{Optics}
-Optical Coherence Tomography (OCT) is an imaging method which allows the retrieval of depth information of a sample from its backscattered light.  Due to its non-invasive nature and long working distance it found its first use in ophtalmology, but it is currently under research in an expanding variety of medical applications. 
+Optical Coherence Tomography (OCT) is an imaging method which allows the retrieval of depth information of a sample from its backscattered light.  Due to its non-invasive nature and long working distance it found its first uses in ophtalmology, but it is currently under research in an expanding variety of medical applications. 
 
 This section briefly describes the underlying physical mechanisms of OCT. For a deeper review, a detailed analysis can be found in \cite{Drexler2008}.
 
@@ -37,9 +37,9 @@ where $I_{\rm{M1}}$ and $I_{\rm{R}}$ are the light intensities reflected from th
 The same analysis can be applied to multiple sample reflectors, each one of them contributing with a modulation of the spectral interferogram with a period of $ \pi/\Delta z_{i}$. The resulting spectral interferogram, an example of which can be seen in \autoref{fig:OCTspectrum}a for 3 reflectors, can be very complex, but after decomposing its harmonic component using a fourier transform, it unveils the position of the reflectors as cross-correlations and the distances between themselves as auto-correlations, as shown in \autoref{fig:OCTspectrum}b. This last plot, showing the backreflected intensity vs z-position is usually named A-scan.
 
 \begin{figure}[h!]\centering \includegraphics{figures/20_Theory/Optical/OCTspectrum.pdf}
-      \caption{	\textbf{a)} Spectral interferogram of a swept source laser with gaussian amplitude profile when used in OCT with no sample (blue) and with three discrete reflectors in the sample arm (red).
-				\textbf{b)} A-scan calculated from the spectral interferogram in a) using the Fourier transform.
-				Modified with permision from \cite{Kretschmer}}
+      \caption{	\textbf{a)} Spectral interferogram of a swept source laser with gaussian amplitude profile when used in OCT with no sample (black) and with three discrete reflectors in the sample arm (red).
+				\textbf{b)} A-scan calculated from the spectral interferogram in \textit{a)} using the Fourier transform.
+				\cite{Kretschmer}.}
       \label{fig:OCTspectrum}
 \end{figure}
 
@@ -62,10 +62,11 @@ The ability of the system to resolve two adjacent points, i.e. its \textit{later
 \subsubsection{Volumetric OCT imaging}
 Until now we have considered the case of a static measuring laser beam extracting the depth information or A-scan of a single column of the sample. By scanning the laser beam in a 1D line, several A-scans can be assembled in a B-scan: a 2D cross section of the sample. If now several B-scans are acquired sequentially by 2D scanning, it is possible to reconstruct a 3D volume of the sample or C-scan.
 
-As the goal of this work is to perform volumetric imaging, a 2D scanner has to be integrated on the probe. Thus, the analysis of laser scanning imaging is summarized in the next paragraphs.
+As the goal of this work is to perform volumetric imaging, a 2D scanner has to be integrated in the probe. For that goal, the analysis of laser scanning imaging is summarized in the next paragraphs.
 
 
 \subsection{Optical information transfer and laser scanning imaging}
+\label{ssec:rayleigh}
 OCT imaging uses a conventional optical system to illuminate the sample with a laser beam and collect the backscattered photons. As such, it is affected by diffraction effects, which perform a spatial low-pass filtering of the object, limiting the imaging resolution. 
 
 \subsubsection{Imaging in spatial domain: The PSF}
@@ -76,25 +77,24 @@ b(x,y,z) = f(x,y,z)\ast \textrm{PSF}(x,y,z)
 \end{equation}
 
 \subsubsection{Imaging in frequency domain: The MTF}
-
-It is also possible to describe this blurring in spatial frequency domain. Here, the imaging process is modeled as a low-pass filtering of the frequency content of the object. If the object is described by its frequency content or spectrum $F(\bm{k})$ and the modulation transfer function $MTF(\bm{k})$ describes the optical filtering, the frequency content of the incoherent image can be calculated as
+\
+It is also possible to describe this blurring in spatial frequency domain. Here, the imaging process is modeled as a low-pass filtering of the frequency content of the object. If the object is described by its frequency content or spectrum $F(\bm{k})$ and the modulation transfer function $\textrm{MTF}(\bm{k})$ describes the optical filtering, the frequency content of the incoherent image can be calculated as
 \begin{equation}
 B(k_x,k_y,k_z) = F(k_x,k_y,k_z) \cdot \textrm{MTF}(k_{x},k_{y},k_{z}).
 \end{equation}
 
-Notice that in the frequency domain, the spectrum of the object has to be simply multiplied by the MTF of the system, instead of convolved. Thus, working in the frequency domain eases the analysis of optical systems.
-
+Notice that in the frequency domain, the spectrum of the object has to be simply multiplied by the MTF of the system, instead of convolved. Thus, working in the frequency domain eases the analysis of optical systems. Furthermore, there is a simple method to estimate the resolution of a system from its MTF: the maximum optical frequency $k_\textrm{Rayleigh}$ that a system can resolve according to the Rayleigh criterion (26\% dip in the intensity) is given for $\textrm{MTF}(k_\textrm{Rayleigh})=0.152$ \cite{Kretschmer}.
 
 \subsubsection{Relation between PSF, ESF and MTF}
 \label{ssec:PSFMTF}
 There is a fundamental mathematical relation between the MTF and the PSF: the MTF is the real part of the fourier transform of the PSF, i.e. the Optical Transfer Function (OTF) \cite{Boreman2001}
 
 \begin{equation}
-OTF = \mathcal{F}(\textrm{PSF})=\rm{MTF}\exp(- \mathit{i} \rm{PTF}).
+\textrm{OTF} = \mathcal{F}(\textrm{PSF})=\rm{MTF}\exp(- \mathit{i} \rm{PTF}).
 \label{eq:MTF}
 \end{equation}
 
-This relationship is exemplified in \autoref{fig:PSF_MTF}, where a PSF - MTF pair of a gaussian beam is shown.
+This relationship is exemplified in \autoref{fig:PSF_MTF}, where the MTF of a gaussian PSF is shown.
 
 \begin{figure}[h!]\centering \includegraphics{figures/20_Theory/Optical/imaging/PSF_MTF.pdf}
       \caption{	\textbf{a)} Simulated PSF of a gaussian beam focused by a lens.
@@ -113,7 +113,7 @@ and its result denominated Edge Spread Function ESF \cite{Boreman2001}. The deri
 \end{equation}
 results in the Line Spread Function LSF, which describes the result of diffraction over an infinitesimally thin line. The LSF is very similar but not equal to the PSF \cite{Boreman2001}, although for the purpose of this work, this difference is safely neglected.
 
-Thus, by simply differentiating the ESF it is possible to obtain the PSF, and by fourier tranform, the MTF of the system experimentally, using the relationship described in \ref{eq:MTF}. 
+Thus, by simply differentiating the ESF it is possible to obtain the PSF, and by fourier tranform, the MTF of the system experimentally using the relationship described in \ref{eq:MTF}. 
 
 \subsection{Laser scanning imaging}
 \label{ssec:LSI}
@@ -126,7 +126,7 @@ After describing generally the concept of optical information transfer, these co
 
 \subsubsection{Modeling of LSI}
 
-To understand the optical modeling of a LSI we begin considering the probe as an illumination device, i.e. a projector. In this case, laser light coming from the optical fiber will be focused by the optical system in a plane located at its working distance. The focused spot won't be infinitesimally small due to two reasons: first, as in any optical system, diffraction takes place and blurs it with its $\textrm{PSF}_{\rm{optics}} (\mathbf{r})$, defined by the NA and the wavelength of the focused beam. Furthermore, the gaussian intensity distribution at the core of the fiber has a certain extent, characterized by its Mode Field Diameter (MFD). Once projected in the image plane, the MFD will be magnified by the optical system by a factor of $1/M$, where \textit{M} is the magnification of the beam defined as $f_\mathrm{fiber}/f_\mathrm{objective}$. This gaussian spot can be conceptually considered as the PSF due to the extended core of a fiber $\textrm{PSF}_{\rm{core}}$.
+To understand the optical modeling of a LSI we begin considering the probe as an illumination device, i.e. a projector. In this case, laser light coming from the optical fiber will be focused by the optical system in an object plane located at its working distance. The focused spot won't be infinitesimally small due to two reasons: first, as in any optical system, diffraction takes place and blurs it with its $\textrm{PSF}_{\rm{optics}} (\mathbf{r})$, defined by the NA and the wavelength of the focused beam. Furthermore, the gaussian intensity distribution at the core of the fiber has a certain extent, characterized by its Mode Field Diameter (MFD). Once projected in the image plane, the MFD will be magnified by the optical system by a factor of $1/M$, where \textit{M} is the magnification of the beam defined as $f_\mathrm{fiber}/f_\mathrm{objective}$. This gaussian spot can be conceptually considered as the PSF due to the extended core of a fiber $\textrm{PSF}_{\rm{core}}$.
 
 Thus, the projected spot, whose distribution is determined by the extended source of the fiber and the magnification and diffraction of the optical system, can be considered as the illumination PSF, calculated by convolution as
 \begin{equation}
@@ -145,7 +145,7 @@ following the PSF-MTF relationship. This behavior can be observed in \autoref{fi
       \label{fig:MTFcomplete}
 \end{figure}
 
-The next step in the description of the CLSM considers the detection or collection of the backscattered light. If all the light coming from the fiber is projected in the $PSF_{\rm{ill}}$, we can use the Helmholtz reciprocity property of light to state that the photons originating within this PSF will be collected by the fiber and detected by the photodiode. Thus, the detection PSF is equivalent to the illumination PSF,
+The next step in the description of LSI considers the detection or collection of the backscattered light. If all the light coming from the fiber is projected in the $\textrm{PSF}_{\rm{ill}}$, we can use the Helmholtz reciprocity property of light to state that the photons originating within this PSF will be collected by the fiber and detected by the photodiode. Thus, the detection PSF is equivalent to the illumination PSF,
 \begin{equation}
 \textrm{PSF}_{\rm{det}}(\bm{r}) = \textrm{PSF}_{\rm{ill}}(\bm{r}) = \textrm{PSF}_{\rm{core}}(\bm{r}M) \ast \textrm{PSF}_{\rm{optics}} (\bm{r})
 \end{equation}
@@ -166,7 +166,7 @@ These operations are numerically calculated in \autoref{fig:MTFcomplete}b.
 
 Finally, the resultant image can be calculated following \autoref{eq:imaging}:
 \begin{equation}
-b(\bm{r}) = f(x',y',z')\ast \textrm{PSF}_{\rm{sys}}(x',y',z').
+b(\bm{r}) = f(x,y,z)\ast \textrm{PSF}_{\rm{sys}}(x,y,z).
 \end{equation}
 
 \subsubsection{Resolution of LSI and confocal systems}
@@ -186,7 +186,7 @@ The previous section focused in the acquisition of the depth information of a si
 
 \subsection{Piezoelectric tube actuators}
 \label{ssec:piezo}
-A piezoelectric tube is a solid state actuator consisting of a tube made of radially polarized piezoelectric material with one inner and 4 outer electrodes, as depicted in \autoref{fig:pztTheory}a. 
+A piezoelectric tube is a solid state actuator consisting of a tube made of radially polarized piezoelectric material with one inner and four outer electrodes, as depicted in \autoref{fig:pztTheory}a. 
 \begin{figure}[h!]
       \centering
       \includegraphics{figures/20_Theory/Mechanical/pztTheory.pdf}
@@ -208,16 +208,16 @@ where \textit{V} is the voltage applied to each opposing electrode, $d_{31}$ is 
 
 \subsection{Resonant beam theory}
 \label{sec:EB}
-The piezoelectric actuator described in the last paragraphs couples mechanical energy into the cantilever of the scanner, formed by a fiber optic segment to which a GRIN lens is glued, as depicted in \autoref{fig:EB}a. As the scanner uses mechanical resonance to amplify the small displacements of the actuator, it is important to analyze the resonance frequency of such a system. 
+The piezoelectric actuator described in the last paragraphs couples mechanical energy into the cantilever of the scanner, formed by a optical fiber segment to which a GRIN lens is glued, as depicted in \autoref{fig:EBth}a. As the scanner uses mechanical resonance to amplify the small displacements of the actuator, it is important to analyze the resonance frequency of such a system. 
 
 \begin{figure}[h!]\centering
       \includegraphics{figures/20_Theory/Mechanical/EB.pdf}
-      \caption{\textbf{a)} Drawing of the piezoelectric scanner: piezoelectric tube, fiber and GRIN lens. 
+      \caption{\textbf{a)} Schematic drawing of the piezoelectric scanner, composed of a piezoelectric tube, fiber and GRIN lens. 
       \textbf{b)} Simplified mechanical diagram obtained by modeling the fiber as a weightless cantilever and the GRIN lens as a point mass.}
       \label{fig:EBth}
 \end{figure}
 
-The fiber-GRIN assembly can be modeled as a point-loaded, fixed-free cantilever where the weight of the GRIN lens is concentrated in its center of gravity, as represented in Figure \ref{fig:EBth})b. 
+The fiber-GRIN assembly can be modeled as a point-loaded, fixed-free cantilever where the weight of the GRIN lens is concentrated in its center of gravity, as represented in Figure \ref{fig:EBth}b. 
 
 Now, by applying the ideal mass-spring harmonic resonator equation, the resonance frequency can be estimated as 
 \begin{equation}

@@ -32,15 +32,15 @@ Backreflectivity [\%] 					&	-		& 	0.011	&	0.004 	& 	0.018 	\\
 \begin{itemize}
 
 
-\item \textbf{Cantilever Length:} The catilever length which was varied between \SI{4.10}{\milli\meter} and \SI{4.45}{\milli\meter} to test the behavior of the scanner under different parameters. 
+\item \textbf{Cantilever Length:} The cantilever length was varied between \SI{4.10}{\milli\meter} and \SI{4.45}{\milli\meter} to test the behavior of the scanner under different parameters. 
 
-\item \textbf{Field of View:} At a certain scanning amplitude, the laser beam becomes shadowed by the edges of the optical components. In the case of the single modality probe, this happens due to the walls of the housing, which by design limit the FoV to \SI{1.3}{\milli\meter}. Any misalignment between the optical axis of the scanner and the symmetry axis of the housing further reduces the FoV due to decentering.
+\item \textbf{Field of View:} At a certain scanning amplitude, the laser beam becomes shadowed by the edges of the optical components. In the case of the single modality probe, this happens due to the walls of the housing, which by design limit the FOV to \SI{1.3}{\milli\meter}. Any misalignment between the optical axis of the scanner and the symmetry axis of the housing further reduces the FOV due to decentering.
 
-\item \textbf{Resonant Frequency:} The resonance frequency was measured by driving the scanner with a sweeping sinusoidal signal and observing the amplitude of oscillation An example of such response can be seen in \autoref{fig:bode}. The variability of the cantilever length explains the change of the resonant frequency: shorter cantilevers exhibit lower resonance frequency, as their stiffness is higher. It can be seen that for Probes 1 and 2, whose cantilever length is close to the designed \SI{4.5}{\milli\meter}, their resonant frequency is within 3\% of the expected \SI{762}{\hertz}. 
+\item \textbf{Resonant Frequency:} The resonance frequency was measured by driving the scanner with a sweeping sinusoidal signal and observing the amplitude of oscillation An example of such response can be seen in \autoref{fig:bode}. The variability of the cantilever length explains the change of the resonant frequency: shorter cantilevers exhibit higher resonance frequency, as their stiffness is higher. It can be seen that for Probes 1 and 2, whose cantilever length is close to the designed \SI{4.5}{\milli\meter}, their resonant frequency is within 3\% of the expected \SI{762}{\hertz}. 
 
-\item \textbf{Coupling Efficiency:} This value was calculated by measuring the intensity of the beam exiting the probe divided by the power of the light source at its output fiber connector. Thus, it includes the losses from the FPC fiber connector, fiber interfaces and backreflections. It is believed that the main source of loss is the connector, which has variable losses up to 30\%, depending on the quality of the polishing of the fiber facet and any surface imperfection or contamination. 
+\item \textbf{Coupling Efficiency:} This value was calculated by measuring the intensity of the beam exiting the probe divided by the power of the light source at its output fiber connector. Thus, it includes the losses from the FC/APC fiber connector, fiber interfaces and backreflections. It is believed that the main source of loss is the connector, which has variable losses up to 30\%, depending on the quality of the polishing of the fiber facet and any surface imperfection or contamination. 
 
-\item \textbf{Backreflectivity:} In order to measure the backreflected light intensity it is necessary to send and receive light through the scanning fiber. To achieve this, is it possible to reuse a FD-OCT measurement setup with some modifications. As seen in \autoref{fig:confSetup}, broadband infrared light with a center wavelength of $\lambda_o = \SI{1311}{\nano\meter}$ and a bandwidth of $\Delta \lambda = \SI{90}{\nano\meter} $ from an SLED is coupled to a circulator, which forwards it to the probe. Any light which is backreflected inside the probe, together with backscattered light from the sample is coupled back to the fiber and forwarded by the circulator to the photodetector. In case that the probe is pointing to free space, only light backreflected from the optical components is measured. By dividing this intensity by the source intensity and taking into account the coupling efficiency of the system, the backreflectivity was measured to be well controlled under 0.02\%. The variability within probes can be attributed to differences in alignment and gluing of the fiber and GRIN lens.
+\item \textbf{Backreflectivity:} In order to measure the backreflected light intensity it is necessary to send and receive light through the scanning fiber. To achieve this, is it possible to reuse an OCT measurement setup with some modifications. As seen in \autoref{fig:confSetup}, broadband infrared light with a center wavelength of $\lambda_o = \SI{1311}{\nano\meter}$ and a bandwidth of $\Delta \lambda = \SI{90}{\nano\meter} $ from an SLED is coupled to a circulator, which forwards it to the probe. Any light which is backreflected inside the probe, together with backscattered light from the sample is coupled back to the fiber and forwarded by the circulator to the photodetector. In case that the probe is pointing to empty space, only light backreflected from the optical components is measured. By dividing this intensity by the source intensity and taking into account the coupling efficiency of the system, the backreflectivity was measured to be well controlled under 0.02\%. The variability within probes can be attributed to differences in alignment and gluing of the fiber and GRIN lens or connector backreflections.
 
 \end{itemize}
 
@@ -52,10 +52,10 @@ Backreflectivity [\%] 					&	-		& 	0.011	&	0.004 	& 	0.018 	\\
 %%*****************************************************************************
 \section{Dynamic behavior of the scanner}
 %%*****************************************************************************
+\label{sec:whirling}
+The use of fiber scanners for imaging involves the challenge of whirling, identified already in the first fiber scanner implementations \cite{Seibel2001}.
 
-The use of fiber scanners for imaging involves the challenge of whirling, identified already in the first implementations by Seibel \cite{Seibel2001}.
-
-If a cantilever is rotationally symmetric, it will exhibit a single transversal resonant frequency. In this case, according to linear theory, if the base is excited in only one plane, the fiber will also only vibrate in that plane. But if a cantilever shows a small misalignment or non symmetric profile -- as expected in any real world implementation -- it will exhibit two different frequency responses with peaks $f_x$ and $f_y$, corresponding to two planes of symmetry or eigendirections $x,y$, as can be seen in the example from \autoref{fig:bode}a. Far away from resonance the difference between axes is minimal. But close to resonance, nonlinear effects create a cross-plane instability in which excitation of the base of the resonator in the $x$ direction can lead to oscillations in both $x$ and $y$ directions. This effect can be seen in the whirl plots in  \autoref{fig:bode}b. 
+This effect can be explained as follows: If a cantilever is rotationally symmetric, it will exhibit a single transversal resonant frequency. In this case, according to linear theory, if the base is excited in only one plane, the fiber will also only vibrate in that plane. But if a cantilever shows a small misalignment or non symmetric cross section -- as expected in any real world implementation -- it will exhibit two different frequency responses with peaks $f_x$ and $f_y$, corresponding to two planes of symmetry or eigendirections $x,y$, as can be seen in the example from \autoref{fig:bode}a. Far away from resonance the difference between axes is minimal. But close to resonance, these nonlinear effects create a cross-plane instability in which excitation of the base of the resonator in the $x$ direction can lead to oscillations in both $x$ and $y$ directions. This effect can be seen in the whirl plots of \autoref{fig:bode}b. 
 
 \begin{figure}[h!]\centering \includegraphics{figures/50_Measurements/bode/bodeWhirl.pdf}
       \caption{\textbf{a)} Dynamic behavior of the scanner in \textit{Probe 2} under harmonic excitation. The two eigenfrequencies corresponding to the main axes of the scanner are marked as $f_\mathrm{x} = \SI{765.8}{\hertz}$ and $f_\mathrm{y} = \SI{768.1}{\hertz}$.
@@ -73,9 +73,6 @@ Therefore, for the imaging experiments, the scanner operates at a working point 
 %%*****************************************************************************
 This section explains how it is possible to use the single modality probe for laser scanning imaging (LSI) and use the acquired images to assess its lateral resolution and depth of field. As OCT uses the concept of LSI to recreate volumetric images, these results are also representative for OCT imaging.
 
-Once that a suitable set of driving parameters has been found for each probe, and the scanner is performing an spiral pattern, the first step to assess the system performance is to couple light into the probe and measure the intensity of light which is backreflected from the sample. Then, by knowing the backreflected intensity at each point of the spiral it is possible to reconstruct an image of the sample according to \autoref{ssec:LSI}.
-
-
 \subsection{Imaging}
 The setup used to measure the backreflectivity of the probe, shown in \autoref{fig:confSetup}, can be used directly for LSI. While the probe scans an object with a spiral pattern defined by the driving voltage datapoints $(\mathbf{u_x}[n], \mathbf{u_y}[n])$, the data acquisition system (DAQ) samples a stream of intensities at the photodetector $\mathbf{I}[n]$, as shown in \autoref{fig:confPlotting}a. As these signals are generated and acquired synchronously, we expect that the intensity $\mathbf{I}[i]$ corresponds to a point in object space linearly related to the driving voltage of the piezoelectric scanner: $(x, y) = K_\mathrm{mech}(\mathbf{u_x}[i], \mathbf{u_y}[i])$, where $K_\mathrm{mech}$ is a mechanical constant.
 
@@ -87,7 +84,7 @@ The setup used to measure the backreflectivity of the probe, shown in \autoref{f
       \label{fig:confPlotting}
 \end{figure}
 
-If all the datapoints $\mathbf{I}_{[n]}$ acquired during a full spiral are plotted as a color-coded dot located at the position $K_\mathrm{mech}(\mathbf{u_x}[n], \mathbf{u_y}[n])$, the resultant image would look as in \autoref{fig:confPlotting}a: distorted. Notice how the dot plot defines two overlaid swirled images. This proves that the previous assumption of linearity is not valid, and thus the relationship between $(\mathbf{u_x}[i], \mathbf{u_y}[i])$ and $(\mathbf{x}[i], \mathbf{y}[i])$ is neither linear nor simple. This effect is caused by the subtle changes in the dynamic behavior of the fiber scanner at different oscillation amplitudes, and is typical of spiral fiber scanners \cite{Seibel2006}. There are two general methods to overcome this problem:
+If all the datapoints $\mathbf{I}_{[n]}$ acquired during a full spiral are plotted as a intensity-coded dot located at the position $K_\mathrm{mech}(\mathbf{u_x}[n], \mathbf{u_y}[n])$, the resultant image would look as in \autoref{fig:confPlotting}a: distorted. Notice how the dot plot defines two overlaid whirling images. This proves that the previous assumption of linearity is not valid, and thus the relationship between $(\mathbf{u_x}[i], \mathbf{u_y}[i])$ and $(\mathbf{x}[i], \mathbf{y}[i])$ is neither linear nor simple. This is the result of whirling, as discussed in \autoref{sec:whirling}. There are two general methods to overcome this problem:
 
 The first one involves closed loop operation, where the current position of the scanner is measured inside the probe and used by the plotting system to correct for the distortion \cite{Yeoh2014}. 
 
@@ -104,9 +101,9 @@ The dot plots which are obtained from spiral scanners have the inconvenient of n
 
 
 \subsection{Lateral resolution measurement}
-The optical performance of the scanner is qualitatively evaluated by capturing a LSM image of a USAF 1951 resolution test chart with a spiral scanning pattern using the setup described in \autoref{fig:confSetup}. As can be seen in \autoref{fig:confPlotting}c, element 4 of group 4 is resolved, indicating a resolution of 22 line pairs/mm or \SI{45}{\micro\meter}. 
+The optical performance of the scanner is qualitatively evaluated by capturing a SLI image of a USAF 1951 resolution test chart with a spiral scanning pattern using the setup described in \autoref{fig:confSetup}. As can be seen in \autoref{fig:confPlotting}c, element 4 of group 4 is resolved, indicating a resolution of 22 line pairs/mm or \SI{45}{\micro\meter}. 
 
-A more robust method for the calculation of the optical resolution is detailed in \autoref{ssec:PSFMTF}: by scanning the focus of the probe over a sharp chromium edge of the test chart, the edge spread function (ESF) shown in \autoref{fig:MTF}a is obtained. By derivating and then performing a Fourier transform of the ESF, the MTF can be obtained, plotted in \autoref{fig:MTF}b. Based on this curve the lateral resolution of the OCT beam path was determined at 21 line pairs/mm or \SI{47.6}{\micro\meter}. 
+A more robust method for the calculation of the optical resolution is detailed in \autoref{ssec:PSFMTF}: by manually scanning the focus of the probe over a sharp chromium edge of the test chart, the edge spread function (ESF) shown in \autoref{fig:MTF}a is obtained. By performing a spatial derivative followed by a Fourier transform of the ESF, the MTF can be obtained, plotted in \autoref{fig:MTF}b. Based on this curve the lateral resolution of the OCT beam path was determined at 21 line pairs/mm or \SI{47.6}{\micro\meter}. This value is very close to the theoretical resolution, calculated in \autoref{sec:ZEMAX} as 23.3 line pairs/mm or \SI{43}{\micro\meter}.
 \begin{figure}[h!]\centering \includegraphics{figures/50_Measurements/conf/res/confResMeas.pdf}
       \caption{Left: Measured edge spread function (ESF) of the OCT beampath for the center of the field of view. 
       Right: Corresponding MTF compared with the theorical limit using the theory from \autoref{ssec:LSI}.}
@@ -117,10 +114,10 @@ A good concordance is observed between the shape of the analytical and the measu
 %%*****************************************************************************
 \subsection{Depth of field measurement}
 %%*****************************************************************************
-The depth of field (DoF) of the OCT imaging system can me determined by measuring how much light is backreflected upon a mirror while moving it though the z axis. The results from this experiment are plotted in \autoref{fig:FWHM}, where a full width half maximum (FWHM) DoF of \SI{3.5}{\milli\meter} is calculated. 
+The depth of field (DOF) of the OCT imaging system can me determined by measuring how much light is backreflected upon a mirror while displacing it though the z axis. The results from this experiment are plotted in \autoref{fig:FWHM}, where a full width half maximum (FWHM) DOF of \SI{3.5}{\milli\meter} is calculated. 
 
 \begin{figure}[h!]\centering \includegraphics{figures/50_Measurements/conf/res/PSFz.pdf}
-      \caption{Measurement of the axial resolution of the single modality probe. The intensity of the light coupled back into the optical system after reflection on a mirror is plotted against the translation of the mirror by $\pm \SI{4.5}{\milli\meter}$ from the focal plane of the probe. }
+      \caption{Measurement of the axial resolution of the single modality probe. The intensity of the light coupled back into the optical system after reflection on a mirror is plotted against the manual translation of the mirror by $\pm \SI{4.5}{\milli\meter}$ from the focal plane of the probe. }
       \label{fig:FWHM}
 \end{figure}
 
@@ -132,7 +129,7 @@ The depth of field (DoF) of the OCT imaging system can me determined by measurin
 \section{OCT imaging}
 %%*****************************************************************************
 
-The OCT characterization was performed using a swept-source OCT system of the Medical University Vienna. This system, represented in \autoref{fig:OCTsetup} is operating with a center wavelength of \unit[1.34]{\textmu m}, a bandwith of \unit[37]{nm} and a theoretical axial resolution in air of \unit[26.9]{\textmu m}.
+The OCT characterization was performed using a swept-source OCT system property of the Medical University Vienna. This system, represented in \autoref{fig:OCTsetup} operates with a center wavelength of \unit[1.34]{\textmu m}, a bandwidth of \unit[37]{nm} and a theoretical axial resolution in air of \unit[26.9]{\textmu m}.
 
 \begin{figure}[h!]\centering \includegraphics[width=12cm]{figures/50_Measurements/oct/octSetupVienna.pdf}
       \caption{Medical University Vienna swept-source OCT system. Light originating from a swept-source laser is coupled to a balanced interferometer, where the optical path difference between the sample and the reference arm creates an interferogram which is converted to an electrical signal in a balanced detector.}
@@ -140,9 +137,9 @@ The OCT characterization was performed using a swept-source OCT system of the Me
 \end{figure}
 
 The first OCT tests were performed as a proof of concept. Circular B-Scans of a colon polyp and a fingertip were captured with the single modality demonstrator, shown in \autoref{fig:B-Scan}. 
-\begin{figure}[h!]\centering \includegraphics[width=10cm]{figures/50_Measurements/oct/OCT_Measurement_arrangement.pdf}
+\begin{figure}[h!]\centering \includegraphics{figures/50_Measurements/oct/OCT_Measurement_arrangement.pdf}
       \caption{a) Illustration of the measurement arrangement for the circular B-Scan used as a proof of concept of OCT. b) Image of a circular OCT B-Scan of a colon polyp with a diameter $d=0.8\,\text{mm}$. Structural changes within the tissue can be detected and at the current state of the investigation the images suggest that blood vessels can be detected.
-      c) Image of a circular OCT B-Scan of a human finger tip.}
+      c) Image of a circular OCT B-Scan of a human finger tip, where the epidermis, dermis and hypodermis can be tentatively differentiated.}
       \label{fig:B-Scan}
 \end{figure}
-These preliminary results prove that OCT imaging is possible. But at the same time, the low SNR of these images indicate that the designed system, which has a NA of 0.022, has problems collecting enough backscattered light. Therefore, future implementations of the probe could benefit from a higher NA. As a consequence, the resolution and collection of light of the system would be increased at the cost of a shorter working distance and a shorter depth of field. 
+These preliminary results prove that OCT imaging is possible. But at the same time, the low SNR of these images indicate that the designed system, which has a NA of 0.022, has problems collecting enough backscattered light. Therefore, future implementations of the probe could benefit from a higher NA. In that case, the resolution and collection of light of the system would be increased at the cost of a shorter working distance and a shorter depth of field. 
