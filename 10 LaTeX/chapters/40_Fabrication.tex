@@ -20,7 +20,7 @@ The following paragraphs describe the manufacturing process and assembly of the 
 
 
 %%*****************************************************************************
-\section{Polyimide Electrodes}
+\section{Polyimide electrodes}
 %%*****************************************************************************
 The first challenge that appears in the manufacturing of the scanner lies in contacting the four external electrodes of the piezoelectric tube. 
 
@@ -37,7 +37,7 @@ Instead, this design uses a polyimide ribbon cable which is wrapped around the p
       \label{fig:piRolled}
 \end{figure}
 
-It is manufactured using a cleanroom process similar to the one used for cuff electrodes for nerve stimulation \cite{Rodriguez2000} and consists of platinum tracks and via holes embedded in a polyimide substrate. One end the cable is shaped to fit a zero insertion force (ZIF) connector. The other end can be rolled around the piezoelectric tube, allowing the bonding to its gold electrodes using conductive glue (Araldite 2020 with 80\% wt. silver particles).
+The polyimide ribbon cables are manufactured using a cleanroom process similar to the develped for cuff electrodes for nerve stimulation \cite{Rodriguez2000} and consists of platinum tracks and via holes embedded in a polyimide substrate. One end the cable is shaped to fit a zero insertion force (ZIF) connector. The other end can be rolled around the piezoelectric tube, allowing the bonding to its gold electrodes using conductive glue (Araldite 2020 with 80\% wt. silver particles).
 
 \begin{figure}[h!]\centering \includegraphics[width=15cm]{figures/40_Fabrication/PI/render.JPG}
       \caption{Render of a manufactured polyimide electrode. The left side fits a ZIF connector, the right side is rolled around the piezoelectric tube to address its electrodes.}
@@ -47,7 +47,7 @@ It is manufactured using a cleanroom process similar to the one used for cuff el
 
 
 \subsection{Cleanroom processing}
-The polyimide ribbon cables are manufactured and singulated at wafer level. The process involves spin coating a \SI{5}{\micro\meter} layer of polyimide, over which \SI{100}{\nano\meter} of platinum is sputtered and then patterned by liftoff, defining the conductive traces. On top of it, a second \SI{5}{\micro\meter} layer is spincoated. Finally, the vias, openings and external shape are patterned through reactive ion etching (RIE). This process is described in Figure \ref{fig:piProcess} and the resultant wafer in \autoref{fig:piwafer}.
+The polyimide ribbon cables are manufactured and singulated at wafer level. The process involves spin coating a \SI{5}{\micro\meter} layer of polyimide, which is cured at \SI{450}{\celsius} during \SI{10}{\minute}. Next, a \SI{100}{\nano\meter} layer of platinum is sputtered and patterned via liftoff, defining the conductive traces and the bondpads. On top of it, a second \SI{5}{\micro\meter} polyimide layer is spincoated and cured. Finally, the vias, openings and external shape of the cables are patterned through reactive ion etching (RIE), using the platinum as stop layer for the vias. This process is described in Figure \ref{fig:piProcess} and the resultant wafer in \autoref{fig:piwafer}.
 
 
 \begin{figure}[h!]\centering \includegraphics[width=15cm]{figures/40_Fabrication/PI/processH.pdf}
@@ -56,13 +56,13 @@ The polyimide ribbon cables are manufactured and singulated at wafer level. The 
 \end{figure}
 
 \begin{figure}[h!]\centering \includegraphics[width=10cm]{figures/40_Fabrication/PI/wafer.JPG}
-      \caption{True scale photography of a \SI{100}{\milli\meter} wafer containing 60 polyimide electrodes.}
+      \caption{Photograph of a \SI{100}{\milli\meter} wafer containing 60 polyimide electrodes.}
       \label{fig:piwafer}
 \end{figure}
 
 %%*****************************************************************************
 \clearpage
-\section{Fiber-GRIN Bonding}
+\section{Fiber-GRIN bonding}
 \label{sec:fiberGRIN}
 %%*****************************************************************************
 Another step that has to be performed before the final assembly of the probe is to bond the GRIN lens to the end of the fiber optically and mechanically. This interface is critical: first, because it is subjected to very high forces due to the oscillation of the scanner, and second, because any angular or displacement error would degrade the optical quality.
@@ -83,10 +83,10 @@ To overcome these challenges, fiber and GRIN lens are aligned together using a c
 
 
 %%*****************************************************************************
-\section{3D Printed Housing}
+\section{3D Printed housing}
 %%*****************************************************************************
 
-The bimodal probe is designed to be assembled using the silicon bench technology \cite{Kretschmer}. But for the demonstrator, a process with reduced complexity, which allows faster design adjustments has been tested: using a 3D printed polymer structure for both assembly and housing.
+The bimodal probe is designed to be assembled using the silicon bench technology \cite{Kretschmer}. But for the demonstrator, a process with reduced complexity, which allows faster design adjustments has been tested using a 3D printed polymer structure for both assembly and housing. This part was manufactured by B. Khatri (IMTEK) using a \textit{B9Creator} stereolithography printer, which allows the polimerization of an acrylic resin with a lateral resolution of \SI{30}{\micro\meter}.
 
 This is possible because, even though the dimensional accuracy of the printed housing is lower than its silicon counterpart, the optical components of the demonstrator allow relatively high placement tolerances, as the beam is collimated in the region between GRIN lens and objective lens. This way, simple alignment structures which are 3D-printed within the housing allow the proper placement of all components, as shown in \autoref{fig:housing}. The main dimensions of the housing are depicted in \autoref{fig:housingDim}.
 
@@ -100,7 +100,7 @@ This is possible because, even though the dimensional accuracy of the printed ho
       \label{fig:housingDim}
 \end{figure}
 
-The housing is manufactured using a \textit{B9Creator} stereolithography printer, which allows the polimerization of an acrylic resin with a lateral resolution of \SI{30}{\micro\meter}.
+This relatively low resolution together with high part-to-part and batch-to-batch variations, encourage a careful tolerance analysis during the design of the part. Nevertheless, these issues were compensated by the fast iterations in the design.
 
 
 %As an example, in order to center the piezotube in the housing, first the fiber is retracted so that the GRIN lens seats in the GRIN alignment structure (Figure \ref{fig:grinAlignment} left). This way the piezotube is aligned in the housing and, after being glued in place, it is possible to push the fiber so that the GRIN is at its proper distance (Figure \ref{fig:grinAlignment} right). 
@@ -125,9 +125,9 @@ The housing is manufactured using a \textit{B9Creator} stereolithography printer
 %\end{figure}
 
 
-Once all the components are ready, the assembly is performed by hand using the multiple alignment features of the housing. The exploded view in \autoref{fig:exploded} shows the placement of the components prior to assembly, followed by the final encapsulation. This process is summarized as follows:
+Once all the components are ready, the assembly is performed manually using the multiple alignment features of the housing. The exploded view in \autoref{fig:exploded} shows the placement of the components prior to assembly, followed by the final encapsulation. This process is summarized as follows:
 
-\begin{figure}[h!]\centering \includegraphics{figures/40_Fabrication/Assy/explodedRender/explodedRender.pdf}
+\begin{figure}[h!]\centering \includegraphics{figures/40_Fabrication/Assy/explodedRender/explodedRenderLaser.pdf}
       \caption{\textbf{a)} Exploded view of the components which form the single modality probe.
       \textbf{b)} Render of the complete probe after assembly.}
       \label{fig:exploded}

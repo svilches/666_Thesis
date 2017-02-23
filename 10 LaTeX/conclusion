@@ -1,0 +1,28 @@
+
+CONCLUSION 
+
+This work presents a novel single-fiber-based scanning scheme enabling simultaneous 3D OCT in combination with full field microscopy using spectrally separated beampaths in a probe with dimensions of only 13 × 2 × 3mm3.
+
+During this project, the behavior of fiber scanners was analyzed and several approaches were discussed and simulated. It was concluded that its implementation as fourier plane scanner using a GRIN lens as collimator and weight was optimal for OCT. A complete electro-mechano-optical analysis and simulation followed, allowing the optimization of the system to reach diffraction-limited resolution and a high field of view.
+
+The size constraints, which required the implementation of the scanner in a 1*1mm channel in the bottom of the bench, challenged the connectorization of the 800 um piezoelectric actuator. The solution involved fabricating novel 10um thick polyimide ribbon cables that can be rolled around the tube and contacted using vias. This cleanroom process proved to be reliable and repeatable, encouraging its use in following projects.
+
+This work also proved the bonding of a single mode, 80 um optical fiber to a GRIN lens, with a placement accuracy in the um range, and operating reliably under high mechanical stress. Prior OCT setups including GRIN lens showed that they can cause problematic backreflections. This problem was succesfully avoided by using a custom GRIN design with a 1 deg tilted exit facet. This solution, together with an special attention to the layout of the optical components, resulted in a complete optical system with backreflections below 0.02%.
+
+The assembly of the single mode demonstrator was succesfully achieved using alignment features integrated in a 3D-printed housing. This part was manufactured using a commercial, low cost stereolithographic resin printer. Within the next years, rapid prototyping methods will become more prominent in the optical engineer toolbox. 
+
+The manufactured demonstrator allowed the analysis and proof of concept of the fiber scanner. Experimental measurements helped refining the asumptions used in the analytical calculation of the resolution of OCT systems. The resultant theoretical description, which closely matches experimental results, will help in the design of further OCT or confocal systems.
+
+Although previous work at IMTEK had proven the use of fiber scanners for confocal imaging \cite{Meinert}, further analysis was needed to understand and correct for the imaging distortions caused by whirling. The calibration method used in this work, which can operate in real time, reduces the imaging distortions to a minimum and enables the quantitative analysis of the acquired image. This enabled going one step further in cooperation with the General Hospital of Vienna, where the OCT imaging concept was proven, creating new oportunities for collaboration. 
+
+
+
+OUTLOOK
+Extends the work from \cite{kretschmer}, \cite{blattmann}, adding a scanner.
+
+Vienna 
+
+
+
+
+

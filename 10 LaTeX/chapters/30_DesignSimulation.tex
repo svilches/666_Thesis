@@ -7,15 +7,19 @@
 \chapter{Design \& Simulation}
 \label{Ch:DesignSimulation}	
 
-The aim of this work is to design and test a miniaturized OCT microscope as a component of a multi-modal endoscopic probe. This probe consists of two spectrally-separated optical paths that run partially in parallel through a micro-optical bench. This approach allows independent design of the optical parameters of the two imaging modalities -- such as the numerical aperture (NA) or depth of field -- while still providing a geometrical overlap of the two acquired images. An integrated tubular piezoelectric fiber scanner is used to perform en face scanning required for three dimensional OCT measurements. This scanning engine has an outer diameter of \SI{0.9}{\milli\meter} and a length of \SI{9}{\milli\meter}, and features custom fabricated \SI{10}{\micro\meter} thick polyimide flexible interconnect lines to address the four piezoelectric electrodes.
+The aim of this work is to design and test a miniaturized OCT microscope as a component of a multi-modal endoscopic probe. This probe consists of two spectrally-separated optical paths that run partially in parallel through a micro-optical bench, as depicted in \autoref{fig:bimodalSketch} \cite{Kretschmer}. This approach allows independent design of the optical parameters of the two imaging modalities -- such as the numerical aperture (NA) or depth of field -- while still providing a geometrical overlap of the two acquired images. An integrated tubular piezoelectric fiber scanner is used to perform en face scanning required for three dimensional OCT measurements. This scanning engine has an outer diameter of \SI{0.9}{\milli\meter} and a length of \SI{9}{\milli\meter}, and features custom fabricated \SI{10}{\micro\meter} thick polyimide flexible interconnect lines to address the four piezoelectric electrodes.
+
+\begin{figure}[h!]\centering
+      \includegraphics{figures/30_DesignSimulation/Overview/bimodalCrossSection.pdf}
+      \caption{Schematic of the MEMS endomicroscope based on the HYAZINT probe \cite{Blattmann}. Two glass lenses glued directly to the dichroic beamsplitter cube form the full field microscopy beam path. Buried beneath the microscopy optics, a single mode fiber glued to a collimating GRIN lens forms the OCT channel. The single-mode fiber is centered in a piezoelectric tube to create a fiber scanner, enabling 3D OCT. A reflecting micro-prism glued to a dichroic beamsplitter cube combines the two beam paths.}
+      \label{fig:bimodalSketch}
+\end{figure}
 
 The following section describes the conception and design of the endoscope, starting from the medical and geometrical requirements, through analytical modeling and towards the optimization of each component.
 
 %%*****************************************************************************
-\section{Design Requirements}
+\section{Design requirements}
 %%*****************************************************************************
-
-
 
 The OCT microscope should fulfill the following requirements:
 
@@ -48,13 +52,7 @@ The main challenge of this work is to design an OCT scanning mechanism compact e
 
 Another challenging requirement is the superposition of the images acquired by the different modalities. If the optical axes are not coaxial, the fields will be shifted and tilted due to parallax error --- which gains importance at the small working distances common in endoscopy.
 
-To overcome these problems, and taking into account the above-mentioned requirements, we propose a design based on the HYAZINT multimodal probe \cite{Blattmann2016}. By creating a two layer microbench, it is possible to bury the OCT resonant fiber scanner in the bottom level and merge both modalities in the top level using a dichroic beamsplitter. An schematic of this mechanism can be seen in \autoref{fig:bimodalSketch}.
-
-\begin{figure}[h!]\centering
-      \includegraphics{figures/30_DesignSimulation/Overview/crossSection.pdf}
-      \caption{Schematic of the MEMS endomicroscope based on the HYAZINT probe \cite{Blattmann2016}. Two glass lenses glued directly to the dichroic beamsplitter cube form the full field microscopy beam path. A silicon aperture is used to reduce the spherical aberrations. Buried beneath the full field optics, a single mode fiber glued to a collimating GRIN lens forms the OCT channel. The single-mode fiber is centered in a piezoelectric tube to create a fiber scanner enabling 3D OCT. A reflecting micro-prism glued to a dichroic beamsplitter cube combines the two beam paths.}
-      \label{fig:bimodalSketch}
-\end{figure}
+To overcome these problems, and taking into account the above-mentioned requirements, we propose a design based on the HYAZINT multimodal probe \cite{Blattmann}. By creating a two layer microbench, it is possible to bury the OCT resonant fiber scanner in the bottom level and merge both modalities in the top level using a dichroic beamsplitter. An schematic of this mechanism can be seen in \autoref{fig:bimodalSketch}.
 
 The base of the microbench with dimensions of $13 \times 2 \times \SI{1}{\milli\meter^3} $ is realized by standard silicon bulk micromachining. On the top layer, the bench accommodates the full field imaging optics that consists of a dichroic beamsplitter cube with dimensions of $2\times 2 \times  \SI{2}{\milli\meter^3}$ to separate the two beam paths and two plano-convex lenses with \SI{2}{\milli\meter} diameter, which form a full field microscope. To achieve a highly compact opto-mechanical design, the components of the OCT beam path are buried within a cavity in the base of the micro bench. On the bottom layer a gradient index lens (GRIN lens) with a diameter of \SI{350}{\micro\meter} is directly glued to the tip of a \SI{80}{\micro\meter} single mode fiber to collimate the infrared light of the OCT system with a center wavelength of $\lambda_o = \SI{1311}{\nano\meter}$. A spiral scanning of the OCT beam path is achieved by an angular scanner implemented using a piezoelectric tube actuator.
 
@@ -65,12 +63,12 @@ For completeness, both multi-mode and single-mode optical systems are described.
 
 
 %%*****************************************************************************
-\section{Optical Design of the OCT beam path}
+\section{Optical design of the OCT beampath}
 \label{sec:Optical}
 %%*****************************************************************************
 This section explains in detail the design of the OCT optics and its scanning mechanism. Starting with the concept of a Fourier plane scanner, the most relevant design equations are derived, which guide the selection of the optical components to achieve the desired performance, eventually verified by optical simulation. 
 
-\subsection{Fourier Plane Scanner}
+\subsection{Fourier plane scanner}
 
 %There are many reasons why this design is preferred over other scanning topologies. First, the narrow dimensions of the piezoelectric tube allow a compact implementation. Also, the field of view that can be achieved with this scanner is not limited to the space available for the GRIN lens to vibrate --- instead, to its maximum angular deflection. As we want a telecentric system, a \textit{4f} microscope could have been implemented instead of a Fourier plane scanner, but at the cost of duplicating the length of the optical system (Chapter \ref{Ch:Theory}). Another advantage of using a fourier plane scanner is that it requires a GRIN lens glued to the tip of the fiber in order to collimate the beam. As a side-effect, this extra weight greatly reduces the resonant frequency of the scanner, allowing a denser sampling from the data acquisition system. 
 
@@ -102,8 +100,8 @@ f_\mathrm{GRIN} \cdot \mathrm{NA}_\mathrm{fiber} = f_\mathrm{obj} \cdot \mathrm{
 
 the main design equation for the scanner is obtained. Note that these equations use a small angle approximation valid for small NA:  $\tan[\sin^{-1}(\mathrm{NA})] \simeq \mathrm{NA} $. In this case, as any NA is smaller than 0.25, the error of this simplification is smaller than 2\%.
 
-\subsection{Component Selection}
-The design equations that were obtained in the previous section relate all the optical components together. Therefore, once the desired NA is chosen, there is only a free variable available. In this case, the major constraint is given by the commercial availability of the single mode fiber, so the selection of the rest of the components will follow from it.
+\subsection{Component selection}
+The design equations that were obtained in the previous section relate all the optical components together. Therefore, once the desired NA is chosen, there is only one free variable available. In this case, the major constraint is given by the commercial availability of the single mode fiber, so the selection of the rest of the components will follow from it.
 
 The only commercially available single mode fiber working in our wavelength range and with thinned cladding diameter (refer to Section \ref{sec:mechDesign}) is \textit{Thorlabs SM980G80}, with a diameter of \SI{80}{\micro\meter} and with $\mathrm{NA_\mathrm{fiber}} = 0.18$ at $\lambda = \SI{1.33}{\micro\meter}$. 
 
@@ -122,7 +120,7 @@ h_\mathrm{max} = f_\mathrm{obj}\cdot \tan  \theta_\mathrm{max} = \SI{7.5}{\milli
 equivalent to a FOV of \SI{1.2}{\milli\meter} for a $\theta_\mathrm{max} $ of $ \pm \SI{5}{\degree}$, as calculated in section \ref{sec:mechDesign}.
 
 
-\subsection{ZEMAX Simulation}
+\subsection{ZEMAX simulation}
 
 Once the components are selected, it is possible to validate the theoretical analysis of the optical design by  performing a raytracing simulation. Using ZEMAX, the fiber facet is modeled as the waist of a gaussian beam source, the  GRIN lens is modeled using a design file from the manufacturer and the prism, beamsplitter and planoconvex lens are modeled geometrically according to the provided mechanical drawings. The result is shown in \autoref{fig:BS}.
 
@@ -166,7 +164,7 @@ The result is visible in the simulation from \autoref{fig:tilt}: the backreflect
 
 \begin{figure}[h!]\centering
       \includegraphics[width=10cm]{figures/30_DesignSimulation/Optical/backreflection.pdf}
-      \caption{Schematic showing the raytracing simulation of a beam exiting from the distal facet of the fiber and being coupled into a GRIN lens with a tilted exit facet. Thanks to it, the backreflected light misses the core of the fiber and is thus not coupled back to the OCT system.}
+      \caption{Schematic showing the raytracing simulation of a beam exiting from the distal facet of the fiber and being coupled into a GRIN lens with a tilted exit facet. The backreflected light misses the core of the fiber and is thus not coupled back to the OCT system.}
       \label{fig:tilt}
 \end{figure}
 
@@ -177,7 +175,7 @@ The result is visible in the simulation from \autoref{fig:tilt}: the backreflect
 
 %Taking these considerations into account, the backreflections were kept below 0.02\% in all the manufactured probes, as detailed in \autoref{ch:Results}.
 
-\subsection{Single Modality Probe}
+\subsection{Single modality probe}
 As stated in the Design Overview, in order to independently test the behavior of the OCT scanner and optics, a single modality probe was fabricated as a demonstrator. Its optical design, depicted in \autoref{fig:single}, emulates the multimodal design from \autoref{fig:BS} by unfolding its optical path. The main difference is the lack of the prism and beamsplitter and the orientation of the planoconvex lens, which is flipped to reduce the backreflections caused by normal incidence on the planar side of the lens.
 
 \begin{figure}[h!]\centering
@@ -197,7 +195,7 @@ The equivalence of both systems is emphasized by the similarity of their simulat
 
 Due to these similarities, it is expected that any experimental result obtained with the demonstrator can be easily transferred to the behavior of the bimodal probe.
 
-\subsection{Simulated Optical Performance}
+\subsection{Simulated optical performance}
 
 To conclude the \textit{Design and Simulation} chapter, the most important characteristics of the components of the OCT microscope are listed in \autoref{tab:simChar} and the simulated performance in \autoref{tab:simRes}.
 
@@ -231,7 +229,7 @@ To conclude the \textit{Design and Simulation} chapter, the most important chara
 \end{table}
 
 %%*****************************************************************************
-\section{Image acquisition: Spiral Scanning}
+\section{Image acquisition: spiral scanning}
 \label{sec:spiralScanning}
 %%*****************************************************************************
 
@@ -244,9 +242,9 @@ As any resonant system, the movement of the scanning fiber is constrained to har
 The following pages describe the concept of spiral scanning, its characteristics, limitations and implementation.
 
 %%*****************************************************************************
-\subsection{Driving and Acquisition}
+\subsection{Driving and acquisition}
 %%*****************************************************************************
-The piezoelectric tube which drives the scanner has four outer gold electrodes to control the lateral movement of the scanner, as described in \autoref{ch:theory}. Two independent voltage sources control the vertical and horizontal movement of the actuator by addressing the corresponding pair of electrodes. If sine and cosine signals of the same frequency $f_\mathrm{drive}$ are used to drive the scanner, the GRIN lens will oscillate in a circle of constant radius. If now the amplitude of these signals is modulated with another signal of frequency $f_\mathrm{mod}$, the resultant trajectory will be spiral, as illustrated in \autoref{fig:PZTDriving}.
+The piezoelectric tube which drives the scanner has four outer gold electrodes to control the lateral movement of the scanner, as described in \autoref{ssec:piezo}. Two independent voltage sources control the vertical and horizontal movement of the actuator by addressing the corresponding pair of electrodes. If sine and cosine signals of the same frequency $f_\mathrm{drive}$ are used to drive the scanner, the GRIN lens will oscillate in a circle of constant radius. If now the amplitude of these signals is amplitude modulated with another sinusoidal signal of frequency $f_\mathrm{mod}$, the resultant trajectory will be spiral, as illustrated in \autoref{fig:PZTDriving}.
 
 \begin{figure}[h!]\centering \includegraphics{figures/30_DesignSimulation/spiralScanning/PZTDrivingMoving.pdf}
       \caption{Schematic of the piezoelectric tube, fiber, GRIN and objective lens focusing the OCT beam (red) in a plane. 
@@ -272,7 +270,7 @@ It is clear then that spiral scanning shows a non-uniform sampling distribution 
 
 
 %%*****************************************************************************
-\section{Mechanical Design}
+\section{Mechanical design}
 \label{sec:mechDesign}
 %%*****************************************************************************
 As explained in the previous section, in any resonant system, its geometrical and mechanical characteristics fully define the operating frequency range, and with it, constrain the way the final image can be sampled.
@@ -314,13 +312,13 @@ In order to select the length of the scanner there are two things to consider. A
 
 \subsection{COMSOL simulation}
 
-In order to validate the theoretical analysis of the previous section, a multiphysics finite element analysis was performed using \textit{COMSOL}. For that matter, the actuator was modeled as a radially polarized piezoelectric material (\textit{PIC 151}) and the rest of the structure as fused silica. The excitation voltage is a sinusoidal symmetrical potential between the top and bottom electrodes of the tube. Note that, as the system undergoes small deflections, it is simulated assuming linear behavior \cite{Fertis2006} without incurring in important deviations.
+In order to validate the theoretical analysis of the previous section, a multiphysics finite element analysis was performed using \textit{COMSOL}. The actuator was modeled as a radially polarized piezoelectric material (\textit{PIC 151}) and the rest of the structure as fused silica. The excitation voltage is a sinusoidal symmetrical potential between the top and bottom electrodes of the tube. Note that, as the system undergoes small deflections, it is simulated assuming linear behavior \cite{Fertis2006} without incurring in important deviations.
 
 As the first step, the resonant frequency of the system is simulated. An Eigenfrequency study calculates the first mode resonance at \SI{762}{\hertz}, which closely matches the analytical estimation of \SI{770}{\hertz}. The mode shape at resonance is shown in Figure \ref{fig:defle}, where it can be observed that the actuator and the base of the fiber are almost static, confirming the resonant behavior of the scanner.
 
 \begin{figure}[h!]\centering
       \includegraphics[width=10 cm]{figures/30_DesignSimulation/Mechanical/deflection.pdf}
-      \caption{COMSOL simulation showing a cross section of the scanner maximum deflection at resonance. The deformed structure is color coded showing the total displacement from the rest position (shown outlined). }
+      \caption{COMSOL simulation showing a cross section of the scanner maximum deflection at resonance for an actuation voltage of $\pm \SI{75}{\volt}$. The deformed structure is color coded showing the total displacement from the rest position (shown outlined). }
       \label{fig:defle}
 \end{figure}
 
