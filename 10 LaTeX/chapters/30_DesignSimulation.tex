@@ -17,6 +17,7 @@ The aim of this work is to design and test a miniaturized OCT microscope as a co
 
 The following section describes the conception and design of the endoscope, starting from the medical and geometrical requirements, through analytical modeling and towards the optimization of each component.
 
+\clearpage
 %%*****************************************************************************
 \section{Design requirements}
 %%*****************************************************************************
@@ -244,7 +245,7 @@ As any resonant system, the movement of the scanning fiber is constrained to har
 The following pages describe the concept of spiral scanning, its characteristics, limitations and implementation.
 
 %%*****************************************************************************
-\subsection{Driving and acquisition}
+\subsection*{Driving and acquisition}
 %%*****************************************************************************
 The piezoelectric tube which drives the scanner has four outer gold electrodes to control the lateral movement of the scanner, as described in \autoref{ssec:piezo}. Two independent voltage sources control the vertical and horizontal movement of the actuator by addressing the corresponding pair of electrodes. If sine and cosine signals of the same frequency $f_\mathrm{drive}$ are used to drive the scanner, the GRIN lens will oscillate in a circle of constant radius. If now the amplitude of these signals is amplitude modulated with another sinusoidal signal of frequency $f_\mathrm{mod}$, the resultant trajectory will be spiral, as illustrated in \autoref{fig:PZTDriving}.
 
