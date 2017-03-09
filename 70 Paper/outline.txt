@@ -1,0 +1,33 @@
+
+MOTIVATION
+
+Ultra miniaturized (same title)
+No bimodal
+
+REQUIREMENTS (Like talk)
+For OCT 
+	Low NA
+	Low fres
+	Telecentric
+
+FOURIER PLANE SCANNER
+	Radiant source
+
+MECHANICAL DESIGN
+	fres formula
+	COMSOL
+
+OPTICAL DESIGN 
+	Modified for other NAs
+	Minimization of backreflections
+
+FABRICATION & ASSEMBLY
+	Foils
+	Assembly renders
+
+RESULTS
+	Mechanical characterization
+	Optical characterization
+		Resolution and DoF
+	LUT images
+	OCT imaging
