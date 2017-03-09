@@ -58,109 +58,65 @@ Optical and mechanical characterization of the scanner, implemented in a single 
 \ioptwocol
 %
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
-This thesis realizes a novel fiber scanner in a telecentric configuration which reduce the distortion in the OCT modality and enables its integration within a multi-modal probe with dimensions of $13 \times 2 \times \SI{3}{\milli\meter^3}$. The complete scanning engine has an outer diameter of \SI{0.9}{\milli\meter} and a length of \SI{9}{\milli\meter}, and features custom fabricated \SI{10}{\micro\meter} thick polyimide flexible interconnect lines to address the four piezoelectric electrodes. The small cross section of the probe combined with its short length enables its use in a wide gamut of lumens in form of flexible or tilting head endoscope.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-A single modality probe was designed to independently investigate the performance of the OCT beampath. This probe, depicted in \ref{fig:approachSketch}a, has an external diameter of \SI{2.5}{\milli\meter} and a total length of \SI{15}{\milli\meter}. Its optical design emulates that of the multimodal probe OCT path, enabling a direct translation of the results from this demonstrator probe to the multimodal one. To the best of our knowledge, this single modality probe is also one of the most compact implementation of an OCT microendoscope.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Requirements of the scanner}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h!]\centering \includegraphics[width=\columnwidth]{figures/OCTsystem.png}
+      \caption{OCT Requirements}
+      %\label{}
+\end{figure}
 
-Using the demonstrator probe, it was possible to obtain preliminary \textit{en face} (\ref{fig:approachSketch}b) and tomographic (\ref{fig:approachSketch}c) images within a cylindrical volume of \SI{1}{\milli\meter} diameter and \SI{3}{\milli\meter} depth.
-
-\section{Requirements}
-\paragraph{Mechanical Requirements} 
-\begin{itemize}
-
-\item The scanner, electrical connections and optics should fit in a channel with a $\SI{1}{\milli\meter} \times \SI{1}{\milli\meter}$ cross section located in the lower level of a multimodal bench. This way the total cross section of the endoscope can be kept below $3 \times \SI{2}{\milli\meter^2}$). 
-\item Its length should be minimized to allow its integration in flexible-head endoscopes.
-\item The field of view should be maximized for a 2 mm diameter objective lens that is shared with the endomicroscopy beam path.
-\item The scanning speed should be adequate for the sampling rates characteristic of SS-OCT ($\sim \SI{100}{\kilo\hertz} $).
-\end{itemize}
-
-
-\paragraph{Optical Requirements}
+\paragraph{Optical requirements}
 
 \begin{itemize}
-\item The microscopy and OCT imaging fields should be coaxial to allow the registration of both images. 
-\item The OCT field should be telecentric to avoid field curvature distortions.
+\item A 2D scanning mechanism to enable 3D imaging.
 \item The lateral resolution and depth of field should be adequate for OCT i.e. with numerical aperture ranging from 0.02 to 0.05.
 \item The backreflections inside the probe should be minimized to reduce any loss of contrast and penetration depth.
+\item The OCT field should be telecentric to avoid field curvature distortions.
 \end{itemize}
 
-\section{Optical Design}
+\paragraph{Mechanical requirements}
+\begin{itemize}
+\item The field of view should be maximized for a 2 mm diameter objective lens that is shared with the endomicroscopy beam path.
+\item The scanning speed should be adequate for the sampling rates characteristic of SS-OCT ($\sim \SI{100}{\kilo\hertz} $).
+\item Its length should be minimized to allow its integration in flexible-head endoscopes.
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Fourier plane scanner}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+As described in the previous section, the OCT optical setup samples the object at only a single point. Thus, the focus point has to be 2D-scanned over the surface of the sample to obtain 3D OCT images.
+
+A very compact solution to achieve this are resonant fiber scanners. These devices use the concept of mechanical resonance to amplify the subtle movement of a piezoelectric actuator into a large displacement and angular deflection of the tip of a scanning fiber. 
+
 The OCT beam path is designed as an distal-side telecentric system to avoid distortions in the 3D OCT measurement. To achieve this, the fiber scanner is driven with small angles and is positioned such that the lateral and angular movement of the scanner imitates the beam angles that can be observed in the collimated region of a classical telecentric lens system. Figure \ref{fig:fps} illustrates this approach. The whole scanner is buried in a channel with an inner diameter of \SI{1}{\milli\meter} limiting the movement of the scanner to a maximum angle $\theta$ of \SI{5}{\degree} that allows a maximum FOV of \SI{1}{\milli\meter} of the OCT beam path.
 
-
-\begin{figure}[h!]\centering \includegraphics[width=\columnwidth]{figures/fps.pdf}
+\begin{figure}[h!]\centering \includegraphics[width=6cm]{figures/fps2.pdf}
       \caption{\textbf{a)} Illustration of a classical telecentric system. The height of the object is translated into an angle $\theta$ in the collimated region between the two lenses. This angle is again translated into a corresponding image height by the second lens.
       \textbf{b)} Illustration of the OCT beam path using a fiber scanner in first resonance mode without micro prism and beamsplitter. The movement of the GRIN lens due to the fiber scanner and the distance between the GRIN lens and the focusing lens creating the same optical behavior as it can be observed in a classical distal-sided telecentric system. \textbf{c)} Nomenclature used in this work.}
       \label{fig:fps}		
 \end{figure}
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Mechanical design}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The previous section focused in the acquisition of the depth information of a single column of a sample. But, in order to acquire a full, 3D volume of the sample, a 2D scanning mechanism is required. This section briefly goes over the physics and fundamental aspects of piezoelectric tube fiber scanners, starting with their actuation mechanism and followed by the analytical modeling of their resonant scanning fiber.
+
 For the scanner to work as a Fourier plane scanner, at any point of the oscillation the output beam from the GRIN lens should point to a fixed virtual radiant source. This is fulfilled if the bending shape of the scanner is linear with the amplitude and thus, the ratio of the GRIN lens angle to its vertical displacement is kept constant $ y = d \cdot \tan \theta \simeq d \cdot \theta \Rightarrow \frac{\theta}{y} = const $ (refer to Figure \ref{fig:radiant}). According to simulations and experimental measurements, this is the case for this implementation.
 
 \begin{figure}[h!]\centering
-      \includegraphics{figures/radiant.pdf}
+      \includegraphics[width=5cm]{figures/radiant.pdf}
       \caption{Schematic of the Fourier plane scanner at rest and at an arbitrary angle $\theta$. If the scanner behaves linearly, the output beam will appear to come from a fixed virtual radiant source regardless of the scanning amplitude.}
       \label{fig:radiant}
 \end{figure}
-
-
-In a Fourier plane scanner, the numerical apertures and focal lengths of the scanning and objective lens are related by the diameter of the beam in the intermediate region between both lenses. Thus, based on the schematic of Figure \ref{fig:fps}c, the following geometrical optics relations are obtained: $d_\mathrm{beam} \simeq 2\cdot f_\mathrm{GRIN}\cdot \mathrm{NA}_\mathrm{fiber}$ and $d_\mathrm{beam} \simeq 2 \cdot f_\mathrm{obj}\cdot \mathrm{NA}_\mathrm{OCT}$. By combining them together,
-
-\begin{equation}
-f_\mathrm{GRIN} \cdot \mathrm{NA}_\mathrm{fiber} = f_\mathrm{obj} \cdot \mathrm{NA}_\mathrm{OCT}
-\label{eq:fpsNA}
-\end{equation}
-
-the main design equation for the scanner is obtained. Note that these equations use a small angle approximation valid for small NA:  $\tan[\sin^{-1}(\mathrm{NA})] \simeq \mathrm{NA} $. In this case, as any NA is smaller than 0.25, the error of this simplification is smaller than 2\%.
-
-
-\subsubsection{Resolution of LSI and confocal systems}
-
-The autocorrelation of the MTF which characterizes LSI and confocal microscopy can lead to an increase in resolution compared with conventional microscopy if the illumination source and an detection aperture are significantly smaller than the diffraction limited PSF in these surfaces. In this situation $PSF_{\rm{core}}$ becomes a delta function . 
-
-In this work, the pinhole is defined by the diameter of the GRIN lens, which truncates the collimated beam at its $1/e^2$ level, corresponding with a truncation factor $K=1$. This limits the resolution of the system compared with a fully confocal system, where $K\rightarrow \infty$, as seen in \ref{fig:fullPartialConfocal}.
-
-\begin{figure}[h!]\centering \includegraphics[width=\columnwidth]{figures/fullPartialConfocal.pdf}
-      \caption{	Comparison of the simulated MTF of a confocal system with infinitesimally small pinhole (black) and with a pinhole with a truncation factor $K=1$ (red), as used in this work. The shaded area represents the possible MTFs locus for any truncation factor.}
-      \label{fig:fullPartialConfocal}
-\end{figure}
-
-As stated in \autoref{sec:designov}, in order to independently test the behavior of the OCT scanner and optics, a single modality probe was fabricated as a demonstrator. Its optical design, depicted in \autoref{fig:single}, emulates the multimodal design from \autoref{fig:BS} by unfolding its optical path. The main difference is the lack of the prism and beamsplitter and the orientation of the planoconvex lens, which is flipped to reduce the backreflections caused by normal incidence on the planar side of the lens.
-
-\begin{figure}[h!]\centering
-      \includegraphics[width=\columnwidth]{figures/singleAll.pdf}
-      \caption{\textbf{a)} 3D ZEMAX raytracing of the OCT beam path for the center (red rays) and marginal (purple rays) position of the GRIN lens in the single modality demonstrator.
-      \textbf{b)} Cross section of a).}
-      \label{fig:single}
-\end{figure}
-
-
-\begin{figure}[h!]\centering
-      \includegraphics{figures/singleSpot.png}
-      \caption{Simulated spot through focus}
-      \label{fig:MTFcomp}
-\end{figure}
-
-
-
-
-%%*****************************************************************************
-\section{Image acquisition: spiral scanning}
-\label{sec:spiralScanning}
-%%*****************************************************************************
-
-As described in the previous section, the OCT optical setup samples the object at only a single point. Thus, the focus point has to be 2D-scanned over the surface of the sample to obtain 3D OCT images.
-
-A very compact solution to achieve this are resonant fiber scanners. These devices use the concept of mechanical resonance to amplify the subtle movement of a piezoelectric actuator into a large displacement and angular deflection of the tip of a scanning fiber. 
-
-As any resonant system, the movement of the scanning fiber is constrained to harmonic oscillations within a frequency close to its resonance frequency $f_\mathrm{res}$. This requirement limits the possible scanning patters to harmonic movements at $f_\mathrm{res}$, excluding then raster scanning, which require at least an axis working out of resonance. Then, conventional alternatives are Lissajous \cite{Moon2010} and spiral scanning. In order to ease the reconstruction of the image, this work implements the latter.
-
-The following pages describe the concept of spiral scanning, its characteristics, limitations and implementation.
-
-%%*****************************************************************************
-\subsection*{Driving and acquisition}
-%%*****************************************************************************
-The piezoelectric tube which drives the scanner has four outer gold electrodes to control the lateral movement of the scanner, as described in \autoref{ssec:piezo}. Two independent voltage sources control the vertical and horizontal movement of the actuator by addressing the corresponding pair of electrodes. If sine and cosine signals of the same frequency $f_\mathrm{drive}$ are used to drive the scanner, the GRIN lens will oscillate in a circle of constant radius. If now the amplitude of these signals is amplitude modulated with another sinusoidal signal of frequency $f_\mathrm{mod}$, the resultant trajectory will be spiral, as illustrated in \autoref{fig:PZTDriving}.
 
 \begin{figure}[h!]\centering \includegraphics[width=\columnwidth]{figures/PZTDrivingMoving.pdf}
       \caption{Schematic of the piezoelectric tube, fiber, GRIN and objective lens focusing the OCT beam (red) in a plane. 
@@ -168,34 +124,9 @@ The piezoelectric tube which drives the scanner has four outer gold electrodes t
       \label{fig:PZTDriving}
 \end{figure}
 
-During the full period of the spiral pattern $T_\mathrm{spiral}=f_\mathrm{mod}^{-1}$ , two complete frames are acquired, one while the spiral grows, another while it shrinks. The whole pattern can be divided in $N_\mathrm{rings} = f_\mathrm{drive}/f_\mathrm{mod}$ individual rings, as depicted in \autoref{fig:spiralScanningNT}, each one acquired in a period $T_\mathrm{ring}=f_\mathrm{drive}^{-1}$. Thus the number of sample points that can be acquired in an individual ring
-\begin{figure}[h!]\centering
-      \includegraphics[width=3cm]{figures/spiralScanningNT.pdf}
-      \caption{Section of a spiral trajectory highlighting two different rings. The $n$ black dots represent the sampling points of each ring. Notice that in the inner ring the sampling density is higher than in the outer one.}
-      \label{fig:spiralScanningNT}
-\end{figure}
-\begin{equation}
-n = \frac{f_\mathrm{s}}{f_\mathrm{drive}}
-\label{eq:nT}
-\end{equation}
-depends only on the driving frequency of the scanner $f_\mathrm{drive}$ and the sampling frequency $f_\mathrm{s}$ of the spectrometer, which is usually constant. This value is very important, as it defines the spatial sampling density. 
-
-In order to fulfill the Nyquist theorem, the spacing between two adjacent sample points should be smaller than the Airy radius of the laser spot. This condition is easily fulfilled in the inner rings of the spiral, where the focus spot moves at low speed. But as the radius of the spiral grows, so does the scanning speed and therefore the distance between sample points, as seen in \autoref{fig:spiralScanningNT}.
-
-It is clear then that spiral scanning shows a non-uniform sampling distribution across the imaging field, which is confirmed experimentally in \autoref{fig:calib}. Thus, to avoid undersampling in the outer areas, the number of samples per ring $n$ should be as high as possible. As OCT systems have a relatively small sampling frequency ($\sim$\SI{100}{\kilo\hertz}), the resonant frequency needs to be below \SI{1}{kHz} to achieve more than 100 acquired points per ring of the spiral.
-
-
-%%*****************************************************************************
-\section{Mechanical design}
-\label{sec:mechDesign}
-%%*****************************************************************************
 As explained in the previous section, in any resonant system, its geometrical and mechanical characteristics fully define the operating frequency range, and with it, constrain the way the final image can be sampled.
 
 In the following paragraphs the behavior of the fiber scanner is mechanically modeled, and this information used to choose the most relevant fabrication parameters leading to an adequate resonant frequency for OCT.
-
-\section{Mechanics of fiber scanners}
-
-The previous section focused in the acquisition of the depth information of a single column of a sample. But, in order to acquire a full, 3D volume of the sample, a 2D scanning mechanism is required. This section briefly goes over the physics and fundamental aspects of piezoelectric tube fiber scanners, starting with their actuation mechanism and followed by the analytical modeling of their resonant scanning fiber.
 
 \subsection{Piezoelectric tube actuators}
 \label{ssec:piezo}
@@ -224,7 +155,7 @@ where \textit{V} is the voltage applied to each opposing electrode, $d_{31}$ is 
 The piezoelectric actuator described in the last paragraphs couples mechanical energy into the cantilever of the scanner, formed by a optical fiber segment to which a GRIN lens is glued, as depicted in \autoref{fig:EBth}a. As the scanner uses mechanical resonance to amplify the small displacements of the actuator, it is important to analyze the resonance frequency of such a system. 
 
 \begin{figure}[h!]\centering
-      \includegraphics[width=\columnwidth]{figures/EB.pdf}
+      \includegraphics[width=6cm]{figures/EB.pdf}
       \caption{\textbf{a)} Schematic drawing of the piezoelectric scanner, composed of a piezoelectric tube, fiber and GRIN lens. 
       \textbf{b)} Simplified mechanical diagram obtained by modeling the fiber as a weightless cantilever and the GRIN lens as a point mass.}
       \label{fig:EB}
@@ -250,12 +181,6 @@ The scanner used in the probe consists of a piezoelectric tube which drives a be
 
 
 The Euler-Bernoulli method can be used to estimate the resonant frequency of this scanner as detailed in \autoref{sec:EB}. The resulting equations \ref{eq:fres} and \ref{eq:EB} show how the different mechanical properties of the scanner influence its resonant frequency. Thus, this frequency can be reduced in different ways: increasing the cantilever length $L$, decreasing the radius of the fiber $r_\mathrm{fiber}$ or increasing the mass at the tip $m_{\mathrm{GRIN}}$. First, by having a GRIN lens attached at the tip, the resonance frequency is reduced by a factor of 62\%. Furthermore, by choosing a fiber with a cladding diameter of \SI{80}{\micro\meter} instead of the standard \SI{125}{\micro\meter}, the resonance frequency can be lowered by an extra factor of 60\%, as the sensitivity of the resonance frequency to the diameter of the fiber is quadratic. Under these conditions, the resonant frequency vs. length of the cantilever formed by a \SI{80}{\micro\meter} fused silica fiber with the chosen GRIN lens is computed in Figure \ref{fig:freq} using Equations \ref{eq:fres} and \ref{eq:EB}.
-
-\begin{figure}[h!]\centering
-      \includegraphics[width=\columnwidth]{figures/fres.pdf}
-      \caption{Resonant frequency of the scanner as a function of the total scanning tip length ($L_\mathrm{fiber} + L_\mathrm{GRIN}$). The chosen working point is labeled in the plot.}
-      \label{fig:freq}
-\end{figure}
 
 When selecting the length of the scanner, there are two details to consider. First, as the scanner is buried in a \SI{1}{\milli\meter} channel, the maximum displacement of the \SI{350}{\micro\meter} GRIN lens is limited to $\pm\SI{325}{\micro\meter}$. Within that small displacement we want to achieve the maximum angular deflection of the GRIN lens to maximize the FOV. This can be achieved by using shorter fiber lengths, which induces a smaller radius of curvature. This shows a trade-off with the density of sampling $N_\mathrm{T}$, which is increased with longer fiber lengths. To balance those terms, we chose a total scanner length of \SI{4.5}{\milli\meter}, which fulfills all the before-mentioned requirements, as \autoref{tab:mech} shows. 
 
@@ -296,8 +221,88 @@ which is under the safe operating field of \textit{PIC 151}, which ranges from $
       \label{fig:field}
 \end{figure}
 
-\section{Implementation}
-\label{Ch:Fab}	
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Optical design}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+In a Fourier plane scanner, the numerical apertures and focal lengths of the scanning and objective lens are related by the diameter of the beam in the intermediate region between both lenses. Thus, based on the schematic of Figure \ref{fig:fps}c, the following geometrical optics relations are obtained: $d_\mathrm{beam} \simeq 2\cdot f_\mathrm{GRIN}\cdot \mathrm{NA}_\mathrm{fiber}$ and $d_\mathrm{beam} \simeq 2 \cdot f_\mathrm{obj}\cdot \mathrm{NA}_\mathrm{OCT}$. By combining them together,
+
+\begin{equation}
+f_\mathrm{GRIN} \cdot \mathrm{NA}_\mathrm{fiber} = f_\mathrm{obj} \cdot \mathrm{NA}_\mathrm{OCT}
+\label{eq:fpsNA}
+\end{equation}
+
+the main design equation for the scanner is obtained. Note that these equations use a small angle approximation valid for small NA:  $\tan[\sin^{-1}(\mathrm{NA})] \simeq \mathrm{NA} $. In this case, as any NA is smaller than 0.25, the error of this simplification is smaller than 2\%.
+
+
+\subsubsection{Resolution of LSI and confocal systems}
+
+The autocorrelation of the MTF which characterizes LSI and confocal microscopy can lead to an increase in resolution compared with conventional microscopy if the illumination source and an detection aperture are significantly smaller than the diffraction limited PSF in these surfaces. In this situation $PSF_{\rm{core}}$ becomes a delta function . 
+
+In this work, the pinhole is defined by the diameter of the GRIN lens, which truncates the collimated beam at its $1/e^2$ level, corresponding with a truncation factor $K=1$. This limits the resolution of the system compared with a fully confocal system, where $K\rightarrow \infty$, as seen in \ref{fig:fullPartialConfocal}.
+
+\begin{figure}[h!]\centering \includegraphics[width=\columnwidth]{figures/fullPartialConfocal.pdf}
+      \caption{	Comparison of the simulated MTF of a confocal system with infinitesimally small pinhole (black) and with a pinhole with a truncation factor $K=1$ (red), as used in this work. The shaded area represents the possible MTFs locus for any truncation factor.}
+      \label{fig:fullPartialConfocal}
+\end{figure}
+
+As stated in \autoref{sec:designov}, in order to independently test the behavior of the OCT scanner and optics, a single modality probe was fabricated as a demonstrator. Its optical design, depicted in \autoref{fig:single}, emulates the multimodal design from \autoref{fig:BS} by unfolding its optical path. The main difference is the lack of the prism and beamsplitter and the orientation of the planoconvex lens, which is flipped to reduce the backreflections caused by normal incidence on the planar side of the lens.
+
+
+\begin{figure}[h!]\centering
+      \includegraphics[width=\columnwidth]{figures/singleSpot.png}
+      \caption{Simulated spot through focus}
+      \label{fig:MTFcomp}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Spiral Scanning}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+As described in the previous section, the OCT optical setup samples the object at only a single point. Thus, the focus point has to be 2D-scanned over the surface of the sample to obtain 3D OCT images.
+
+A very compact solution to achieve this are resonant fiber scanners. These devices use the concept of mechanical resonance to amplify the subtle movement of a piezoelectric actuator into a large displacement and angular deflection of the tip of a scanning fiber. 
+
+As any resonant system, the movement of the scanning fiber is constrained to harmonic oscillations within a frequency close to its resonance frequency $f_\mathrm{res}$. This requirement limits the possible scanning patters to harmonic movements at $f_\mathrm{res}$, excluding then raster scanning, which require at least an axis working out of resonance. Then, conventional alternatives are Lissajous \cite{Moon2010} and spiral scanning. In order to ease the reconstruction of the image, this work implements the latter.
+
+The following pages describe the concept of spiral scanning, its characteristics, limitations and implementation.
+
+%%*****************************************************************************
+\subsection*{Driving and acquisition}
+%%*****************************************************************************
+The piezoelectric tube which drives the scanner has four outer gold electrodes to control the lateral movement of the scanner, as described in \autoref{ssec:piezo}. Two independent voltage sources control the vertical and horizontal movement of the actuator by addressing the corresponding pair of electrodes. If sine and cosine signals of the same frequency $f_\mathrm{drive}$ are used to drive the scanner, the GRIN lens will oscillate in a circle of constant radius. If now the amplitude of these signals is amplitude modulated with another sinusoidal signal of frequency $f_\mathrm{mod}$, the resultant trajectory will be spiral, as illustrated in \autoref{fig:PZTDriving}.
+
+\begin{figure}[h!]\centering \includegraphics[width=\columnwidth]{figures/PZTDrivingMoving.pdf}
+      \caption{Schematic of the piezoelectric tube, fiber, GRIN and objective lens focusing the OCT beam (red) in a plane. 
+      The piezoelectric tube is driven with two independent amplitude modulated sine and cosine signals to generate a spiral pattern, used to acquire an image. }
+      \label{fig:PZTDriving}
+\end{figure}
+
+During the full period of the spiral pattern $T_\mathrm{spiral}=f_\mathrm{mod}^{-1}$ , two complete frames are acquired, one while the spiral grows, another while it shrinks. The whole pattern can be divided in $N_\mathrm{rings} = f_\mathrm{drive}/f_\mathrm{mod}$ individual rings, as depicted in \autoref{fig:spiralScanningNT}, each one acquired in a period $T_\mathrm{ring}=f_\mathrm{drive}^{-1}$. Thus the number of sample points that can be acquired in an individual ring
+\begin{figure}[h!]\centering
+      \includegraphics[width=3cm]{figures/spiralScanningNT.pdf}
+      \caption{Section of a spiral trajectory highlighting two different rings. The $n$ black dots represent the sampling points of each ring. Notice that in the inner ring the sampling density is higher than in the outer one.}
+      \label{fig:spiralScanningNT}
+\end{figure}
+\begin{equation}
+n = \frac{f_\mathrm{s}}{f_\mathrm{drive}}
+\label{eq:nT}
+\end{equation}
+depends only on the driving frequency of the scanner $f_\mathrm{drive}$ and the sampling frequency $f_\mathrm{s}$ of the spectrometer, which is usually constant. This value is very important, as it defines the spatial sampling density. 
+
+In order to fulfill the Nyquist theorem, the spacing between two adjacent sample points should be smaller than the Airy radius of the laser spot. This condition is easily fulfilled in the inner rings of the spiral, where the focus spot moves at low speed. But as the radius of the spiral grows, so does the scanning speed and therefore the distance between sample points, as seen in \autoref{fig:spiralScanningNT}.
+
+It is clear then that spiral scanning shows a non-uniform sampling distribution across the imaging field, which is confirmed experimentally in \autoref{fig:calib}. Thus, to avoid undersampling in the outer areas, the number of samples per ring $n$ should be as high as possible. As OCT systems have a relatively small sampling frequency ($\sim$\SI{100}{\kilo\hertz}), the resonant frequency needs to be below \SI{1}{kHz} to achieve more than 100 acquired points per ring of the spiral.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Fabrication and assembly}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 This chapter details the implementation of the probe shown in \autoref{fig:overview}, which serves as a demonstrator of the fiber scanner design and evaluation tool of the optical performance of the OCT beam path.
 
@@ -311,9 +316,8 @@ The design can be summarized as follows: The piezoelectric actuator has four out
 
 The following paragraphs describe the manufacturing process and assembly of the most relevant components of the probe, beginning with the fabrication of the polyimide electrodes used for contacting the piezoelectric tube and proceeding with details of the necessary assembly steps to fabricate the scanner, leading to the assembly of the complete probe.
 
-%%*****************************************************************************
-\section{Polyimide electrodes}
-%%*****************************************************************************
+\subsection{Polyimide electrodes}
+
 The first challenge that appears in the manufacturing of the scanner lies in contacting the four external electrodes of the piezoelectric tube. 
 
 Due to the small diameter of the tube (\SI{800}{\micro\meter}), creating a reliable interface between the driving circuit and its electrodes is not trivial. Other piezoscanner implementations use soft soldering and insulated copper wires \cite{Lee2010, Meinert, Huo2010}, but the soldering process can damage the piezoelectric material, as it is exposed to temperatures above its Curie temperature. This method also increases the diameter of the actuator significantly, as a solder blob is needed. %Furthermore, it requires welding by hand in a \SI{600}{\micro\meter} curved electrode.
@@ -333,11 +337,13 @@ The polyimide ribbon cables are manufactured using a cleanroom process similar t
 
 The polyimide ribbon cables are manufactured and singulated at wafer level. The process involves spin coating a \SI{5}{\micro\meter} layer of polyimide, which is cured at \SI{450}{\celsius} for \SI{10}{\minute}. Next, a \SI{100}{\nano\meter} layer of platinum is sputtered and patterned via liftoff, defining the conductive traces and the bondpads. On top of it, a second \SI{5}{\micro\meter} polyimide layer is spincoated and cured. Finally, the vias, openings and external shape of the cables are patterned through reactive ion etching (RIE), using the platinum as stop layer for the vias.
 
+\begin{figure}[h!]\centering \includegraphics[width=\columnwidth]{figures/PIprocess.pdf}
+      \caption{Polyimide electrodes}
+      %\label{}
+\end{figure}
 
 
-%%*****************************************************************************
-\section{3D Printed housing}
-%%*****************************************************************************
+\subsection{3D Printed housing}
 
 The bimodal probe is designed to be assembled using the silicon bench technology \cite{Kretschmer}. But for the demonstrator, a process with reduced complexity, which allows faster design adjustments has been tested using a 3D printed polymer structure for both assembly and housing. This part was manufactured by B. Khatri (IMTEK) using a \textit{B9Creator} stereolithography printer, which allows the polimerization of an acrylic resin with a lateral resolution of \SI{30}{\micro\meter}.
 
@@ -352,9 +358,7 @@ This is possible because, even though the dimensional accuracy of the printed ho
 This relatively low resolution together with high part-to-part and batch-to-batch variations found in this method encourage a careful tolerance analysis during the design of the part. Nevertheless, these issues were compensated by the fast iterations in the design, allowing a successful implementation.
 
 
-%%*****************************************************************************
-\section{Assembly}
-%%*****************************************************************************
+\subsection{Assembly}
 
 Once all the components are ready, the assembly is performed manually using the multiple alignment features of the housing. The exploded view in \autoref{fig:exploded} shows the placement of the components prior to assembly, followed by the final encapsulation. This process is summarized as follows:
 
@@ -373,9 +377,11 @@ Once all the components are ready, the assembly is performed manually using the 
 \end{figure}
 
 
-%%*****************************************************************************
-\section{Dynamic behavior of the scanner}
-%%*****************************************************************************
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Experimental evaluation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Dynamic behavior of the scanner}
 \label{sec:whirling}
 The use of fiber scanners for imaging involves the challenge of whirling, identified already in the first fiber scanner implementations \cite{Seibel2001}.
 
@@ -392,9 +398,7 @@ This effect can be explained as follows: If a cantilever is rotationally symmetr
 Therefore, for the imaging experiments, the scanner operates at a working point \textit{WP} far away from the resonance, in order to minimize the effect of whirling, but with a gain high enough to achieve the required amplitude of oscillation.
 
 
-%%*****************************************************************************
-\section{Laser scanning imaging}
-%%*****************************************************************************
+\subsection{Laser scanning imaging}
 This section explains how it is possible to use the single modality probe for laser scanning imaging (LSI) and use the acquired images to assess its lateral resolution and depth of field. As OCT uses the concept of LSI to recreate volumetric images, these results are also representative for OCT imaging.
 
 \subsection{Imaging}
@@ -418,13 +422,6 @@ Once this calibration step is performed, any further frame is plotted by assigni
 The dot plots which are obtained from spiral scanners have the inconvenient of non-uniform sampling, as can be seen in \autoref{fig:calib}. Thus, to ease the further processing of the acquired images, it is beneficial to convert the non-uniform dot plot into a cartesian raster image. This can be performed by 2D interpolation, resulting in \autoref{fig:confPlotting}c.
 
 
-\begin{figure}[h!]\centering \includegraphics[width=3cm]{figures/samplingDensity.png}
-      \caption{Sampling points of the scanner during a complete spiral cycle measured using a PSD. Notice the non-uniform sampling. Each one of the 45500 dots represents a sample point in object space. The coordinates of each point $(\mathbf{x}[i], \mathbf{y}[i])$ are used in a LUT to correct for the inherent sampling distortion characteristic of fiber scanners.}
-      \label{fig:calib}
-\end{figure}
-
-
-
 \subsection{Lateral resolution measurement}
 The optical performance of the scanner is qualitatively evaluated by capturing a SLI image of a USAF 1951 resolution test chart with a spiral scanning pattern using the setup described in \autoref{fig:confSetup}. As can be seen in \autoref{fig:confPlotting}c, element 4 of group 4 is resolved, indicating a resolution of 22 line pairs/mm or \SI{45}{\micro\meter}. 
 
@@ -436,9 +433,8 @@ A more robust method for the calculation of the optical resolution is detailed i
 \end{figure}
 A good concordance is observed between the shape of the analytical and the measured MTF curves of the scanning modality. However, the overall performance is reduced by 10\% compared to the simulation. This deviation can be explained by small misalignments of the optical components induced by the process tolerances of the 3D-printed housing and the assembly process. Since a better alignment can be achieved in the silicon micro bench due to the higher precision of the MEMS processes a better match between simulation and reality can be expected for the multimodal probe.
 
-%%*****************************************************************************
+
 \subsection{Depth of field measurement}
-%%*****************************************************************************
 The depth of field (DOF) of the OCT imaging system can me determined by measuring how much light is backreflected upon a mirror while displacing it though the z axis. The results from this experiment are plotted in \autoref{fig:FWHM}, where a full width half maximum (FWHM) DOF of \SI{3.5}{\milli\meter} is calculated. 
 
 \begin{figure}[h!]\centering \includegraphics[width=\columnwidth]{figures/PSFz.pdf}
@@ -449,9 +445,7 @@ The depth of field (DOF) of the OCT imaging system can me determined by measurin
 
 
 
-%%*****************************************************************************
-\section{OCT imaging}
-%%*****************************************************************************
+\subsection{OCT imaging}
 
 The OCT characterization was performed using a swept-source OCT system property of the Medical University Vienna. This systemoperates with a center wavelength of \unit[1.34]{$\mu$ m}, a bandwidth of \unit[37]{nm} and a theoretical axial resolution in air of \unit[26.9]{$\mu$ m}.
 
@@ -464,6 +458,76 @@ The first OCT tests were performed as a proof of concept. Circular B-Scans of a 
 \end{figure}
 
 These preliminary results prove that OCT imaging is possible. But at the same time, the low SNR of these images indicate that the designed system, which has a NA of 0.022, has problems collecting enough backscattered light. Therefore, future implementations of the probe could benefit from a higher NA. In that case, the resolution and collection of light of the system would be increased at the cost of a shorter working distance and a shorter depth of field. 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discussion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%///////////////////////////////////////////////////////////////////////
+%///////////////////////////////////////////////////////////////////////
+\end{document}
+%///////////////////////////////////////////////////////////////////////
+%///////////////////////////////////////////////////////////////////////
+
+
+This thesis realizes a novel fiber scanner in a telecentric configuration which reduce the distortion in the OCT modality and enables its integration within a multi-modal probe with dimensions of $13 \times 2 \times \SI{3}{\milli\meter^3}$. The complete scanning engine has an outer diameter of \SI{0.9}{\milli\meter} and a length of \SI{9}{\milli\meter}, and features custom fabricated \SI{10}{\micro\meter} thick polyimide flexible interconnect lines to address the four piezoelectric electrodes. The small cross section of the probe combined with its short length enables its use in a wide gamut of lumens in form of flexible or tilting head endoscope.
+
+A single modality probe was designed to independently investigate the performance of the OCT beampath. This probe, depicted in \ref{fig:approachSketch}a, has an external diameter of \SI{2.5}{\milli\meter} and a total length of \SI{15}{\milli\meter}. Its optical design emulates that of the multimodal probe OCT path, enabling a direct translation of the results from this demonstrator probe to the multimodal one. To the best of our knowledge, this single modality probe is also one of the most compact implementation of an OCT microendoscope.
+
+Using the demonstrator probe, it was possible to obtain preliminary \textit{en face} (\ref{fig:approachSketch}b) and tomographic (\ref{fig:approachSketch}c) images within a cylindrical volume of \SI{1}{\milli\meter} diameter and \SI{3}{\milli\meter} depth.
+
+\section{Requirements}
+\paragraph{Mechanical Requirements} 
+\begin{itemize}
+
+\item The scanner, electrical connections and optics should fit in a channel with a $\SI{1}{\milli\meter} \times \SI{1}{\milli\meter}$ cross section located in the lower level of a multimodal bench. This way the total cross section of the endoscope can be kept below $3 \times \SI{2}{\milli\meter^2}$). 
+\item Its length should be minimized to allow its integration in flexible-head endoscopes.
+\item The field of view should be maximized for a 2 mm diameter objective lens that is shared with the endomicroscopy beam path.
+\item The scanning speed should be adequate for the sampling rates characteristic of SS-OCT ($\sim \SI{100}{\kilo\hertz} $).
+\end{itemize}
+
+
+\paragraph{Optical Requirements}
+
+\begin{itemize}
+\item The microscopy and OCT imaging fields should be coaxial to allow the registration of both images. 
+\item The OCT field should be telecentric to avoid field curvature distortions.
+\item The lateral resolution and depth of field should be adequate for OCT i.e. with numerical aperture ranging from 0.02 to 0.05.
+\item The backreflections inside the probe should be minimized to reduce any loss of contrast and penetration depth.
+\end{itemize}
+
+
+
+
+
+
+
+
+%%*****************************************************************************
+\section{Image acquisition: spiral scanning}
+\label{sec:spiralScanning}
+%%*****************************************************************************
+
+
+
+%%*****************************************************************************
+\section{Mechanical design}
+\label{sec:mechDesign}
+%%*****************************************************************************
+
+\section{Implementation}
+\label{Ch:Fab}	
+
+
+
+
 
 
 \section{Conclusion \& Outlook}
@@ -484,5 +548,4 @@ This work also demonstrated the bonding of a single mode, \SI{80}{\micro\meter} 
 The assembly of the single mode demonstrator was successfully achieved using alignment features integrated in a 3D-printed housing. This part was manufactured using a commercial, low cost stereolithographic resin printer that enabled quick iterations of the design. The manufactured demonstrator allowed the analysis and proof of concept of the fiber scanner concept. Experimental measurements helped refining the assumptions used in the analytical calculation of the resolution of OCT systems. The resultant theoretical description, which closely matches experimental results, will help in the design of future OCT and confocal systems. Although previous work at IMTEK had proven the use of fiber scanners for confocal imaging \cite{Meinert}, further analysis was needed to understand and correct for the imaging distortions caused by whirling. The calibration method used in this work, which can operate in real time, reduces the imaging distortions to a minimum and enables the quantitative analysis of the acquired image. This enabled going one step further in cooperation with the Medical University Vienna, where the OCT imaging concept was proven, creating new opportunities for collaboration. 
 
 
-\end{document}
 
