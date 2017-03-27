@@ -28,9 +28,9 @@
      inkscape:window-height="1058"
      id="namedview43"
      showgrid="false"
-     inkscape:zoom="2.4526029"
-     inkscape:cx="182.03281"
-     inkscape:cy="72.454916"
+     inkscape:zoom="3.1941402"
+     inkscape:cx="151.55919"
+     inkscape:cy="91.562331"
      inkscape:window-x="54"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -797,6 +797,18 @@
          x="0.91688001"
          y="48.005959" />
     </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath7627-7">
+      <rect
+         style="opacity:0.42900002;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect7629-5"
+         width="282.39902"
+         height="192.5448"
+         x="0.91687995"
+         y="48.005959"
+         transform="rotate(-13.861771)" />
+    </clipPath>
   </defs>
   <metadata
      id="metadata7">
@@ -806,7 +818,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -888,7 +900,7 @@
        clip-path="url(#clipPath4681)" />
   </g>
   <text
-     transform="rotate(13.861771,196.99898,-27.774277)"
+     transform="rotate(13.861771,193.59718,-17.100303)"
      id="text4745"
      y="42.794453"
      x="127.50414"
@@ -906,7 +918,7 @@
        x="127.50414"
        sodipodi:role="line">tube</tspan></text>
   <text
-     transform="rotate(13.861771,196.99898,-27.774277)"
+     transform="rotate(13.861771,187.70096,-43.795196)"
      id="text4751"
      y="52.127872"
      x="52.367844"
@@ -919,7 +931,7 @@
        x="52.367844"
        sodipodi:role="line">interconnect</tspan></text>
   <text
-     transform="rotate(13.861771,190.05306,-16.540476)"
+     transform="rotate(13.861771,201.39175,-24.044235)"
      id="text4757"
      y="44.12566"
      x="217.78517"
@@ -960,7 +972,7 @@
      x="180.88045"
      y="59.134926"
      id="text4582-9"
-     transform="rotate(13.861771,196.99898,-27.774277)"
+     transform="rotate(13.861771,216.20831,-20.921232)"
      clip-path="url(#clipPath7627)"><tspan
        sodipodi:role="line"
        x="180.88045"
@@ -1047,4 +1059,17 @@
        y="91.559052"
        x="180.88794"
        sodipodi:role="line">2.5 mm</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.25px;line-height:100%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="180.88045"
+     y="59.134926"
+     id="text4582-9-0"
+     transform="rotate(13.861771,258.88636,-378.38282)"
+     clip-path="url(#clipPath7627-7)"><tspan
+       sodipodi:role="line"
+       x="180.88045"
+       y="59.134926"
+       style="font-size:7.5px;line-height:100%;text-align:center;text-anchor:middle;stroke-width:0.9375px"
+       id="tspan4739-1">fitting</tspan></text>
 </svg>
